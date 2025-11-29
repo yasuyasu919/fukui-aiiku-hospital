@@ -1,0 +1,830 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ちびっこハウス予約 | 福井愛育病院</title>
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700;900&family=Noto+Serif+JP:wght@400;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* ========== 共通設定 ========== */
+        :root {
+            --primary-navy: #2C3E50;
+            --secondary-navy: #34495E;
+            --accent-gold: #D4AF37;
+            --accent-beige: #F5E6D3;
+            --accent-blue: #5DADE2;
+            --accent-pink: #F8BBD0;
+            --text-dark: #2C3E50;
+            --text-gray: #6B7280;
+            --bg-light: #FAFAFA;
+            --white: #FFFFFF;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            color: var(--text-dark);
+            line-height: 1.8;
+            overflow-x: hidden;
+            background: var(--bg-light);
+        }
+        
+        /* ========== ヘッダー ========== */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.98);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+        }
+        
+        /* トップバー */
+        .header-top {
+            background: var(--primary-navy);
+            color: white;
+            padding: 0.5rem 0;
+        }
+        
+        .header-top-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        
+        .header-contact {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+            flex: 1;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.9rem;
+        }
+        
+        .contact-item i {
+            color: var(--accent-gold);
+        }
+        
+        .phone-number {
+            font-size: 1.3rem;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+        }
+        
+        .hospital-name-top {
+            font-weight: 700;
+            color: var(--accent-gold);
+            font-size: 0.95rem;
+            letter-spacing: 0.05em;
+        }
+        
+        .satogaeri-link {
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+            color: var(--white);
+            text-decoration: none;
+            padding: 0.4rem 0.8rem;
+            background: linear-gradient(135deg, var(--accent-pink), #F06292);
+            border-radius: 20px;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+        
+        .satogaeri-link:hover {
+            background: linear-gradient(135deg, #F06292, var(--accent-pink));
+            transform: translateY(-2px);
+        }
+        
+        .header-departments {
+            display: flex;
+            align-items: center;
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.9);
+            padding-left: 2rem;
+            border-left: 2px solid rgba(212, 175, 55, 0.5);
+        }
+        
+        /* メインヘッダー */
+        .header-main {
+            padding: 0.5rem 0;
+        }
+        
+        .header-main-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            text-decoration: none;
+            color: var(--primary-navy);
+        }
+        
+        .logo-image {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--accent-gold), var(--accent-beige));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            color: white;
+        }
+        
+        .logo-text h1 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 0.1rem;
+        }
+        
+        .logo-text p {
+            font-size: 0.8rem;
+            color: var(--text-gray);
+        }
+        
+        /* ナビゲーション */
+        .main-nav {
+            display: flex;
+            gap: 0.5rem;
+            align-items: center;
+        }
+        
+        .nav-list {
+            display: flex;
+            list-style: none;
+            gap: 0.25rem;
+        }
+        
+        .nav-link {
+            display: block;
+            padding: 0.75rem 0.9rem;
+            color: var(--primary-navy);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.88rem;
+            transition: all 0.3s ease;
+            border-radius: 8px;
+        }
+        
+        .nav-link:hover {
+            background: var(--accent-beige);
+            color: var(--accent-gold);
+        }
+        
+        /* ========== パンくずリスト ========== */
+        .breadcrumb {
+            background: white;
+            padding: 1rem 0;
+            margin-top: 120px;
+            border-bottom: 1px solid #e5e5e5;
+        }
+        
+        .breadcrumb-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.9rem;
+        }
+        
+        .breadcrumb a {
+            color: var(--accent-gold);
+            text-decoration: none;
+            transition: opacity 0.3s;
+        }
+        
+        .breadcrumb a:hover {
+            opacity: 0.7;
+        }
+        
+        .breadcrumb i {
+            color: var(--text-gray);
+            font-size: 0.7rem;
+        }
+        
+        .breadcrumb span {
+            color: var(--text-gray);
+        }
+        
+        /* ========== メインコンテンツ ========== */
+        .main-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+        
+        /* ページタイトル */
+        .page-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+        
+        .page-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary-navy);
+            margin-bottom: 1rem;
+        }
+        
+        .title-highlight {
+            background: linear-gradient(135deg, var(--accent-gold), var(--accent-beige));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .page-subtitle {
+            font-size: 1.1rem;
+            color: var(--text-gray);
+        }
+        
+        /* ========== 重要なお知らせ ========== */
+        .notice-alert {
+            background: linear-gradient(135deg, #FFF9E6 0%, #FFEBCC 100%);
+            border-left: 5px solid var(--accent-gold);
+            border-radius: 15px;
+            padding: 2rem 2.5rem;
+            margin-bottom: 4rem;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .notice-alert-title {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--primary-navy);
+            margin-bottom: 1rem;
+        }
+        
+        .notice-alert-title i {
+            color: var(--accent-gold);
+            font-size: 1.5rem;
+        }
+        
+        .notice-alert-text {
+            font-size: 1rem;
+            color: var(--text-dark);
+            line-height: 1.8;
+        }
+        
+        /* ========== 予約セクション ========== */
+        .reservation-section {
+            background: white;
+            border-radius: 20px;
+            padding: 3rem;
+            margin-bottom: 3rem;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+        }
+        
+        .section-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary-navy);
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 3px solid var(--accent-gold);
+        }
+        
+        .reservation-box {
+            background: linear-gradient(135deg, #E8F4F8 0%, #C9E4F5 100%);
+            border-radius: 15px;
+            padding: 3rem;
+            text-align: center;
+        }
+        
+        .reservation-intro {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--primary-navy);
+            margin-bottom: 2rem;
+        }
+        
+        .qr-code-container {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            display: inline-block;
+            margin: 2rem 0;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .qr-code-container img {
+            width: 200px;
+            height: 200px;
+            display: block;
+        }
+        
+        .reservation-url-box {
+            background: white;
+            border-radius: 15px;
+            padding: 1.5rem 2rem;
+            margin: 2rem 0;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+        }
+        
+        .reservation-url-box a {
+            color: var(--accent-blue);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            word-break: break-all;
+        }
+        
+        .reservation-url-box a:hover {
+            text-decoration: underline;
+        }
+        
+        .reservation-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            background: linear-gradient(135deg, var(--accent-gold), var(--accent-beige));
+            color: white;
+            padding: 1.2rem 3rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.1rem;
+            box-shadow: 0 8px 25px rgba(212, 175, 55, 0.3);
+            transition: all 0.3s ease;
+            margin: 2rem 0;
+        }
+        
+        .reservation-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 35px rgba(212, 175, 55, 0.4);
+        }
+        
+        .email-notice-box {
+            background: #FFF9E6;
+            border: 2px solid #FFD700;
+            border-radius: 10px;
+            padding: 1.5rem 2rem;
+            margin: 2rem 0;
+            text-align: left;
+        }
+        
+        .email-notice-box strong {
+            color: var(--primary-navy);
+        }
+        
+        .pdf-download {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            background: white;
+            border: 2px solid var(--accent-gold);
+            color: var(--accent-gold);
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            margin-top: 1rem;
+            transition: all 0.3s ease;
+        }
+        
+        .pdf-download:hover {
+            background: linear-gradient(135deg, var(--accent-gold), var(--accent-beige));
+            color: white;
+            border-color: transparent;
+        }
+        
+        /* ========== 注意事項リスト ========== */
+        .notice-list-section {
+            background: var(--bg-light);
+            border-radius: 15px;
+            padding: 2.5rem;
+            margin-top: 3rem;
+        }
+        
+        .notice-list-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--primary-navy);
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+        
+        .notice-list-title i {
+            color: var(--accent-gold);
+        }
+        
+        .notice-list {
+            list-style: none;
+        }
+        
+        .notice-list li {
+            padding: 1.2rem 0;
+            border-bottom: 1px solid #e5e5e5;
+            padding-left: 2rem;
+            position: relative;
+            line-height: 1.8;
+        }
+        
+        .notice-list li:last-child {
+            border-bottom: none;
+        }
+        
+        .notice-list li::before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: var(--accent-gold);
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+        
+        .notice-list li strong {
+            color: var(--primary-navy);
+        }
+        
+        /* ========== 関連リンク ========== */
+        .related-links {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            margin-top: 4rem;
+        }
+        
+        .related-link-card {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            text-decoration: none;
+            color: var(--text-dark);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+        
+        .related-link-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+        }
+        
+        .related-link-icon {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, var(--accent-gold), var(--accent-beige));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: white;
+            flex-shrink: 0;
+        }
+        
+        .related-link-content h3 {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--primary-navy);
+            margin-bottom: 0.5rem;
+        }
+        
+        .related-link-content p {
+            font-size: 0.9rem;
+            color: var(--text-gray);
+        }
+        
+        /* ========== フッター ========== */
+        .footer {
+            background: var(--primary-navy);
+            color: white;
+            padding: 4rem 0 2rem;
+            margin-top: 6rem;
+        }
+        
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1.5fr 1.5fr;
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+        
+        .footer-section h3 {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            color: var(--accent-gold);
+        }
+        
+        .footer-section p,
+        .footer-section a {
+            color: rgba(255, 255, 255, 0.9);
+            text-decoration: none;
+            font-size: 0.95rem;
+            line-height: 1.8;
+        }
+        
+        .footer-section a:hover {
+            color: var(--accent-gold);
+        }
+        
+        .footer-phone {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--accent-gold);
+            display: block;
+            margin: 0.5rem 0;
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+        
+        /* ========== レスポンシブ ========== */
+        @media (max-width: 992px) {
+            .header-departments {
+                display: none;
+            }
+            
+            .main-nav {
+                display: none;
+            }
+            
+            .related-links {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .breadcrumb {
+                margin-top: 120px;
+            }
+            
+            .main-content {
+                padding: 2rem 1rem;
+            }
+            
+            .page-title {
+                font-size: 2rem;
+            }
+            
+            .reservation-section {
+                padding: 2rem 1.5rem;
+            }
+            
+            .reservation-box {
+                padding: 2rem 1.5rem;
+            }
+            
+            .notice-alert {
+                padding: 1.5rem;
+            }
+            
+            .contact-item {
+                font-size: 0.75rem;
+            }
+            
+            .phone-number {
+                font-size: 1.1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- ========== ヘッダー ========== -->
+    <header class="header">
+        <!-- トップバー -->
+        <div class="header-top">
+            <div class="header-top-content">
+                <div class="header-contact">
+                    <div class="contact-item">
+                        <span class="hospital-name-top">福井愛育病院</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-phone-alt"></i>
+                        <span class="phone-number">0776-54-5757</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>〒910-0833 福井市新保2丁目301</span>
+                    </div>
+                    <div class="contact-item">
+                        <a href="#" class="satogaeri-link">
+                            <i class="fas fa-home"></i>
+                            <span>里帰り分娩</span>
+                        </a>
+                    </div>
+                </div>
+                <div class="header-departments">
+                    <span>産婦人科・小児科・アレルギー科・児童精神科</span>
+                </div>
+            </div>
+        </div>
+        
+        <!-- メインヘッダー -->
+        <div class="header-main">
+            <div class="header-main-content">
+                <!-- ロゴ -->
+                <a href="index.html" class="logo">
+                    <div class="logo-image">🏥</div>
+                    <div class="logo-text">
+                        <h1>福井愛育病院</h1>
+                        <p>Fukui Aiiku Hospital</p>
+                    </div>
+                </a>
+                
+                <!-- ナビゲーション -->
+                                <nav class="main-nav">
+                    <a href="index.html" class="nav-link">ホーム</a>
+                    <a href="obstetrics.html" class="nav-link">産婦人科</a>
+                    <a href="pediatrics.html" class="nav-link">小児科</a>
+                    <a href="child-psychiatry.html" class="nav-link">児童精神科</a>
+                    <a href="about.html" class="nav-link">病院案内</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- ========== パンくずリスト ========== -->
+    <div class="breadcrumb">
+        <div class="breadcrumb-content">
+            <a href="index.html"><i class="fas fa-home"></i> ホーム</a>
+            <i class="fas fa-chevron-right"></i>
+            <span>ちびっこハウス予約</span>
+        </div>
+    </div>
+
+    <!-- ========== メインコンテンツ ========== -->
+    <main class="main-content">
+        <!-- ページヘッダー -->
+        <div class="page-header">
+            <h1 class="page-title"><span class="title-highlight">🏠 ちびっこハウス</span>予約</h1>
+            <p class="page-subtitle">小児科外来のWEB予約システム（再診の方のみ）</p>
+        </div>
+
+        <!-- 重要なお知らせ -->
+        <div class="notice-alert">
+            <h2 class="notice-alert-title">
+                <i class="fas fa-exclamation-circle"></i>
+                新システム移行のお知らせ
+            </h2>
+            <p class="notice-alert-text">
+                10月1日より新システムに移行しますので、下記より利用者登録をお願いいたします。
+            </p>
+        </div>
+
+        <!-- 予約セクション -->
+        <section class="reservation-section">
+            <h2 class="section-title">📱 WEB予約（再診の方）</h2>
+            
+            <div class="reservation-box">
+                <p class="reservation-intro">下記URLにアクセスまたはQRコードを読み取ってください</p>
+                
+                <!-- QRコード -->
+                <div class="qr-code-container">
+                    <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://fab-yoyaku.com/ma" alt="予約システムQRコード">
+                </div>
+
+                <!-- URL -->
+                <div class="reservation-url-box">
+                    <a href="https://fab-yoyaku.com/ma" target="_blank">https://fab-yoyaku.com/ma</a>
+                </div>
+
+                <!-- 予約ボタン -->
+                <a href="https://fab-yoyaku.com/ma" target="_blank" class="reservation-btn">
+                    <i class="fas fa-external-link-alt"></i>
+                    予約システムへ進む
+                </a>
+
+                <!-- メール設定注意 -->
+                <div class="email-notice-box">
+                    <strong>📧 メール受信設定について：</strong><br>
+                    メールの着信制限をされている方は「<strong>fab.or.jp</strong>」のドメイン指定を許可してください。
+                </div>
+
+                <!-- PDF案内 -->
+                <a href="https://www.fab.or.jp/archives/file/pediatrics_reservation_guide.pdf" target="_blank" class="pdf-download">
+                    <i class="fas fa-file-pdf"></i>
+                    WEB予約のご利用案内（PDF）
+                </a>
+            </div>
+
+            <!-- 注意事項 -->
+            <div class="notice-list-section">
+                <h3 class="notice-list-title">
+                    <i class="fas fa-clipboard-list"></i>
+                    ご利用にあたっての注意事項
+                </h3>
+                <ul class="notice-list">
+                    <li>Web予約は、<strong>当日予約のみ</strong>となっております。</li>
+                    <li>電話による予約は行っておりません。</li>
+                    <li><strong>初診の方（初めて来院される方）</strong>はご利用できませんので、来院して受付して下さい。</li>
+                    <li>ちびっ子ハウス、夕方診察は通常の受付のみとなります。（予約は出来ません）</li>
+                    <li>ちびっ子ハウスの利用には利用枠の予約が必要です。（<strong>6:00〜9:00で予約枠の受付</strong>）</li>
+                    <li>予約ができない方も診察は可能ですのでそのままご来院下さい。</li>
+                    <li>予約枠を調整しておりますので、9:00と9:30がすぐに満員となりますが、<strong>10:00以降の予約枠は比較的開いております</strong>のでご利用ください。</li>
+                    <li><strong>乳児健診（一か月健診を除く）の方へ：</strong><br>
+                    午前中は発熱の患者さまも多く混み合いますので、なるべく<strong>午後</strong>をご利用してください。</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- 関連リンク -->
+        <div class="related-links">
+            <a href="index.html" class="related-link-card">
+                <div class="related-link-icon">🏠</div>
+                <div class="related-link-content">
+                    <h3>トップページへ戻る</h3>
+                    <p>病院の総合情報をご覧いただけます</p>
+                </div>
+            </a>
+            <a href="#" class="related-link-card">
+                <div class="related-link-icon">👶</div>
+                <div class="related-link-content">
+                    <h3>産婦人科外来予約</h3>
+                    <p>産婦人科の予約はこちらから</p>
+                </div>
+            </a>
+        </div>
+    </main>
+
+    <!-- ========== フッター ========== -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-grid">
+                <!-- 病院情報 -->
+                <div class="footer-section">
+                    <h3>福井愛育病院</h3>
+                    <p>〒910-0833<br>福井県福井市新保2丁目301</p>
+                    <a href="tel:0776-54-5757" class="footer-phone">0776-54-5757</a>
+                    <p>FAX: 0776-54-5850</p>
+                </div>
+                
+                <!-- 診療時間 -->
+                <div class="footer-section">
+                    <h3>診療時間</h3>
+                    <p>平日: 9:00 - 17:00<br>土曜: 9:00 - 12:00<br>休診日: 日曜・祝日</p>
+                </div>
+                
+                <!-- アクセス -->
+                <div class="footer-section">
+                    <h3>アクセス</h3>
+                    <p>えちぜん鉄道<br>西別院駅より徒歩8分<br>駐車場完備</p>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2024 福井愛育病院. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

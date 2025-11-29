@@ -1,0 +1,739 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>こどもの心診療部（児童精神科） | 福井愛育病院</title>
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700;900&family=Noto+Serif+JP:wght@400;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* ==================================== 
+           福井愛育病院 こどもの心診療部ページ CSS
+        ==================================== */
+        
+        /* ========== 共通設定 ========== */
+        :root {
+            --primary-navy: #2C3E50;
+            --secondary-navy: #34495E;
+            --accent-gold: #D4AF37;
+            --accent-beige: #F5E6D3;
+            --accent-blue: #5DADE2;
+            --accent-pink: #F8BBD0;
+            --accent-purple: #9B59B6;
+            --text-dark: #2C3E50;
+            --text-gray: #6B7280;
+            --bg-light: #FAFAFA;
+            --white: #FFFFFF;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            color: var(--text-dark);
+            line-height: 1.8;
+            overflow-x: hidden;
+            background: var(--bg-light);
+        }
+        
+        /* ========== ヘッダー ========== */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.98);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+        }
+
+        .header-top {
+            background: var(--primary-navy);
+            padding: 8px 0;
+            text-align: center;
+        }
+
+        .header-top-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: white;
+            font-size: 0.9rem;
+        }
+
+        .hospital-name {
+            font-weight: 500;
+        }
+
+        .tel-link {
+            color: white;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: opacity 0.3s;
+        }
+
+        .tel-link:hover {
+            opacity: 0.8;
+        }
+
+        .header-main {
+            padding: 15px 0;
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-navy);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo i {
+            color: var(--accent-pink);
+        }
+
+        .main-nav {
+            display: flex;
+            gap: 30px;
+            align-items: center;
+        }
+
+        .nav-link {
+            color: var(--text-dark);
+            text-decoration: none;
+            font-weight: 500;
+            padding: 8px 0;
+            position: relative;
+            transition: color 0.3s;
+        }
+
+        .nav-link:hover {
+            color: var(--accent-gold);
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent-gold);
+            transition: width 0.3s;
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        /* ========== パンくずリスト ========== */
+        .breadcrumb {
+            background: white;
+            padding: 100px 0 15px 0;
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        .breadcrumb-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .breadcrumb-list {
+            display: flex;
+            gap: 10px;
+            list-style: none;
+            font-size: 0.9rem;
+            color: var(--text-gray);
+            flex-wrap: wrap;
+        }
+
+        .breadcrumb-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .breadcrumb-item a {
+            color: var(--text-gray);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .breadcrumb-item a:hover {
+            color: var(--accent-gold);
+        }
+
+        /* ========== サブナビゲーション ========== */
+        .sub-nav {
+            background: white;
+            border-bottom: 3px solid var(--accent-purple);
+            position: sticky;
+            top: 90px;
+            z-index: 100;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+        }
+
+        .sub-nav-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .sub-nav-list {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+            overflow-x: auto;
+        }
+
+        .sub-nav-item {
+            white-space: nowrap;
+        }
+
+        .sub-nav-link {
+            display: block;
+            padding: 15px 5px;
+            color: var(--text-dark);
+            text-decoration: none;
+            font-weight: 500;
+            position: relative;
+            transition: color 0.3s;
+        }
+
+        .sub-nav-link:hover {
+            color: var(--accent-purple);
+        }
+
+        .sub-nav-link.active {
+            color: var(--accent-purple);
+        }
+
+        .sub-nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background: var(--accent-purple);
+            transition: width 0.3s;
+        }
+
+        .sub-nav-link:hover::after,
+        .sub-nav-link.active::after {
+            width: 100%;
+        }
+
+        /* ========== メインコンテンツ ========== */
+        .main-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+
+        /* ========== ページヘッダー ========== */
+        .page-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .page-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary-navy);
+            margin-bottom: 20px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .page-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(to right, var(--accent-purple), var(--accent-pink));
+            border-radius: 2px;
+        }
+
+        .page-subtitle {
+            font-size: 1.1rem;
+            color: var(--text-gray);
+            margin-top: 30px;
+        }
+
+        /* ========== インフォボックス ========== */
+        .info-box {
+            background: linear-gradient(135deg, #E8D5F2 0%, #F3E5F5 100%);
+            border-left: 5px solid var(--accent-purple);
+            padding: 30px;
+            border-radius: 10px;
+            margin-bottom: 40px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .info-box h3 {
+            color: var(--primary-navy);
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .info-box p {
+            color: var(--text-dark);
+            line-height: 2;
+        }
+
+        /* ========== コンテンツセクション ========== */
+        .content-section {
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            margin-bottom: 40px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        .section-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary-navy);
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid var(--accent-purple);
+        }
+
+        .content-section h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-navy);
+            margin: 30px 0 20px 0;
+            padding-left: 15px;
+            border-left: 5px solid var(--accent-purple);
+        }
+
+        .content-section ul {
+            list-style: none;
+            padding: 0;
+            margin: 20px 0;
+        }
+
+        .content-section li {
+            padding: 12px 0;
+            padding-left: 25px;
+            position: relative;
+            color: var(--text-dark);
+        }
+
+        .content-section li::before {
+            content: '●';
+            position: absolute;
+            left: 0;
+            color: var(--accent-purple);
+        }
+
+        .content-section p {
+            line-height: 2;
+            margin-bottom: 15px;
+        }
+
+        /* ========== 強調ボックス ========== */
+        .highlight-box {
+            background: var(--accent-beige);
+            padding: 25px;
+            border-radius: 10px;
+            margin: 30px 0;
+            border-left: 5px solid var(--accent-gold);
+        }
+
+        .highlight-box h4 {
+            color: var(--primary-navy);
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+        }
+
+        .highlight-box p {
+            color: var(--text-dark);
+            line-height: 2;
+        }
+
+        /* ========== カードグリッド ========== */
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+
+        .card {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s;
+            border-top: 4px solid var(--accent-purple);
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+        }
+
+        .card h4 {
+            font-size: 1.2rem;
+            color: var(--primary-navy);
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .card ul {
+            margin: 0;
+        }
+
+        .card li {
+            font-size: 0.95rem;
+            padding: 8px 0;
+        }
+
+        .card li::before {
+            color: var(--accent-purple);
+        }
+
+        /* ========== フッター ========== */
+        .footer {
+            background: var(--primary-navy);
+            color: white;
+            padding: 40px 0 20px 0;
+            margin-top: 80px;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            text-align: center;
+        }
+
+        .footer p {
+            margin-bottom: 10px;
+        }
+
+        /* ========== レスポンシブ ========== */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .main-nav {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 15px;
+            }
+
+            .page-title {
+                font-size: 2rem;
+            }
+
+            .sub-nav-list {
+                gap: 15px;
+            }
+
+            .content-section {
+                padding: 25px;
+            }
+
+            .card-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- ヘッダー -->
+    <header class="header">
+        <div class="header-top">
+            <div class="header-top-content">
+                <span class="hospital-name">福井愛育病院</span>
+                <a href="tel:0776-54-5757" class="tel-link">
+                    <i class="fas fa-phone"></i>
+                    <span>0776-54-5757</span>
+                </a>
+            </div>
+        </div>
+        <div class="header-main">
+            <div class="header-content">
+                <a href="index.html" class="logo">
+                    <i class="fas fa-heartbeat"></i>
+                    福井愛育病院
+                </a>
+                                <nav class="main-nav">
+                    <a href="index.html" class="nav-link">ホーム</a>
+                    <a href="obstetrics.html" class="nav-link">産婦人科</a>
+                    <a href="pediatrics.html" class="nav-link">小児科</a>
+                    <a href="child-psychiatry.html" class="nav-link">児童精神科</a>
+                    <a href="about.html" class="nav-link">病院案内</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- パンくずリスト -->
+    <div class="breadcrumb">
+        <div class="breadcrumb-content">
+            <ul class="breadcrumb-list">
+                <li class="breadcrumb-item"><a href="index.html">ホーム</a></li>
+                <li class="breadcrumb-item"><i class="fas fa-chevron-right"></i></li>
+                <li class="breadcrumb-item"><a href="pediatrics.html">小児科</a></li>
+                <li class="breadcrumb-item"><i class="fas fa-chevron-right"></i></li>
+                <li class="breadcrumb-item">こどもの心診療部</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- サブナビゲーション -->
+    <nav class="sub-nav">
+        <div class="sub-nav-content">
+            <ul class="sub-nav-list">
+                <li class="sub-nav-item"><a href="pediatrics.html" class="sub-nav-link">小児科トップ</a></li>
+                <li class="sub-nav-item"><a href="#overview" class="sub-nav-link active">概要</a></li>
+                <li class="sub-nav-item"><a href="#symptoms" class="sub-nav-link">対象となる症状</a></li>
+                <li class="sub-nav-item"><a href="#treatment" class="sub-nav-link">診療内容</a></li>
+                <li class="sub-nav-item"><a href="#access" class="sub-nav-link">受診方法</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- メインコンテンツ -->
+    <main class="main-content">
+        <!-- ページヘッダー -->
+        <div class="page-header">
+            <h1 class="page-title">こどもの心診療部</h1>
+            <p class="page-subtitle">児童精神科 - お子さまの心の健康をサポートします</p>
+        </div>
+
+        <!-- お知らせ -->
+        <div class="info-box">
+            <h3><i class="fas fa-info-circle"></i> 初診の方へ</h3>
+            <p>
+                初めて受診される方は、事前にお電話でご相談ください。<br>
+                <strong>TEL: 0776-54-5757</strong><br>
+                受診の際は、母子手帳や紹介状（お持ちの場合）をご持参ください。
+            </p>
+        </div>
+
+        <!-- 概要 -->
+        <section id="overview" class="content-section">
+            <h2 class="section-title">こどもの心診療部について</h2>
+            
+            <p>
+                当診療部では、お子さまの心の健康を総合的にサポートしています。発達の遅れや行動の問題、情緒の不安定さなど、
+                お子さまの心に関するさまざまなご相談に対応しています。
+            </p>
+
+            <p>
+                児童精神科専門医が、お子さまとご家族に寄り添いながら、適切な診断と治療、支援を行います。
+                必要に応じて、心理検査や発達検査も実施し、お子さま一人ひとりに合わせたサポートを提供いたします。
+            </p>
+
+            <div class="highlight-box">
+                <h4>私たちが大切にしていること</h4>
+                <p>
+                    お子さまとご家族の気持ちに寄り添い、安心して相談できる環境づくりを心がけています。
+                    お子さまの成長と発達を長期的な視点で見守り、ご家族と一緒に考え、サポートしていきます。
+                </p>
+            </div>
+        </section>
+
+        <!-- 対象となる症状 -->
+        <section id="symptoms" class="content-section">
+            <h2 class="section-title">対象となる症状・相談内容</h2>
+            
+            <div class="card-grid">
+                <div class="card">
+                    <h4><i class="fas fa-child"></i> 発達に関する相談</h4>
+                    <ul>
+                        <li>言葉の遅れ</li>
+                        <li>コミュニケーションの困難さ</li>
+                        <li>対人関係の問題</li>
+                        <li>こだわりの強さ</li>
+                        <li>発達障害（自閉スペクトラム症、ADHDなど）</li>
+                    </ul>
+                </div>
+
+                <div class="card">
+                    <h4><i class="fas fa-brain"></i> 行動の問題</h4>
+                    <ul>
+                        <li>多動・衝動性</li>
+                        <li>集中力の問題</li>
+                        <li>かんしゃく</li>
+                        <li>攻撃的な行動</li>
+                        <li>チック症状</li>
+                    </ul>
+                </div>
+
+                <div class="card">
+                    <h4><i class="fas fa-heart"></i> 情緒・気分の問題</h4>
+                    <ul>
+                        <li>不安が強い</li>
+                        <li>気分の落ち込み</li>
+                        <li>イライラしやすい</li>
+                        <li>恐怖症</li>
+                        <li>抑うつ状態</li>
+                    </ul>
+                </div>
+
+                <div class="card">
+                    <h4><i class="fas fa-school"></i> 学校生活の困難</h4>
+                    <ul>
+                        <li>不登校</li>
+                        <li>学習の困難さ</li>
+                        <li>友達関係のトラブル</li>
+                        <li>いじめの問題</li>
+                        <li>学校での適応困難</li>
+                    </ul>
+                </div>
+
+                <div class="card">
+                    <h4><i class="fas fa-moon"></i> 生活習慣の問題</h4>
+                    <ul>
+                        <li>睡眠の問題</li>
+                        <li>食事の問題</li>
+                        <li>排泄の問題（夜尿症など）</li>
+                        <li>生活リズムの乱れ</li>
+                    </ul>
+                </div>
+
+                <div class="card">
+                    <h4><i class="fas fa-comments"></i> その他</h4>
+                    <ul>
+                        <li>反抗的な態度</li>
+                        <li>嘘をつく</li>
+                        <li>盗み</li>
+                        <li>家庭内暴力</li>
+                        <li>心身症</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- 診療内容 -->
+        <section id="treatment" class="content-section">
+            <h2 class="section-title">診療内容</h2>
+
+            <h3>診察・相談</h3>
+            <p>
+                児童精神科専門医が、お子さまとご家族からお話を伺い、丁寧に診察を行います。
+                お子さまの状態を総合的に評価し、適切な診断と治療方針を提案いたします。
+            </p>
+
+            <h3>心理検査・発達検査</h3>
+            <p>
+                必要に応じて、各種心理検査や発達検査を実施します。検査結果をもとに、
+                お子さまの特性や強み、苦手な部分を明らかにし、具体的な支援方法を考えていきます。
+            </p>
+            <ul>
+                <li>知能検査（WISC-Ⅴなど）</li>
+                <li>発達検査（新版K式発達検査など）</li>
+                <li>心理検査（各種）</li>
+            </ul>
+
+            <h3>薬物療法</h3>
+            <p>
+                必要に応じて、お薬による治療を行います。お子さまの状態に合わせて、
+                適切なお薬を選択し、効果と副作用を注意深く観察しながら治療を進めます。
+            </p>
+
+            <h3>カウンセリング・心理療法</h3>
+            <p>
+                臨床心理士によるカウンセリングや心理療法を提供しています。
+                お子さまの心のケアはもちろん、ご家族へのサポートも行います。
+            </p>
+
+            <h3>連携支援</h3>
+            <p>
+                必要に応じて、学校や療育機関、その他の支援機関と連携し、
+                お子さまが生活するすべての場面で適切なサポートが受けられるよう調整します。
+            </p>
+        </section>
+
+        <!-- 受診方法 -->
+        <section id="access" class="content-section">
+            <h2 class="section-title">受診方法</h2>
+
+            <h3>初診の方</h3>
+            <p>
+                初めて受診される方は、まずお電話でご相談ください。<br>
+                <strong>TEL: 0776-54-5757</strong>
+            </p>
+            <p>
+                受診の際は、以下のものをご持参ください：
+            </p>
+            <ul>
+                <li>健康保険証</li>
+                <li>母子手帳</li>
+                <li>紹介状（お持ちの場合）</li>
+                <li>お薬手帳（服薬中の場合）</li>
+            </ul>
+
+            <h3>診療時間</h3>
+            <p>
+                診療日時については、小児科の診療時間に準じます。<br>
+                詳しくは<a href="pediatrics.html#schedule" style="color: var(--accent-purple); text-decoration: none; font-weight: 500;">小児科の診療時間</a>をご確認ください。
+            </p>
+
+            <div class="highlight-box">
+                <h4>ご相談の際のお願い</h4>
+                <p>
+                    お子さまの状態について、できるだけ詳しくお聞かせください。<br>
+                    いつ頃から、どのような症状があるか、日常生活でどのような困りごとがあるかなど、
+                    具体的にお話しいただけると、より適切なアドバイスができます。
+                </p>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- フッター -->
+    <footer class="footer">
+        <div class="footer-content">
+            <p>&copy; 2024 福井愛育病院 All Rights Reserved.</p>
+            <p>〒910-0833 福井県福井市新保2丁目301</p>
+            <p>TEL: 0776-54-5757</p>
+        </div>
+    </footer>
+</body>
+</html>

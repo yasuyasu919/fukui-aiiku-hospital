@@ -1,0 +1,864 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>里帰り分娩 | 福井愛育病院</title>
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700;900&family=Noto+Serif+JP:wght@400;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* ========== 共通設定 ========== */
+        :root {
+            --primary-navy: #2C3E50;
+            --secondary-navy: #34495E;
+            --accent-gold: #D4AF37;
+            --accent-beige: #F5E6D3;
+            --accent-blue: #5DADE2;
+            --accent-pink: #F8BBD0;
+            --text-dark: #2C3E50;
+            --text-gray: #6B7280;
+            --bg-light: #FAFAFA;
+            --white: #FFFFFF;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            color: var(--text-dark);
+            line-height: 1.8;
+            overflow-x: hidden;
+            background: var(--bg-light);
+        }
+        
+        /* ========== ヘッダー ========== */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.98);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+        }
+        
+        .header-top {
+            background: var(--primary-navy);
+            color: white;
+            padding: 0.5rem 0;
+        }
+        
+        .header-top-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        
+        .header-contact {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+            flex: 1;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.9rem;
+        }
+        
+        .contact-item i {
+            color: var(--accent-gold);
+        }
+        
+        .phone-number {
+            font-size: 1.3rem;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+        }
+        
+        .hospital-name-top {
+            font-weight: 700;
+            color: var(--accent-gold);
+            font-size: 0.95rem;
+            letter-spacing: 0.05em;
+        }
+        
+        .satogaeri-link {
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+            color: var(--white);
+            text-decoration: none;
+            padding: 0.4rem 0.8rem;
+            background: linear-gradient(135deg, var(--accent-pink), #F06292);
+            border-radius: 20px;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+        
+        .satogaeri-link:hover {
+            background: linear-gradient(135deg, #F06292, var(--accent-pink));
+            transform: translateY(-2px);
+        }
+        
+        .header-departments {
+            display: flex;
+            align-items: center;
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.9);
+            padding-left: 2rem;
+            border-left: 2px solid rgba(212, 175, 55, 0.5);
+        }
+        
+        .header-main {
+            padding: 0.5rem 0;
+        }
+        
+        .header-main-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            text-decoration: none;
+            color: var(--primary-navy);
+        }
+        
+        .logo-image {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--accent-gold), var(--accent-beige));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            color: white;
+        }
+        
+        .logo-text h1 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 0.1rem;
+        }
+        
+        .logo-text p {
+            font-size: 0.8rem;
+            color: var(--text-gray);
+        }
+        
+        .main-nav {
+            display: flex;
+            gap: 0.5rem;
+            align-items: center;
+        }
+        
+        .nav-list {
+            display: flex;
+            list-style: none;
+            gap: 0.25rem;
+        }
+        
+        .nav-link {
+            display: block;
+            padding: 0.75rem 0.9rem;
+            color: var(--primary-navy);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.88rem;
+            transition: all 0.3s ease;
+            border-radius: 8px;
+        }
+        
+        .nav-link:hover {
+            background: var(--accent-beige);
+            color: var(--accent-gold);
+        }
+        
+        /* ========== パンくずリスト ========== */
+        .breadcrumb {
+            background: white;
+            padding: 1rem 0;
+            margin-top: 120px;
+            border-bottom: 1px solid #e5e5e5;
+        }
+        
+        .breadcrumb-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.9rem;
+        }
+        
+        .breadcrumb a {
+            color: var(--accent-gold);
+            text-decoration: none;
+            transition: opacity 0.3s;
+        }
+        
+        .breadcrumb a:hover {
+            opacity: 0.7;
+        }
+        
+        .breadcrumb i {
+            color: var(--text-gray);
+            font-size: 0.7rem;
+        }
+        
+        .breadcrumb span {
+            color: var(--text-gray);
+        }
+        
+        /* ========== メインコンテンツ ========== */
+        .main-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+        
+        /* ページヘッダー */
+        .page-header {
+            text-align: center;
+            margin-bottom: 4rem;
+            background: linear-gradient(135deg, var(--accent-pink), #F06292);
+            padding: 4rem 2rem;
+            border-radius: 20px;
+            color: white;
+        }
+        
+        .page-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+        
+        .page-subtitle {
+            font-size: 1.2rem;
+            opacity: 0.95;
+        }
+        
+        /* ========== FAQ セクション ========== */
+        .faq-section {
+            background: white;
+            border-radius: 20px;
+            padding: 3rem;
+            margin-bottom: 3rem;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+        }
+        
+        .faq-item {
+            margin-bottom: 3rem;
+            padding-bottom: 3rem;
+            border-bottom: 2px solid var(--bg-light);
+        }
+        
+        .faq-item:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+        
+        .faq-question {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .faq-q-icon {
+            flex-shrink: 0;
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--accent-pink), #F06292);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: 900;
+            color: white;
+        }
+        
+        .faq-q-text {
+            flex-grow: 1;
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--primary-navy);
+            line-height: 1.6;
+            padding-top: 0.5rem;
+        }
+        
+        .faq-answer {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+        }
+        
+        .faq-a-icon {
+            flex-shrink: 0;
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--accent-gold), var(--accent-beige));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: 900;
+            color: white;
+        }
+        
+        .faq-a-text {
+            flex-grow: 1;
+            font-size: 1rem;
+            color: var(--text-dark);
+            line-height: 1.8;
+            padding-top: 0.5rem;
+        }
+        
+        .faq-a-text strong {
+            color: var(--accent-pink);
+            font-weight: 700;
+        }
+        
+        .faq-a-text a {
+            color: var(--accent-blue);
+            text-decoration: none;
+            font-weight: 600;
+        }
+        
+        .faq-a-text a:hover {
+            text-decoration: underline;
+        }
+        
+        /* ========== 持ち物リスト ========== */
+        .items-section {
+            background: white;
+            border-radius: 20px;
+            padding: 3rem;
+            margin-bottom: 3rem;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+        }
+        
+        .items-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary-navy);
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 3px solid var(--accent-gold);
+        }
+        
+        .items-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+        
+        .items-card {
+            background: var(--bg-light);
+            border-radius: 15px;
+            padding: 2rem;
+        }
+        
+        .items-card h3 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--accent-pink);
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+        
+        .items-card h3 i {
+            font-size: 1.5rem;
+        }
+        
+        .items-list {
+            list-style: none;
+        }
+        
+        .items-list li {
+            padding: 0.75rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+            border-bottom: 1px solid #e5e5e5;
+        }
+        
+        .items-list li:last-child {
+            border-bottom: none;
+        }
+        
+        .items-list li::before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: var(--accent-pink);
+            font-weight: bold;
+        }
+        
+        .important-note {
+            background: linear-gradient(135deg, #FFF9E6 0%, #FFEBCC 100%);
+            border-left: 5px solid var(--accent-gold);
+            border-radius: 10px;
+            padding: 1.5rem 2rem;
+            margin: 2rem 0;
+        }
+        
+        .important-note strong {
+            color: var(--primary-navy);
+        }
+        
+        /* ========== 病院設備 ========== */
+        .facilities-box {
+            background: linear-gradient(135deg, #E8F4F8 0%, #C9E4F5 100%);
+            border-radius: 15px;
+            padding: 2.5rem;
+            margin-top: 3rem;
+        }
+        
+        .facilities-box h3 {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--primary-navy);
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+        
+        .facilities-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
+        }
+        
+        .facility-item {
+            background: white;
+            border-radius: 10px;
+            padding: 1.5rem;
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+        
+        .facility-item i {
+            font-size: 2rem;
+            color: var(--accent-blue);
+            margin-bottom: 0.75rem;
+        }
+        
+        .facility-item p {
+            font-weight: 600;
+            color: var(--primary-navy);
+        }
+        
+        /* ========== CTAボタン ========== */
+        .cta-section {
+            text-align: center;
+            margin-top: 4rem;
+        }
+        
+        .cta-button-large {
+            display: inline-flex;
+            align-items: center;
+            gap: 1rem;
+            background: linear-gradient(135deg, var(--accent-pink), #F06292);
+            color: white;
+            padding: 1.5rem 4rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.3rem;
+            box-shadow: 0 8px 25px rgba(240, 98, 146, 0.3);
+            transition: all 0.3s ease;
+        }
+        
+        .cta-button-large:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 35px rgba(240, 98, 146, 0.4);
+        }
+        
+        .cta-button-large i {
+            font-size: 1.5rem;
+        }
+        
+        /* ========== フッター ========== */
+        .footer {
+            background: var(--primary-navy);
+            color: white;
+            padding: 4rem 0 2rem;
+            margin-top: 6rem;
+        }
+        
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1.5fr 1.5fr;
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+        
+        .footer-section h3 {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            color: var(--accent-gold);
+        }
+        
+        .footer-section p,
+        .footer-section a {
+            color: rgba(255, 255, 255, 0.9);
+            text-decoration: none;
+            font-size: 0.95rem;
+            line-height: 1.8;
+        }
+        
+        .footer-section a:hover {
+            color: var(--accent-gold);
+        }
+        
+        .footer-phone {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--accent-gold);
+            display: block;
+            margin: 0.5rem 0;
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+        
+        /* ========== レスポンシブ ========== */
+        @media (max-width: 992px) {
+            .header-departments {
+                display: none;
+            }
+            
+            .main-nav {
+                display: none;
+            }
+            
+            .items-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .facilities-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .breadcrumb {
+                margin-top: 110px;
+            }
+            
+            .main-content {
+                padding: 2rem 1rem;
+            }
+            
+            .page-header {
+                padding: 3rem 1.5rem;
+            }
+            
+            .page-title {
+                font-size: 2rem;
+            }
+            
+            .faq-section,
+            .items-section {
+                padding: 2rem 1.5rem;
+            }
+            
+            .faq-q-text {
+                font-size: 1.1rem;
+            }
+            
+            .facilities-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .cta-button-large {
+                padding: 1.2rem 2.5rem;
+                font-size: 1.1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- ========== ヘッダー ========== -->
+    <header class="header">
+        <div class="header-top">
+            <div class="header-top-content">
+                <div class="header-contact">
+                    <div class="contact-item">
+                        <span class="hospital-name-top">福井愛育病院</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-phone-alt"></i>
+                        <span class="phone-number">0776-54-5757</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>〒910-0833 福井市新保2丁目301</span>
+                    </div>
+                    <div class="contact-item">
+                        <a href="satogaeri.html" class="satogaeri-link">
+                            <i class="fas fa-home"></i>
+                            <span>里帰り分娩</span>
+                        </a>
+                    </div>
+                </div>
+                <div class="header-departments">
+                    <span>産婦人科・小児科・アレルギー科・児童精神科</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="header-main">
+            <div class="header-main-content">
+                <a href="index.html" class="logo">
+                    <div class="logo-image">🏥</div>
+                    <div class="logo-text">
+                        <h1>福井愛育病院</h1>
+                        <p>Fukui Aiiku Hospital</p>
+                    </div>
+                </a>
+                
+                                <nav class="main-nav">
+                    <a href="index.html" class="nav-link">ホーム</a>
+                    <a href="obstetrics.html" class="nav-link">産婦人科</a>
+                    <a href="pediatrics.html" class="nav-link">小児科</a>
+                    <a href="child-psychiatry.html" class="nav-link">児童精神科</a>
+                    <a href="about.html" class="nav-link">病院案内</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- ========== パンくずリスト ========== -->
+    <div class="breadcrumb">
+        <div class="breadcrumb-content">
+            <a href="index.html"><i class="fas fa-home"></i> ホーム</a>
+            <i class="fas fa-chevron-right"></i>
+            <span>里帰り分娩</span>
+        </div>
+    </div>
+
+    <!-- ========== メインコンテンツ ========== -->
+    <main class="main-content">
+        <!-- ページヘッダー -->
+        <div class="page-header">
+            <h1 class="page-title">🏠 里帰り分娩</h1>
+            <p class="page-subtitle">安心して出産していただけるよう、里帰り出産をサポートします</p>
+        </div>
+
+        <!-- FAQ セクション -->
+        <section class="faq-section">
+            <!-- FAQ 1 -->
+            <div class="faq-item">
+                <div class="faq-question">
+                    <div class="faq-q-icon">Q</div>
+                    <div class="faq-q-text">
+                        愛育病院で里帰り出産をしようと思いますが、いつ頃受診すればいいですか？
+                    </div>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-a-icon">A</div>
+                    <div class="faq-a-text">
+                        <p>里帰り出産ご希望の方は<a href="https://www.fab.or.jp/homecoming/form.html" target="_blank">お問い合わせフォーム</a>よりお申し込み下さい。</p>
+                        <p style="margin-top: 1rem;">メールで返信をしておりますが、受信拒否となっている場合が多々あります。今一度ご自分のメール受信設定をご確認下さい。</p>
+                        <p style="margin-top: 1rem;"><strong>「メールで申し込んだけど１週間経っても返信が来ない」</strong>という方は、お手数ですが直接お電話ください。</p>
+                        <p style="margin-top: 1rem;">予約がお済みの方は<strong>34週までには</strong>当院を受診するようにして下さい。</p>
+                        <p style="margin-top: 1rem;">（ただし、<strong>無痛分娩をご希望の場合</strong>は35～36週の間に当院の「無痛分娩教室」を必ずご家族と一緒に受講していただく必要があります。受講されていない場合は、無痛分娩を実施することができませんので、あらかじめご了承ください。また、予約取得や術前検査が必要になりますので、余裕をもった受診をお願いいたします。）</p>
+                        <p style="margin-top: 1rem;">帰省後の待機期間は必要ありません。発熱や咳などの症状がある場合には必ず電話連絡してから来院して下さい。</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- FAQ 2 -->
+            <div class="faq-item">
+                <div class="faq-question">
+                    <div class="faq-q-icon">Q</div>
+                    <div class="faq-q-text">
+                        里帰りで受診するときには何が必要ですか？
+                    </div>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-a-icon">A</div>
+                    <div class="faq-a-text">
+                        <p><strong>母子手帳と健康保険証</strong>は必ず持ってきてください。またそちらの担当の先生が紹介状を書いてくださると思いますので、それもお持ち下さい。</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- FAQ 3 -->
+            <div class="faq-item">
+                <div class="faq-question">
+                    <div class="faq-q-icon">Q</div>
+                    <div class="faq-q-text">
+                        お産で入院する際に自分で用意しなければいけないものはありますか？
+                    </div>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-a-icon">A</div>
+                    <div class="faq-a-text">
+                        <p>入院中に必要なものの一部は病院で用意させていただいています。詳しくは下の表をご参照ください。</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 持ち物リスト -->
+        <section class="items-section">
+            <h2 class="items-title">📦 入院時の持ち物リスト</h2>
+            
+            <div class="items-grid">
+                <!-- 入院時 -->
+                <div class="items-card">
+                    <h3><i class="fas fa-suitcase"></i>入院時にお持ちいただくもの</h3>
+                    <ul class="items-list">
+                        <li>時計</li>
+                        <li>スリッパ</li>
+                        <li>タオル5～10枚</li>
+                        <li>産褥ショーツ3～4枚（生理用ショーツでもかまいません）</li>
+                        <li>ウェストニッパー（腹帯）</li>
+                        <li>乳帯または産褥ブラジャー</li>
+                        <li>前全開のネグリジェまたはパジャマ3枚程度</li>
+                        <li>すそよけ（大きめのバスタオルでもかまいません）</li>
+                        <li>授乳用ガーゼのハンカチ</li>
+                        <li>印鑑、保険証</li>
+                        <li>母子手帳、診察券</li>
+                    </ul>
+                </div>
+
+                <!-- 退院時 -->
+                <div class="items-card">
+                    <h3><i class="fas fa-baby"></i>退院時にお持ちいただくもの（赤ちゃん用）</h3>
+                    <ul class="items-list">
+                        <li>ベビー服1枚</li>
+                        <li>肌着</li>
+                        <li>長下着1枚</li>
+                        <li>短下着1枚</li>
+                        <li>おくるみ1枚</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="important-note">
+                <strong>重要：</strong> 前全開のネグリジェ1枚、すそよけ1枚、産褥ショーツ1枚は出産後すぐに使うのでカバンの一番上に入れておいてください。
+            </div>
+
+            <!-- 病院で用意するもの -->
+            <div class="items-card" style="background: linear-gradient(135deg, #E8F4F8 0%, #C9E4F5 100%); margin-top: 2rem;">
+                <h3><i class="fas fa-hospital"></i>病院で用意しているもの</h3>
+                <p style="line-height: 1.8; color: var(--text-dark);">
+                    ティッシュ、洗面用具、箸、コップ、筆記用具、シャンプー、リンス、ボディソープ、綿棒、輪ゴム、お産セット（おしも用清掃綿、ナプキン、直後パット、授乳用コットン、育児日記）
+                </p>
+            </div>
+
+            <!-- 病院設備 -->
+            <div class="facilities-box">
+                <h3><i class="fas fa-star"></i>病院の設備・サービス</h3>
+                <div class="facilities-grid">
+                    <div class="facility-item">
+                        <i class="fas fa-wifi"></i>
+                        <p>無料Wi-Fi</p>
+                    </div>
+                    <div class="facility-item">
+                        <i class="fas fa-tv"></i>
+                        <p>無料インターネットテレビ</p>
+                    </div>
+                    <div class="facility-item">
+                        <i class="fas fa-snowflake"></i>
+                        <p>無料冷蔵庫</p>
+                    </div>
+                    <div class="facility-item">
+                        <i class="fas fa-coffee"></i>
+                        <p>入院フロアに自販機</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA -->
+        <div class="cta-section">
+            <a href="https://www.fab.or.jp/homecoming/form.html" target="_blank" class="cta-button-large">
+                <i class="fas fa-envelope"></i>
+                お問い合わせフォームへ
+            </a>
+        </div>
+    </main>
+
+    <!-- ========== フッター ========== -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-grid">
+                <div class="footer-section">
+                    <h3>福井愛育病院</h3>
+                    <p>〒910-0833<br>福井県福井市新保2丁目301</p>
+                    <a href="tel:0776-54-5757" class="footer-phone">0776-54-5757</a>
+                    <p>FAX: 0776-54-5850</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>診療時間</h3>
+                    <p>平日: 9:00 - 17:00<br>土曜: 9:00 - 12:00<br>休診日: 日曜・祝日</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>アクセス</h3>
+                    <p>えちぜん鉄道<br>西別院駅より徒歩8分<br>駐車場完備</p>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2024 福井愛育病院. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
