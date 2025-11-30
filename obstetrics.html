@@ -1443,10 +1443,10 @@
     </style>
 </head>
 <body>
-<!-- ========== ヘッダー ========== -->
+    <!-- ========== ヘッダー ========== -->
         <!-- ========== ヘッダー ========== -->
     <header class="header">
-                <!-- トップバー -->
+                        <!-- トップバー -->
         <div class="header-top">
             <div class="header-top-content">
                 <div class="header-contact">
@@ -1458,7 +1458,6 @@
                         <i class="fas fa-phone-alt"></i>
                         <span class="phone-number">0776-54-5757</span>
                     </div>
-                    <div class="contact-item" style="color: #D4AF37; font-size: 1.2rem; margin: 0 0.5rem;">|</div>
                     <div class="contact-item">
                         <i class="fas fa-map-marker-alt"></i>
                         <span>〒910-0833 福井県福井市新保2丁目301</span>
@@ -1469,7 +1468,13 @@
                             <span>里帰り分娩</span>
                         </a>
                     </div>
+                    <div class="contact-item" style="color: #D4AF37; font-size: 1.2rem; margin: 0 0.5rem;">|</div>
                 </div>
+                <div class="header-departments">
+                    <a href="obstetrics.html" style="color: white; text-decoration: none;">産婦人科</a>・<a href="pediatrics.html" style="color: white; text-decoration: none;">小児科</a>・<a href="pediatrics.html#allergy" style="color: white; text-decoration: none;">アレルギー科</a>・<a href="child-psychiatry.html" style="color: white; text-decoration: none;">児童精神科</a>
+                </div>
+            </div>
+        </div>
                 <div class="header-departments">
                     <a href="obstetrics.html" style="color: white; text-decoration: none;">産婦人科</a>・<a href="pediatrics.html" style="color: white; text-decoration: none;">小児科</a>・<a href="pediatrics.html#allergy" style="color: white; text-decoration: none;">アレルギー科</a>・<a href="child-psychiatry.html" style="color: white; text-decoration: none;">児童精神科</a>
                 </div>
@@ -1497,13 +1502,25 @@
                 
                 <!-- ナビゲーション -->
                 <nav class="main-nav">
-                                        <ul class="nav-list">
-                        <li class="nav-item"><a href="index.html" class="nav-link">ホーム</a></li>
-                        <li class="nav-item"><a href="obstetrics.html" class="nav-link">産婦人科トップ</a></li>
-                        <li class="nav-item"><a href="obstetrics-doctors.html" class="nav-link">医師紹介</a></li>
-                        <li class="nav-item"><a href="satogaeri.html" class="nav-link">里帰り分娩</a></li>
-                        <li class="nav-item"><a href="index.html#contact" class="nav-link">お問い合わせ</a></li>
-                    </ul></nav>
+                    <ul class="nav-list">
+                        <li class="nav-item"><a href="about.html" class="nav-link">当院について</a></li>
+                        <li class="nav-item"><a href="obstetrics.html" class="nav-link">産婦人科</a></li>
+                        <li class="nav-item"><a href="pediatrics.html" class="nav-link">小児科</a></li>
+                        <li class="nav-item"><a href="sleep-headache.html" class="nav-link">ねむけと頭痛の外来</a></li>
+                        <li class="nav-item"><a href="chibihouse_reservation.html" class="nav-link">ちびっこハウス</a></li>
+                    </ul>
+                    
+                    <!-- CTAボタン -->
+                    <div class="header-cta">
+                        <a href="obstetrics.html" class="cta-button cta-primary">
+                            <i class="fas fa-calendar-check"></i>
+                            産婦人科予約
+                        </a>
+                        <a href="chibihouse_reservation.html" class="cta-button cta-secondary">
+                            <i class="fas fa-child"></i>
+                            ちびっこハウス予約
+                        </a>
+                    </div>                </nav>
                 
                 <!-- ハンバーガーメニュー -->
                 <button class="hamburger">
@@ -1515,217 +1532,439 @@
         </div>
     </header>
     
-    <!-- ========== コンテンツ ========== -->
-    <div class="content">
-
-    
+    <!-- ========== ヒーローセクション（スライドショー） ========== -->
+    <section class="hero">
+        <div class="hero-slides">
+            <!-- スライド1 -->
+            <div class="hero-slide active">
+                <div class="hero-background">
+                    <img src="images/hero-slide-1.jpg" alt="福井愛育病院メインビジュアル" class="hero-image">
+                </div>
+                <div class="hero-content">
+                    <h2 class="hero-title">大切なお子様とママの<br>こころとからだを守ります</h2>
+                    <p class="hero-subtitle">安心と信頼の医療で、新しい命の誕生をサポートします</p>
+                    <div class="hero-buttons">
+                        <a href="about.html" class="hero-button hero-button-primary">
+                            <i class="fas fa-info-circle"></i>
+                            初めての方へ
+                        </a>
+                        <a href="obstetrics.html" class="hero-button hero-button-secondary">
+                            <i class="fas fa-calendar-alt"></i>
+                            診療予約
+                        </a>
+                        <a href="#access" class="hero-button hero-button-secondary">
+                            <i class="fas fa-map-marked-alt"></i>
+                            アクセス
+                        </a>
+                    </div>
+                </div>
             </div>
             
-            <div class="contact-info">
-                <div class="contact-item">
-                    <i class="fas fa-phone"></i>
-                    <a href="tel:0776-54-5757" class="phone-number">0776-54-5757</a>
+            <!-- スライド2 -->
+            <div class="hero-slide">
+                <div class="hero-background">
+                    <img src="images/hero-slide-2.jpg" alt="産婦人科" class="hero-image">
                 </div>
-                <div class="contact-item">
-                    <i class="fas fa-map-marker-alt"></i>
-                    <span>〒910-0833 福井県福井市新保2丁目301</span>
+                <div class="hero-content">
+                    <h2 class="hero-title">年間1,200件以上の<br>分娩実績</h2>
+                    <p class="hero-subtitle">経験豊富なスタッフが、大切な赤ちゃんの誕生に携わらせて頂きます</p>
+                    <div class="hero-buttons">
+                        <a href="obstetrics.html" class="hero-button hero-button-primary">
+                            <i class="fas fa-baby"></i>
+                            産婦人科について
+                        </a>
+                        <a href="obstetrics.html" class="hero-button hero-button-secondary">
+                            <i class="fas fa-calendar-check"></i>
+                            診療予約
+                        </a>
+                    </div>
                 </div>
-                <a href="satogaeri.html" class="satogaeri-btn">里帰り分娩</a>
+            </div>
+            
+            <!-- スライド3 -->
+            <div class="hero-slide">
+                <div class="hero-background">
+                    <img src="images/hero-slide-3.jpg" alt="小児科・NICU" class="hero-image">
+                </div>
+                <div class="hero-content">
+                    <h2 class="hero-title">NICU完備の<br>安心の医療体制</h2>
+                    <p class="hero-subtitle">産婦人科と小児科の連携で、母子ともに安心してお任せください</p>
+                    <div class="hero-buttons">
+                        <a href="pediatrics.html" class="hero-button hero-button-primary">
+                            <i class="fas fa-hospital"></i>
+                            小児科・NICU
+                        </a>
+                        <a href="pediatrics.html#nicu" class="hero-button hero-button-secondary">
+                            <i class="fas fa-heartbeat"></i>
+                            NICUについて
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- スライド4 -->
+            <div class="hero-slide">
+                <div class="hero-background">
+                    <img src="images/hero-slide-4.jpg" alt="ちびっこハウス" class="hero-image">
+                </div>
+                <div class="hero-content">
+                    <h2 class="hero-title">24時間365日<br>救急対応</h2>
+                    <p class="hero-subtitle">夜間や休日の急な病気にも、いつでも対応可能です</p>
+                    <div class="hero-buttons">
+                        <a href="pediatrics.html" class="hero-button hero-button-primary">
+                            <i class="fas fa-ambulance"></i>
+                            救急外来について
+                        </a>
+                        <a href="chibihouse_reservation.html" class="hero-button hero-button-secondary">
+                            <i class="fas fa-child"></i>
+                            ちびっこハウス
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- スライド5 -->
+            <div class="hero-slide">
+                <div class="hero-background">
+                    <img src="images/hero-slide-5.jpg" alt="ねむけと頭痛の外来" class="hero-image">
+                </div>
+                <div class="hero-content">
+                    <h2 class="hero-title">全国初<br>ねむけと頭痛の外来</h2>
+                    <p class="hero-subtitle">小児科専門医 × 頭痛専門医 × 睡眠専門医による専門診療</p>
+                    <div class="hero-buttons">
+                        <a href="sleep-headache.html" class="hero-button hero-button-primary">
+                            <i class="fas fa-brain"></i>
+                            詳しく見る
+                        </a>
+                        <a href="obstetrics.html" class="hero-button hero-button-secondary">
+                            <i class="fas fa-calendar-alt"></i>
+                            診療予約
+                        </a>
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
-
-    
-
-    <!-- コンテンツ -->
-    <div class="content">
-        <!-- ヒーローセクション -->
-        <section class="hero">
-            <div class="container">
-                <h1>産婦人科</h1>
-                <p class="subtitle">妊娠から出産、そして女性の生涯にわたる健康ケアを<br>経験豊富な産婦人科専門医がサポートいたします</p>
+        
+        <!-- 信頼マーカー（全スライド共通・固定） -->
+        <div class="hero-features">
+            <div class="hero-feature-item">
+                <div class="hero-feature-icon">
+                    <i class="fas fa-baby"></i>
+                </div>
+                <div class="hero-feature-text">
+                    <strong>1,200件+</strong>
+                    <span>年間分娩実績</span>
+                </div>
             </div>
-        </section>
-
-        <!-- 特徴セクション -->
-        <div class="container">
-            <div class="features">
+            <div class="hero-feature-item">
+                <div class="hero-feature-icon">
+                    <i class="fas fa-clock"></i>
+                </div>
+                <div class="hero-feature-text">
+                    <strong>24時間365日</strong>
+                    <span>救急対応</span>
+                </div>
+            </div>
+            <div class="hero-feature-item">
+                <div class="hero-feature-icon">
+                    <i class="fas fa-hospital"></i>
+                </div>
+                <div class="hero-feature-text">
+                    <strong>NICU完備</strong>
+                    <span>安心の医療体制</span>
+                </div>
+            </div>
+        </div>
+        
+        <!-- コントロールドット（全スライド共通・固定） -->
+        <div class="hero-controls">
+            <span class="hero-control-dot active" data-slide="0"></span>
+            <span class="hero-control-dot" data-slide="1"></span>
+            <span class="hero-control-dot" data-slide="2"></span>
+            <span class="hero-control-dot" data-slide="3"></span>
+            <span class="hero-control-dot" data-slide="4"></span>
+        </div>
+        
+        <!-- 前後ボタン（全スライド共通・固定） -->
+        <button class="hero-nav-button hero-prev">
+            <i class="fas fa-chevron-left"></i>
+        </button>
+        <button class="hero-nav-button hero-next">
+            <i class="fas fa-chevron-right"></i>
+        </button>
+    </section>
+    
+    <!-- ========== 特別セクション:ねむけと頭痛の外来 ========== -->
+    <section class="special-clinic-section">
+        <div class="special-clinic-content">
+            <div style="text-align: center;">
+                <span class="special-badge">🏆 全国初</span>
+                <h2 class="special-clinic-title">ねむけと頭痛の外来</h2>
+                <p class="special-clinic-subtitle">小児科専門医 × 頭痛専門医 × 睡眠専門医による専門診療</p>
+            </div>
+            
+            <div class="special-features-grid">
+                <div class="special-feature-item">
+                    <div class="special-feature-icon">
+                        🧠
+                    </div>
+                    <h3 class="special-feature-title">頭痛専門診療</h3>
+                    <p class="special-feature-text">
+                        片頭痛、緊張性頭痛など、お子様から大人まで幅広く対応。専門的な診断と治療を提供します。
+                    </p>
+                </div>
+                
+                <div class="special-feature-item">
+                    <div class="special-feature-icon">
+                        😴
+                    </div>
+                    <h3 class="special-feature-title">睡眠障害診療</h3>
+                    <p class="special-feature-text">
+                        日中の強い眠気、睡眠の不調、なかなか眠れないなど、睡眠に関するお悩みをサポートします。
+                    </p>
+                </div>
+                
+                <div class="special-feature-item">
+                    <div class="special-feature-icon">
+                        🔬
+                    </div>
+                    <h3 class="special-feature-title">精密睡眠解析</h3>
+                    <p class="special-feature-text">
+                        終夜睡眠ポリグラフィー（PSG）、反復睡眠潜時試験（MSLT）による詳細な検査が可能です。
+                    </p>
+                </div>
+            </div>
+            
+            <div class="special-clinic-cta">
+                <a href="sleep-headache.html" class="special-cta-button">
+                    <i class="fas fa-info-circle"></i>
+                    詳しく見る
+                </a>
+            </div>
+        </div>
+    </section>
+    
+    <!-- ========== 4つの特徴セクション ========== -->
+    <section class="features-section">
+        <div class="section-container">
+            <!-- セクションヘッダー -->
+            <div class="section-header">
+                <h2 class="section-title">
+                    福井愛育病院の<span class="title-highlight">4つの特徴</span>
+                </h2>
+                <p class="section-subtitle">
+                    安心して出産・育児に臨んでいただける環境を整えています
+                </p>
+            </div>
+            
+            <!-- 特徴カードグリッド -->
+            <div class="features-grid">
+                <!-- 特徴1：年間1,200件以上の分娩実績 -->
                 <div class="feature-card">
                     <div class="feature-icon">
                         <i class="fas fa-baby"></i>
                     </div>
-                    <h3>年間1,200件以上の実績</h3>
-                    <p>福井県で最も多くの出産を支える病院として、経験豊富なスタッフが大切な赤ちゃんの誕生に携わります。</p>
+                    <div class="feature-number">1,200<span class="feature-unit">件+</span></div>
+                    <h3 class="feature-title">年間1,200件以上の分娩実績</h3>
+                    <p class="feature-description">
+                        経験豊富なスタッフが、大切な赤ちゃんの誕生に携わらせて頂きます。
+                    </p>
+                    <a href="obstetrics.html" class="feature-link">
+                        もっと詳しく
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
                 </div>
-
+                
+                <!-- 特徴2：チーム医療でサポート -->
                 <div class="feature-card">
                     <div class="feature-icon">
-                        <i class="fas fa-user-md"></i>
+                        <i class="fas fa-hospital"></i>
                     </div>
-                    <h3>産婦人科専門医による診療</h3>
-                    <p>妊娠・出産のきめ細やかな管理から、婦人科疾患の診断・治療まで、専門医が対応します。</p>
+                    <div class="feature-number">NICU</div>
+                    <h3 class="feature-title">チーム医療でサポート</h3>
+                    <p class="feature-description">
+                        NICUや小児科併設で、安心して出産にのぞんで頂けます。
+                    </p>
+                    <a href="pediatrics.html#nicu" class="feature-link">
+                        もっと詳しく
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
                 </div>
-
+                
+                <!-- 特徴3：24時間365日対応 -->
                 <div class="feature-card">
                     <div class="feature-icon">
-                        <i class="fas fa-shield-alt"></i>
+                        <i class="fas fa-clock"></i>
                     </div>
-                    <h3>24時間体制の安心</h3>
-                    <p>NICU・小児科併設で、いつでも帝王切開が可能な体制。万が一に備えた医療チームが待機しています。</p>
+                    <div class="feature-number">24/365</div>
+                    <h3 class="feature-title">24時間365日対応</h3>
+                    <p class="feature-description">
+                        夜間や休日に体調を崩した場合にも、いつでも対応可能です。
+                    </p>
+                    <a href="pediatrics.html" class="feature-link">
+                        もっと詳しく
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+                
+                <!-- 特徴4：全国初のねむけと頭痛の外来 -->
+                <div class="feature-card">
+                    <div class="feature-icon purple">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <div class="feature-number purple-gradient">全国初</div>
+                    <h3 class="feature-title">ねむけと頭痛の外来</h3>
+                    <p class="feature-description">
+                        頭痛専門医・睡眠専門医による専門的な診療を提供します。
+                    </p>
+                    <a href="sleep-headache.html" class="feature-link purple">
+                        もっと詳しく
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
                 </div>
             </div>
         </div>
-
-        <!-- 診療内容セクション -->
-        <section class="services">
-            <h2>診療内容</h2>
-            <div class="service-list">
-                <div class="service-item">
-                    <h4><i class="fas fa-pregnant"></i> 妊婦健診・分娩管理</h4>
-                    <p>妊娠から出産まで、安全で快適なお産をサポート。自然分娩を基本とし、必要に応じて医学的介入を行います。</p>
-                </div>
-                <div class="service-item">
-                    <h4><i class="fas fa-home"></i> 里帰り分娩</h4>
-                    <p>遠方にお住まいの方も安心。ご実家での出産をサポートします。</p>
-                </div>
-                <div class="service-item">
-                    <h4><i class="fas fa-syringe"></i> 無痛分娩</h4>
-                    <p>硬膜外麻酔による無痛分娩を実施。痛みへの不安を軽減し、快適なお産を目指します。（平日・土曜日中のみ）</p>
-                </div>
-                <div class="service-item">
-                    <h4><i class="fas fa-heartbeat"></i> 婦人科疾患</h4>
-                    <p>卵巣・子宮の疾患や腫瘍の診断、薬物療法・手術療法を専門医が対応します。</p>
-                </div>
-                <div class="service-item">
-                    <h4><i class="fas fa-venus"></i> 思春期・更年期ケア</h4>
-                    <p>ホルモン療法・漢方療法で、女性の生涯にわたる健康をサポートします。</p>
-                </div>
-                <div class="service-item">
-                    <h4><i class="fas fa-stethoscope"></i> 不妊治療・性感染症</h4>
-                    <p>EBM（科学的根拠に基づく医療）に沿って、個々の状況に対応します。</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- お産についてセクション -->
-        <section class="childbirth-info">
-            <h2>福井愛育病院のお産</h2>
-            
-            <div class="info-box">
-                <h3><i class="fas fa-heart"></i> 基本的な考え方</h3>
-                <p>当院では妊婦さん自身の「産む力」を最大限に発揮していただくため、<strong>できるだけ不要な医学的介入は避けています</strong>。</p>
-                <p>基本的にお産が問題なく進んでいる場合、多少時間がかかっても薬物を使用することはありません。</p>
-                <p>しかし、お産は突然状況が変わることもあります。当院では万が一に備えて、<strong>いつでも24時間帝王切開が行える体制</strong>でお産の進行を見守っています。</p>
-            </div>
-
-            <div class="info-box">
-                <h3><i class="fas fa-baby-carriage"></i> 赤ちゃんに異常があった場合</h3>
-                <p>早産や多胎、妊娠高血圧など異常妊娠の場合はもちろん、順調な妊娠経過でも赤ちゃんに異常が起こることがあります。</p>
-                <p>当院では小児科医師が早期発見・早期治療を心がけ、必要に応じて新生児治療室（NICU）で集中管理を行います。</p>
-                <p><strong>対応可能な疾患：</strong>未熟児、黄疸、呼吸不全、先天異常、感染症、先天性心疾患など</p>
-            </div>
-
-            <div class="info-box">
-                <h3><i class="fas fa-procedures"></i> 無痛分娩について</h3>
-                <p>硬膜外麻酔により、お産に伴う痛みをできるだけ和らげます。痛みへの不安を減らし、快適にお産を進めることができます。</p>
-                <ul>
-                    <li><strong>実施時間：</strong>平日（木曜除く）・土曜日の日中のみ</li>
-                    <li><strong>方法：</strong>硬膜外カテーテルを背中から挿入し、麻酔薬を注入</li>
-                    <li><strong>費用：</strong>検査代含め約15万円（自費）</li>
-                    <li><strong>条件：</strong>35週頃に「無痛分娩教室」の受講が必要</li>
-                </ul>
-                <p>※安全が最優先のため、分娩が立て込んでいる場合や緊急手術時には実施できない場合があります。</p>
-            </div>
-
-            <div class="info-box">
-                <h3><i class="fas fa-bed"></i> 入院について</h3>
-                <p><strong>お部屋：</strong>個室、大部屋、特別室をご用意</p>
-                <p><strong>無料設備：</strong>Wi-Fi、インターネットテレビ、冷蔵庫、自販機</p>
-                <p><strong>入院費用（経過に問題がない場合）：</strong></p>
-                <ul>
-                    <li>初産婦：一般個室で57〜64万円程度</li>
-                    <li>経産婦：一般個室で54〜60万円程度</li>
-                </ul>
-                <p>※入院日数、出産時間帯、合併症の有無などにより変動します。</p>
-            </div>
-
-            <div class="info-box">
-                <h3><i class="fas fa-users"></i> 夫立ち会い分娩</h3>
-                <p>福井県内在住のご主人お一人のみ立ち会い可能です。</p>
-                <p>※発熱や体調不良の方はご遠慮ください。</p>
-            </div>
-        </section>
-
-        <!-- CTAセクション -->
-        <section class="cta-section">
-            <h2>お気軽にご相談ください</h2>
-            <p>妊娠・出産、婦人科疾患について、専門医がご相談に応じます</p>
-            <div class="cta-buttons">
-                <a href="tel:0776-54-5757" class="cta-btn">
-                    <i class="fas fa-phone"></i>
-                    電話で予約・相談
-                </a>
-                <a href="satogaeri.html" class="cta-btn secondary">
-                    <i class="fas fa-home"></i>
-                    里帰り分娩について
-                </a>
-                <a href="obstetrics-doctors.html" class="cta-btn secondary">
-                    <i class="fas fa-user-md"></i>
-                    医師紹介
-                </a>
-            </div>
-        </section>
-    </div>
-
-    <!-- フッター -->
-    <footer>
-        <div class="footer-content">
-            <div class="footer-section">
-                <h3>福井愛育病院</h3>
-                <p><i class="fas fa-map-marker-alt"></i> 〒910-0833<br>福井県福井市新保2丁目301</p>
-                <p><i class="fas fa-phone"></i> <a href="tel:0776-54-5757">0776-54-5757</a></p>
-                <p><i class="fas fa-envelope"></i> info@fab.or.jp</p>
-            </div>
-
-            <div class="footer-section">
-                <h3>診療科目</h3>
-                <ul>
-                    <li><a href="obstetrics.html">産婦人科</a></li>
-                    <li><a href="pediatrics.html">小児科</a></li>
-                    <li><a href="pediatrics.html#allergy">アレルギー科</a></li>
-                    <li><a href="child-psychiatry.html">児童精神科</a></li>
-                    <li><a href="sleep-headache.html">ねむけと頭痛の外来</a></li>
-                </ul>
-            </div>
-
-            <div class="footer-section">
-                <h3>診療時間</h3>
-                <p><strong>午前</strong> 9:00～12:00</p>
-                <p><strong>午後</strong> 13:30～16:00</p>
-                <p><strong>夜間</strong> 17:00～18:30（月・水・金のみ）</p>
-                <p style="color: #ffd700; margin-top: 10px;"><strong>休診日：</strong>木曜・日曜・祝日</p>
-                <p style="color: #ffd700;"><strong>救急診療：</strong>24時間365日対応</p>
-            </div>
-
-            <div class="footer-section">
-                <h3>関連リンク</h3>
-                <ul>
-                    <li><a href="satogaeri.html">里帰り分娩</a></li>
-                    <li><a href="chibihouse_reservation.html">ちびっこハウス</a></li>
-                    <li><a href="pediatrics.html#nicu">NICU</a></li>
-                    <li><a href="https://www.instagram.com/fukui_aiiku_hospital/" target="_blank"><i class="fab fa-instagram"></i> Instagram</a></li>
-                </ul>
-            </div>
-        </div>
-
-        <div class="footer-bottom">
-            <p>&copy; 2025 福井愛育病院 Fukui Aiiku Hospital. All rights reserved.</p>
-        </div>
-    </footer>
-
-    </div>
+    </section>
     
-<footer class="footer">
+    <!-- ========== お知らせセクション ========== -->
+    <section class="news-section">
+        <div class="section-container">
+            <!-- セクションヘッダー -->
+            <div class="section-header">
+                <h2 class="section-title">
+                    <i class="fas fa-bullhorn"></i>
+                    最新<span class="title-highlight">お知らせ</span>
+                </h2>
+                <p class="section-subtitle">
+                    病院からの重要なお知らせをお届けします
+                </p>
+            </div>
+            
+            <!-- お知らせリスト -->
+            <div class="news-grid">
+                <!-- お知らせ1 -->
+                <a href="https://www.fab.or.jp/news/2025-10-10-influ.html" class="news-item">
+                    <div class="news-date">
+                        <span class="news-year">2025</span>
+                        <span class="news-day">10/10</span>
+                    </div>
+                    <div class="news-content">
+                        <span class="news-category event">イベント</span>
+                        <h3 class="news-title">インフルエンザワクチン接種のお知らせ</h3>
+                    </div>
+                    <div class="news-arrow">
+                        <i class="fas fa-chevron-right"></i>
+                    </div>
+                </a>
+                
+                <!-- お知らせ2 -->
+                <a href="https://www.fab.or.jp/news/2025-10-01-hospitalfee.html" class="news-item">
+                    <div class="news-date">
+                        <span class="news-year">2025</span>
+                        <span class="news-day">10/01</span>
+                    </div>
+                    <div class="news-content">
+                        <span class="news-category">お知らせ</span>
+                        <h3 class="news-title">分娩費用の改定について</h3>
+                    </div>
+                    <div class="news-arrow">
+                        <i class="fas fa-chevron-right"></i>
+                    </div>
+                </a>
+                
+                <!-- お知らせ3 -->
+                <a href="https://www.fab.or.jp/news/2025-08-20-card.html" class="news-item">
+                    <div class="news-date">
+                        <span class="news-year">2025</span>
+                        <span class="news-day">08/20</span>
+                    </div>
+                    <div class="news-content">
+                        <span class="news-category emergency">重要</span>
+                        <h3 class="news-title">保険証確認のお願い</h3>
+                    </div>
+                    <div class="news-arrow">
+                        <i class="fas fa-chevron-right"></i>
+                    </div>
+                </a>
+                
+                <!-- お知らせ4 -->
+                <a href="https://www.fab.or.jp/news/2025-02-01-creditcard.html" class="news-item">
+                    <div class="news-date">
+                        <span class="news-year">2025</span>
+                        <span class="news-day">02/01</span>
+                    </div>
+                    <div class="news-content">
+                        <span class="news-category">お知らせ</span>
+                        <h3 class="news-title">クレジットカード支払いサイン廃止について</h3>
+                    </div>
+                    <div class="news-arrow">
+                        <i class="fas fa-chevron-right"></i>
+                    </div>
+                </a>
+                
+                <!-- お知らせ5 -->
+                <a href="https://www.fab.or.jp/news/2024-12-10-kenshin.html" class="news-item">
+                    <div class="news-date">
+                        <span class="news-year">2024</span>
+                        <span class="news-day">12/10</span>
+                    </div>
+                    <div class="news-content">
+                        <span class="news-category event">イベント</span>
+                        <h3 class="news-title">年末子宮頸がん検診のお知らせ</h3>
+                    </div>
+                    <div class="news-arrow">
+                        <i class="fas fa-chevron-right"></i>
+                    </div>
+                </a>
+            </div>
+            
+            <!-- すべてのお知らせリンク -->
+            <div class="news-cta">
+                <a href="https://www.fab.or.jp/news/" class="news-button">
+                    <i class="fas fa-list"></i>
+                    すべてのお知らせを見る
+                </a>
+            </div>
+        </div>
+    </section>
+    
+    <!-- ========== Instagramセクション ========== -->
+    <section class="instagram-section">
+        <div class="section-container">
+            <!-- セクションヘッダー -->
+            <div class="section-header">
+                <h2 class="section-title">
+                    <i class="fab fa-instagram"></i>
+                    Instagram <span class="title-highlight">更新中</span>
+                </h2>
+                <p class="section-subtitle">病院の日常や最新情報をお届けしています</p>
+            </div>
+            
+            <!-- Instagramフィード埋め込み -->
+            <div class="instagram-container">
+                <iframe 
+                    src="https://www.instagram.com/fukui_aiiku_hospital/embed" 
+                    width="100%" 
+                    height="600" 
+                    frameborder="0" 
+                    scrolling="no" 
+                    allowtransparency="true"
+                    style="border: none; overflow: hidden; border-radius: 20px; box-shadow: 0 5px 20px rgba(0,0,0,0.1);">
+                </iframe>
+            </div>
+            
+            <!-- Instagram公式リンク -->
+            <div class="instagram-cta">
+                <a href="https://www.instagram.com/fukui_aiiku_hospital/" target="_blank" rel="noopener noreferrer" class="instagram-button">
+                    <i class="fab fa-instagram"></i>
+                    Instagramで見る
+                </a>
+            </div>
+        </div>
+    </section>
+    
+    <!-- ========== フッター ========== -->
+    <footer class="footer">
         <div class="footer-main">
             <!-- 病院情報 -->
             <div class="footer-info">
@@ -1833,8 +2072,9 @@
             </p>
         </div>
     </footer>
-
-<script>
+    
+    <!-- ========== JavaScript ========== -->
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
         // ========== ヘッダースクロール効果 ========== 
         window.addEventListener('scroll', function() {
             const header = document.querySelector('.header');
