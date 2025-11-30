@@ -1,0 +1,728 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>検査について | ねむけと頭痛の外来 | 福井愛育病院</title>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700;900&family=Noto+Serif+JP:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    
+    <style>
+        .page-hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 10rem 0 6rem;
+            margin-top: 140px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .page-hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 600px;
+            height: 600px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 50%;
+        }
+        
+        .page-hero-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            position: relative;
+            z-index: 1;
+            text-align: center;
+        }
+        
+        .breadcrumb {
+            margin-bottom: 2rem;
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+        
+        .breadcrumb a {
+            color: white;
+            text-decoration: none;
+            transition: opacity 0.3s;
+        }
+        
+        .breadcrumb a:hover {
+            opacity: 0.7;
+        }
+        
+        .page-title {
+            font-size: 3rem;
+            font-weight: 900;
+            margin-bottom: 1rem;
+            line-height: 1.3;
+        }
+        
+        .page-subtitle {
+            font-size: 1.3rem;
+            opacity: 0.95;
+        }
+        
+        .content-section {
+            padding: 6rem 0;
+            background: white;
+        }
+        
+        .content-section.alt-bg {
+            background: var(--bg-light);
+        }
+        
+        .section-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        .test-card {
+            background: white;
+            border-radius: 20px;
+            padding: 3rem;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+            margin-bottom: 3rem;
+        }
+        
+        .test-header {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            margin-bottom: 2rem;
+            padding-bottom: 2rem;
+            border-bottom: 3px solid var(--accent-purple);
+        }
+        
+        .test-icon {
+            width: 100px;
+            height: 100px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: white;
+            flex-shrink: 0;
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+        }
+        
+        .test-title-group h2 {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary-navy);
+            margin-bottom: 0.5rem;
+        }
+        
+        .test-title-group p {
+            font-size: 1.1rem;
+            color: var(--text-gray);
+        }
+        
+        .test-description {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: var(--text-dark);
+            margin-bottom: 2rem;
+        }
+        
+        .info-box {
+            background: linear-gradient(135deg, #f0f4ff 0%, #e8edff 100%);
+            border-left: 5px solid var(--accent-purple);
+            padding: 2rem;
+            border-radius: 15px;
+            margin: 2rem 0;
+        }
+        
+        .info-box h3 {
+            color: var(--primary-navy);
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+        
+        .info-box h3 i {
+            color: var(--accent-purple);
+            font-size: 1.5rem;
+        }
+        
+        .info-box p, .info-box ul {
+            font-size: 1.05rem;
+            line-height: 1.8;
+            color: var(--text-dark);
+        }
+        
+        .info-box ul {
+            margin-top: 1rem;
+            padding-left: 2rem;
+        }
+        
+        .info-box ul li {
+            margin: 0.75rem 0;
+        }
+        
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+        
+        .feature-item {
+            background: var(--bg-light);
+            padding: 2rem;
+            border-radius: 15px;
+            transition: all 0.3s ease;
+        }
+        
+        .feature-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+        }
+        
+        .feature-item h4 {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--primary-navy);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+        
+        .feature-item h4 i {
+            color: var(--accent-purple);
+            font-size: 1.5rem;
+        }
+        
+        .feature-item p {
+            font-size: 1rem;
+            color: var(--text-gray);
+            line-height: 1.7;
+        }
+        
+        .admission-info {
+            background: linear-gradient(135deg, #fff5e6 0%, #ffe6cc 100%);
+            border-left: 5px solid var(--accent-gold);
+            padding: 2rem 3rem;
+            border-radius: 15px;
+            margin: 3rem 0;
+        }
+        
+        .admission-info h3 {
+            color: var(--primary-navy);
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+        
+        .admission-info h3 i {
+            color: var(--accent-gold);
+            font-size: 1.8rem;
+        }
+        
+        .admission-details {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .admission-item {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 12px;
+        }
+        
+        .admission-item h4 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--primary-navy);
+            margin-bottom: 0.75rem;
+        }
+        
+        .admission-item p {
+            font-size: 1rem;
+            color: var(--text-dark);
+            line-height: 1.7;
+        }
+        
+        .cta-box {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 3rem;
+            border-radius: 20px;
+            text-align: center;
+            margin-top: 4rem;
+        }
+        
+        .cta-box h3 {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+        
+        .cta-box p {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+        }
+        
+        .cta-buttons {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .cta-button {
+            padding: 1.2rem 2.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+        
+        .cta-button-white {
+            background: white;
+            color: var(--accent-purple);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .cta-button-white:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+        }
+        
+        .cta-button-outline {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+        
+        .cta-button-outline:hover {
+            background: white;
+            color: var(--accent-purple);
+        }
+        
+        @media (max-width: 992px) {
+            .page-title {
+                font-size: 2.5rem;
+            }
+            
+            .feature-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .admission-details {
+                grid-template-columns: 1fr;
+            }
+            
+            .test-header {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .page-hero {
+                padding: 8rem 0 4rem;
+            }
+            
+            .page-title {
+                font-size: 2rem;
+            }
+            
+            .test-card {
+                padding: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- ヘッダー -->
+    <header class="header">
+        <div class="header-top">
+            <div class="header-top-content">
+                <div class="header-contact">
+                    <div class="contact-item">
+                        <span style="font-weight: 700; color: #D4AF37; font-size: 0.95rem; letter-spacing: 0.05em; margin-right: 2rem;">福井愛育病院</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-phone-alt"></i>
+                        <span class="phone-number">0776-54-5757</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>〒910-0833 福井市新保2丁目301</span>
+                    </div>
+                    <div class="contact-item">
+                        <a href="satogaeri.html" style="display: flex; align-items: center; gap: 0.4rem; color: white; text-decoration: none; padding: 0.4rem 0.8rem; background: linear-gradient(135deg, #F8BBD0, #F06292); border-radius: 20px; font-weight: 500; transition: all 0.3s ease;">
+                            <i class="fas fa-home"></i>
+                            <span>里帰り分娩</span>
+                        </a>
+                    </div>
+                </div>
+                <div class="header-departments">
+                    <span>産婦人科・小児科・アレルギー科・児童精神科</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="header-main">
+            <div class="header-main-content">
+                <a href="index.html" class="logo">
+                    <div class="logo-image">
+                        <img src="logo.jpg" alt="福井愛育病院ロゴ" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;">
+                    </div>
+                    <div class="logo-text">
+                        <h1>福井愛育病院</h1>
+                        <p>Fukui Aiiku Hospital</p>
+                    </div>
+                </a>
+                
+                <nav class="main-nav">
+                    <ul class="nav-list">
+                        <li class="nav-item"><a href="about.html" class="nav-link">当院について</a></li>
+                        <li class="nav-item"><a href="obstetrics.html" class="nav-link">産婦人科</a></li>
+                        <li class="nav-item"><a href="pediatrics.html" class="nav-link">小児科</a></li>
+                        <li class="nav-item"><a href="sleep-headache.html" class="nav-link">ねむけと頭痛の外来</a></li>
+                        <li class="nav-item"><a href="chibihouse_reservation.html" class="nav-link">ちびっこハウス</a></li>
+                    </ul>
+                    
+                    <div class="header-cta">
+                        <a href="obstetrics.html" class="cta-button cta-primary">
+                            <i class="fas fa-calendar-check"></i>
+                            産婦人科予約
+                        </a>
+                        <a href="chibihouse_reservation.html" class="cta-button cta-secondary">
+                            <i class="fas fa-child"></i>
+                            ちびっこハウス予約
+                        </a>
+                    </div>
+                </nav>
+                
+                <button class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </header>
+    
+    <!-- ページヒーロー -->
+    <section class="page-hero">
+        <div class="page-hero-content">
+            <div class="breadcrumb">
+                <a href="index.html">ホーム</a> / 
+                <a href="sleep-headache.html">ねむけと頭痛の外来</a> / 
+                検査について
+            </div>
+            <h1 class="page-title">検査について</h1>
+            <p class="page-subtitle">精密な検査で、正確な診断を</p>
+        </div>
+    </section>
+    
+    <!-- PSG検査 -->
+    <section class="content-section">
+        <div class="section-container">
+            <div class="test-card">
+                <div class="test-header">
+                    <div class="test-icon">
+                        <i class="fas fa-bed"></i>
+                    </div>
+                    <div class="test-title-group">
+                        <h2>PSG（終夜睡眠ポリグラフィー）検査</h2>
+                        <p>睡眠中の詳細な生体情報を記録する精密検査</p>
+                    </div>
+                </div>
+                
+                <div class="test-description">
+                    <p>
+                        PSG検査は、睡眠障害の原因や重症度を調べるための最も精密な検査です。頭や身体にセンサーを装着した状態で一晩お休みいただき、脳波、筋電図、呼吸、心拍数など、様々な生体情報を記録します。
+                    </p>
+                </div>
+                
+                <div class="feature-grid">
+                    <div class="feature-item">
+                        <h4><i class="fas fa-brain"></i> 脳波の測定</h4>
+                        <p>睡眠の深さや段階、覚醒の状態を詳しく分析します。</p>
+                    </div>
+                    <div class="feature-item">
+                        <h4><i class="fas fa-lungs"></i> 呼吸の記録</h4>
+                        <p>睡眠中の呼吸状態を確認し、無呼吸の有無を調べます。</p>
+                    </div>
+                    <div class="feature-item">
+                        <h4><i class="fas fa-heartbeat"></i> 心拍・酸素濃度</h4>
+                        <p>心拍数や血中酸素濃度の変動を連続的に測定します。</p>
+                    </div>
+                    <div class="feature-item">
+                        <h4><i class="fas fa-walking"></i> 身体の動き</h4>
+                        <p>手足の動きや寝返りなど、睡眠中の行動を記録します。</p>
+                    </div>
+                </div>
+                
+                <div class="info-box">
+                    <h3><i class="fas fa-check-circle"></i> PSG検査でわかること</h3>
+                    <ul>
+                        <li>睡眠の質や構造（深い睡眠がとれているか）</li>
+                        <li>睡眠時無呼吸症候群の有無</li>
+                        <li>周期性四肢運動障害</li>
+                        <li>レム睡眠行動障害</li>
+                        <li>ナルコレプシーの診断に必要な睡眠構造</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- MSLT検査 -->
+    <section class="content-section alt-bg">
+        <div class="section-container">
+            <div class="test-card">
+                <div class="test-header">
+                    <div class="test-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <div class="test-title-group">
+                        <h2>MSLT（反復睡眠潜時試験）</h2>
+                        <p>日中の眠気を客観的に測定する検査</p>
+                    </div>
+                </div>
+                
+                <div class="test-description">
+                    <p>
+                        MSLT検査は、日中の眠気の程度を客観的に評価する検査です。PSG検査の翌日に、2時間おきに計5回、暗い静かな部屋で20分間横になっていただき、どのくらい早く眠りに入るかを測定します。
+                    </p>
+                </div>
+                
+                <div class="feature-grid">
+                    <div class="feature-item">
+                        <h4><i class="fas fa-stopwatch"></i> 睡眠潜時の測定</h4>
+                        <p>横になってから眠りに入るまでの時間を正確に測定します。</p>
+                    </div>
+                    <div class="feature-item">
+                        <h4><i class="fas fa-chart-line"></i> 客観的評価</h4>
+                        <p>主観的な「眠い」という感覚を、数値で客観的に評価できます。</p>
+                    </div>
+                    <div class="feature-item">
+                        <h4><i class="fas fa-bed"></i> レム睡眠の確認</h4>
+                        <p>入眠時にレム睡眠が出現するかを確認します（ナルコレプシーの診断に重要）。</p>
+                    </div>
+                    <div class="feature-item">
+                        <h4><i class="fas fa-clipboard-check"></i> 診断の確定</h4>
+                        <p>ナルコレプシーや特発性過眠症の確定診断に必須の検査です。</p>
+                    </div>
+                </div>
+                
+                <div class="info-box">
+                    <h3><i class="fas fa-info-circle"></i> MSLT検査が必要な方</h3>
+                    <ul>
+                        <li>日中に強い眠気があり、日常生活に支障をきたしている</li>
+                        <li>ナルコレプシーが疑われる</li>
+                        <li>特発性過眠症が疑われる</li>
+                        <li>起立性調節障害の治療で改善しない眠気がある</li>
+                        <li>睡眠時間は十分なのに日中眠い</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- 入院について -->
+    <section class="content-section">
+        <div class="section-container">
+            <div class="admission-info">
+                <h3><i class="fas fa-hospital"></i> 検査入院について</h3>
+                <p style="font-size: 1.05rem; margin-bottom: 2rem; line-height: 1.8;">
+                    PSG・MSLT検査は、<strong>1泊2日の入院</strong>で実施します。当院は小児科・産婦人科の病院ですので、お子様から青年期の方まで、安心して検査を受けていただける環境を整えています。
+                </p>
+                
+                <div class="admission-details">
+                    <div class="admission-item">
+                        <h4><i class="fas fa-calendar-day"></i> 入院期間</h4>
+                        <p>1泊2日（検査予約日から翌日まで）</p>
+                    </div>
+                    <div class="admission-item">
+                        <h4><i class="fas fa-bed"></i> 病室</h4>
+                        <p>個室または相部屋をご用意。TV、冷蔵庫、シャワー、トイレ完備。</p>
+                    </div>
+                    <div class="admission-item">
+                        <h4><i class="fas fa-utensils"></i> お食事</h4>
+                        <p>入院中のお食事を提供します。</p>
+                    </div>
+                    <div class="admission-item">
+                        <h4><i class="fas fa-shield-alt"></i> 安心の環境</h4>
+                        <p>小児科併設の病院ですので、お子様も安心して検査を受けられます。</p>
+                    </div>
+                </div>
+                
+                <div class="info-box" style="margin-top: 2rem; background: white;">
+                    <h3><i class="fas fa-suitcase"></i> 検査時の持ち物</h3>
+                    <ul>
+                        <li>診察券、保険証、各種医療証</li>
+                        <li>現在内服中のお薬</li>
+                        <li>タオル、バスタオル</li>
+                        <li>ゆったりした服装（襟首と手足首がしぼられていないもの）</li>
+                        <li>お箸、コップ、歯ブラシセット</li>
+                        <li>シャンプー、ボディーソープ</li>
+                        <li>スリッパ</li>
+                        <li>普段お使いの枕や小物（ぬいぐるみなど）</li>
+                    </ul>
+                    <p style="margin-top: 1rem; font-weight: 600; color: var(--accent-gold);">
+                        <i class="fas fa-exclamation-triangle"></i> 注意：付け爪やネイル、カフェイン入り飲食物はお控えください
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- CTA -->
+    <section class="content-section alt-bg">
+        <div class="section-container">
+            <div class="cta-box">
+                <h3>検査についてのご相談・ご予約</h3>
+                <p>検査が必要かどうかは、まず外来で医師が判断します。<br>お気軽にご相談ください。</p>
+                <div class="cta-buttons">
+                    <a href="tel:0776545757" class="cta-button cta-button-white">
+                        <i class="fas fa-phone-alt"></i>
+                        電話で相談
+                    </a>
+                    <a href="sleep-headache.html" class="cta-button cta-button-outline">
+                        <i class="fas fa-arrow-left"></i>
+                        外来トップへ
+                    </a>
+                    <a href="sleep-headache-cost.html" class="cta-button cta-button-outline">
+                        <i class="fas fa-yen-sign"></i>
+                        費用について
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- フッター -->
+    <footer class="footer">
+        <div class="footer-main">
+            <div class="footer-info">
+                <div class="footer-logo">
+                    <div class="footer-logo-icon">
+                        <img src="logo.jpg" alt="福井愛育病院ロゴ" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;">
+                    </div>
+                    <div class="footer-logo-text">
+                        <h3>福井愛育病院</h3>
+                        <p>Fukui Aiiku Hospital</p>
+                    </div>
+                </div>
+                <p class="footer-tagline">
+                    大切なお子様とママの<br>こころとからだを守ります
+                </p>
+                <div class="footer-contact-list">
+                    <div class="footer-contact-item">
+                        <i class="fas fa-phone-alt"></i>
+                        <div class="footer-contact-text">
+                            <a href="tel:0776545757" class="footer-phone">0776-54-5757</a>
+                            <p class="footer-phone-note">受付時間：8:00～18:00（救急は24時間対応）</p>
+                        </div>
+                    </div>
+                    <div class="footer-contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div class="footer-contact-text">
+                            <p>〒910-0833<br>福井県福井市新保2丁目301</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-links">
+                <h4>診療科・サービス</h4>
+                <ul>
+                    <li><a href="obstetrics.html"><i class="fas fa-chevron-right"></i> 産婦人科</a></li>
+                    <li><a href="pediatrics.html"><i class="fas fa-chevron-right"></i> 小児科</a></li>
+                    <li><a href="sleep-headache.html"><i class="fas fa-chevron-right"></i> ねむけと頭痛の外来</a></li>
+                    <li><a href="chibihouse_reservation.html"><i class="fas fa-chevron-right"></i> ちびっこハウス</a></li>
+                    <li><a href="pediatrics.html#nicu"><i class="fas fa-chevron-right"></i> NICU</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-links">
+                <h4>病院について</h4>
+                <ul>
+                    <li><a href="about.html"><i class="fas fa-chevron-right"></i> 当院について</a></li>
+                    <li><a href="index.html"><i class="fas fa-chevron-right"></i> お知らせ</a></li>
+                    <li><a href="about.html"><i class="fas fa-chevron-right"></i> アクセス</a></li>
+                    <li><a href="index.html"><i class="fas fa-chevron-right"></i> お問い合わせ</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-hours">
+                <h4>診療時間</h4>
+                <div class="hours-table">
+                    <div class="hours-row">
+                        <div class="hours-label">午前</div>
+                        <div class="hours-time">9:00～12:00</div>
+                    </div>
+                    <div class="hours-row">
+                        <div class="hours-label">午後</div>
+                        <div class="hours-time">13:30～16:00</div>
+                    </div>
+                    <div class="hours-row">
+                        <div class="hours-label">夜間</div>
+                        <div class="hours-time">17:00～18:30</div>
+                    </div>
+                </div>
+                <p class="hours-note">
+                    ※夜間診療は月・水・金のみ<br>
+                    ※休診日：木・日・祝日<br>
+                    ※救急患者は24時間365日対応
+                </p>
+                
+                <div class="footer-social" style="margin-top: 2rem;">
+                    <h4>SNS</h4>
+                    <div class="social-links">
+                        <a href="https://www.instagram.com/fukui_aiiku_hospital/" target="_blank" rel="noopener noreferrer" class="social-link instagram">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p class="footer-copyright">
+                &copy; 2025 福井愛育病院 Fukui Aiiku Hospital. All Rights Reserved.
+            </p>
+        </div>
+    </footer>
+    
+    <script>
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('.header');
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+    </script>
+</body>
+</html>

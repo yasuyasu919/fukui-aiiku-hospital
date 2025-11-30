@@ -1,0 +1,993 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ねむけと頭痛の外来 | 福井愛育病院</title>
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700;900&family=Noto+Serif+JP:wght@400;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="css/style.css">
+    
+    <style>
+        /* ========== ページ専用スタイル ========== */
+        .page-hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 10rem 0 6rem;
+            margin-top: 140px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .page-hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 600px;
+            height: 600px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 50%;
+        }
+        
+        .page-hero-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            position: relative;
+            z-index: 1;
+            text-align: center;
+        }
+        
+        .page-badge {
+            display: inline-block;
+            background: var(--accent-gold);
+            color: var(--primary-navy);
+            padding: 0.75rem 2rem;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .page-title {
+            font-size: 3.5rem;
+            font-weight: 900;
+            margin-bottom: 1.5rem;
+            line-height: 1.3;
+        }
+        
+        .page-subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            opacity: 0.95;
+            font-weight: 500;
+        }
+        
+        .page-description {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.8;
+        }
+        
+        /* 特別バッジセクション */
+        .specialty-badges {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 3rem;
+            flex-wrap: wrap;
+        }
+        
+        .specialty-badge {
+            background: rgba(255, 255, 255, 0.15);
+            padding: 1.2rem 2rem;
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            transition: all 0.3s ease;
+        }
+        
+        .specialty-badge:hover {
+            background: rgba(255, 255, 255, 0.25);
+            transform: translateY(-5px);
+        }
+        
+        .specialty-badge i {
+            font-size: 2rem;
+            color: var(--accent-gold);
+        }
+        
+        .specialty-badge-text {
+            text-align: left;
+        }
+        
+        .specialty-badge-text strong {
+            display: block;
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 0.25rem;
+        }
+        
+        .specialty-badge-text span {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+        
+        /* コンテンツセクション */
+        .content-section {
+            padding: 6rem 0;
+            background: white;
+        }
+        
+        .content-section.alt-bg {
+            background: var(--bg-light);
+        }
+        
+        .section-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        /* 重要メッセージボックス */
+        .important-message {
+            background: linear-gradient(135deg, #fff5e6 0%, #ffe6cc 100%);
+            border-left: 5px solid var(--accent-gold);
+            padding: 2rem 3rem;
+            border-radius: 15px;
+            margin: 3rem 0;
+            box-shadow: 0 5px 20px rgba(212, 175, 55, 0.2);
+        }
+        
+        .important-message h3 {
+            color: var(--primary-navy);
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+        
+        .important-message h3 i {
+            color: var(--accent-gold);
+            font-size: 1.8rem;
+        }
+        
+        .important-message p {
+            color: var(--text-dark);
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin: 0;
+        }
+        
+        .important-message ul {
+            margin-top: 1rem;
+            padding-left: 1.5rem;
+        }
+        
+        .important-message ul li {
+            margin: 0.75rem 0;
+            font-size: 1.05rem;
+            line-height: 1.7;
+        }
+        
+        /* 対象疾患カード */
+        .conditions-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2.5rem;
+            margin-top: 3rem;
+        }
+        
+        .condition-card {
+            background: white;
+            border-radius: 20px;
+            padding: 3rem;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+            transition: all 0.4s ease;
+            border: 2px solid transparent;
+        }
+        
+        .condition-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+            border-color: var(--accent-purple);
+        }
+        
+        .condition-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+        }
+        
+        .condition-card h3 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary-navy);
+            margin-bottom: 1rem;
+        }
+        
+        .condition-card p {
+            font-size: 1.05rem;
+            color: var(--text-gray);
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+        
+        .condition-symptoms {
+            background: var(--bg-light);
+            padding: 1.5rem;
+            border-radius: 12px;
+            margin-top: 1.5rem;
+        }
+        
+        .condition-symptoms h4 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--primary-navy);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .condition-symptoms ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .condition-symptoms ul li {
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+            font-size: 0.95rem;
+            color: var(--text-dark);
+        }
+        
+        .condition-symptoms ul li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--accent-purple);
+            font-weight: 700;
+        }
+        
+        /* プロセスタイムライン */
+        .process-timeline {
+            position: relative;
+            padding: 2rem 0;
+            margin: 3rem 0;
+        }
+        
+        .process-timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: linear-gradient(180deg, #667eea, #764ba2);
+            transform: translateX(-50%);
+        }
+        
+        .process-step {
+            position: relative;
+            margin: 3rem 0;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+        
+        .process-step:nth-child(even) .process-content {
+            order: 2;
+        }
+        
+        .process-step:nth-child(even) .process-number {
+            order: 1;
+        }
+        
+        .process-number {
+            position: relative;
+            width: 100px;
+            height: 100px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 2.5rem;
+            font-weight: 900;
+            margin: 0 auto;
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
+            z-index: 2;
+        }
+        
+        .process-content {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 20px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+        }
+        
+        .process-content h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-navy);
+            margin-bottom: 1rem;
+        }
+        
+        .process-content p {
+            font-size: 1rem;
+            color: var(--text-gray);
+            line-height: 1.8;
+        }
+        
+        /* 医師紹介セクション */
+        .doctor-intro {
+            background: white;
+            border-radius: 20px;
+            padding: 3rem;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+            margin-top: 3rem;
+        }
+        
+        .doctor-credentials {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .credential-card {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+        
+        .credential-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
+        }
+        
+        .credential-card i {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            opacity: 0.9;
+        }
+        
+        .credential-card h4 {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+        
+        .credential-card p {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+        
+        /* CTAセクション */
+        .cta-section {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 5rem 0;
+            text-align: center;
+        }
+        
+        .cta-content h2 {
+            font-size: 2.5rem;
+            font-weight: 900;
+            margin-bottom: 1.5rem;
+        }
+        
+        .cta-content p {
+            font-size: 1.2rem;
+            margin-bottom: 3rem;
+            opacity: 0.95;
+        }
+        
+        .cta-buttons {
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .cta-button {
+            padding: 1.5rem 3rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+        }
+        
+        .cta-button-primary {
+            background: white;
+            color: var(--accent-purple);
+        }
+        
+        .cta-button-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.3);
+        }
+        
+        .cta-button-secondary {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            border: 2px solid white;
+            backdrop-filter: blur(10px);
+        }
+        
+        .cta-button-secondary:hover {
+            background: white;
+            color: var(--accent-purple);
+        }
+        
+        /* レスポンシブ */
+        @media (max-width: 992px) {
+            .page-title {
+                font-size: 2.5rem;
+            }
+            
+            .conditions-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            
+            .process-step {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            
+            .process-timeline::before {
+                left: 30px;
+            }
+            
+            .process-step:nth-child(even) .process-content {
+                order: 1;
+            }
+            
+            .process-step:nth-child(even) .process-number {
+                order: 1;
+            }
+            
+            .doctor-credentials {
+                grid-template-columns: 1fr;
+            }
+            
+            .specialty-badges {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .page-hero {
+                padding: 8rem 0 4rem;
+            }
+            
+            .page-title {
+                font-size: 2rem;
+            }
+            
+            .page-subtitle {
+                font-size: 1.2rem;
+            }
+            
+            .condition-card {
+                padding: 2rem;
+            }
+            
+            .important-message {
+                padding: 1.5rem 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- ========== ヘッダー（index.htmlと同じ） ========== -->
+    <header class="header">
+        <div class="header-top">
+            <div class="header-top-content">
+                <div class="header-contact">
+                    <div class="contact-item">
+                        <span style="font-weight: 700; color: #D4AF37; font-size: 0.95rem; letter-spacing: 0.05em; margin-right: 2rem;">福井愛育病院</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-phone-alt"></i>
+                        <span class="phone-number">0776-54-5757</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>〒910-0833 福井市新保2丁目301</span>
+                    </div>
+                    <div class="contact-item">
+                        <a href="satogaeri.html" style="display: flex; align-items: center; gap: 0.4rem; color: white; text-decoration: none; padding: 0.4rem 0.8rem; background: linear-gradient(135deg, #F8BBD0, #F06292); border-radius: 20px; font-weight: 500; transition: all 0.3s ease;">
+                            <i class="fas fa-home"></i>
+                            <span>里帰り分娩</span>
+                        </a>
+                    </div>
+                </div>
+                <div class="header-departments">
+                    <span>産婦人科・小児科・アレルギー科・児童精神科</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="header-main">
+            <div class="header-main-content">
+                <a href="index.html" class="logo">
+                    <div class="logo-image">
+                        <img src="logo.jpg" alt="福井愛育病院ロゴ" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;">
+                    </div>
+                    <div class="logo-text">
+                        <h1>福井愛育病院</h1>
+                        <p>Fukui Aiiku Hospital</p>
+                    </div>
+                </a>
+                
+                <nav class="main-nav">
+                    <ul class="nav-list">
+                        <li class="nav-item"><a href="about.html" class="nav-link">当院について</a></li>
+                        <li class="nav-item"><a href="obstetrics.html" class="nav-link">産婦人科</a></li>
+                        <li class="nav-item"><a href="pediatrics.html" class="nav-link">小児科</a></li>
+                        <li class="nav-item"><a href="sleep-headache.html" class="nav-link">ねむけと頭痛の外来</a></li>
+                        <li class="nav-item"><a href="chibihouse_reservation.html" class="nav-link">ちびっこハウス</a></li>
+                    </ul>
+                    
+                    <div class="header-cta">
+                        <a href="obstetrics.html" class="cta-button cta-primary">
+                            <i class="fas fa-calendar-check"></i>
+                            産婦人科予約
+                        </a>
+                        <a href="chibihouse_reservation.html" class="cta-button cta-secondary">
+                            <i class="fas fa-child"></i>
+                            ちびっこハウス予約
+                        </a>
+                    </div>
+                </nav>
+                
+                <button class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </header>
+    
+    <!-- ========== ページヒーロー ========== -->
+    <section class="page-hero">
+        <div class="page-hero-content">
+            <span class="page-badge">🏆 全国初</span>
+            <h1 class="page-title">ねむけと頭痛の外来</h1>
+            <p class="page-subtitle">小児科専門医 × 頭痛専門医 × 睡眠専門医による専門診療</p>
+            <p class="page-description">
+                「起床困難」「日中の強い眠気」「片頭痛」—— これらの症状で悩んでいる思春期・青年期の方々へ。<br>
+                当院では、全国でも珍しい専門的なアプローチで、あなたの症状に寄り添います。
+            </p>
+            
+            <div class="specialty-badges">
+                <div class="specialty-badge">
+                    <i class="fas fa-user-md"></i>
+                    <div class="specialty-badge-text">
+                        <strong>小児科専門医</strong>
+                        <span>思春期・青年期に特化</span>
+                    </div>
+                </div>
+                <div class="specialty-badge">
+                    <i class="fas fa-brain"></i>
+                    <div class="specialty-badge-text">
+                        <strong>頭痛専門医</strong>
+                        <span>日本頭痛学会認定</span>
+                    </div>
+                </div>
+                <div class="specialty-badge">
+                    <i class="fas fa-bed"></i>
+                    <div class="specialty-badge-text">
+                        <strong>睡眠専門医</strong>
+                        <span>日本睡眠学会総合専門医</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- ========== 重要メッセージ ========== -->
+    <section class="content-section">
+        <div class="section-container">
+            <div class="important-message">
+                <h3>
+                    <i class="fas fa-lightbulb"></i>
+                    こんな症状で困っていませんか？
+                </h3>
+                <p>
+                    「朝起きられない」「学校に行けない」と悩んでいる方の多くは、<strong>起立性調節障害だけではない</strong>可能性があります。
+                </p>
+                <ul>
+                    <li><strong>頭痛（特に片頭痛）</strong>と<strong>ねむけ（中枢性過眠症）</strong>、そして<strong>起立性調節障害</strong>は、それぞれが重なり合っていることが多いのです</li>
+                    <li>起床困難の原因は、起立性調節障障害だけではありません</li>
+                    <li>思春期や青年期に多い症状ですが、<strong>適切な診断と治療を受けられていない方</strong>が全国に多くいらっしゃいます</li>
+                </ul>
+                <p style="margin-top: 1rem; font-weight: 600; color: var(--accent-purple);">
+                    当院では、これらの症状に「光を当てる」専門診療を行っています。
+                </p>
+            </div>
+            
+            <div class="section-header" style="margin-top: 5rem;">
+                <h2 class="section-title">
+                    当院が対応する<span class="title-highlight">主な症状</span>
+                </h2>
+                <p class="section-subtitle">
+                    専門的な知識と経験で、複雑に絡み合う症状を丁寧に診断します
+                </p>
+            </div>
+        </div>
+    </section>
+    
+    <!-- ========== 対象疾患 ========== -->
+    <section class="content-section alt-bg">
+        <div class="section-container">
+            <div class="conditions-grid">
+                <!-- 頭痛（片頭痛） -->
+                <div class="condition-card">
+                    <div class="condition-icon">🧠</div>
+                    <h3>頭痛（主に片頭痛）</h3>
+                    <p>
+                        片頭痛は単なる「頭痛」ではなく、<strong>神経学的疾患</strong>です。WHO認定の「最も生活に支障をきたす疾患」トップ10に入る重要な疾患で、適切な治療が必要です。
+                    </p>
+                    <div class="condition-symptoms">
+                        <h4><i class="fas fa-check-circle"></i> こんな症状があります</h4>
+                        <ul>
+                            <li>ズキンズキンと脈打つような頭痛</li>
+                            <li>吐き気や嘔吐を伴う</li>
+                            <li>光や音に敏感になる</li>
+                            <li>学校や仕事に行けなくなる</li>
+                            <li>月に数回〜数十回発作が起こる</li>
+                        </ul>
+                    </div>
+                    <div class="condition-symptoms" style="margin-top: 1rem; background: #e8f4f8;">
+                        <h4 style="color: var(--accent-blue);"><i class="fas fa-info-circle"></i> 対象年齢</h4>
+                        <p style="margin: 0; font-weight: 600;">10代〜何歳でも診療します</p>
+                    </div>
+                </div>
+                
+                <!-- 中枢性過眠症 -->
+                <div class="condition-card">
+                    <div class="condition-icon">😴</div>
+                    <h3>中枢性過眠症（ねむけ）</h3>
+                    <p>
+                        <strong>ナルコレプシータイプ1・2、特発性過眠症</strong>など、日中に強い眠気が続く疾患です。「怠けている」のではなく、脳の覚醒維持機能に問題がある医学的な病気です。
+                    </p>
+                    <div class="condition-symptoms">
+                        <h4><i class="fas fa-check-circle"></i> こんな症状があります</h4>
+                        <ul>
+                            <li>日中、我慢できないほど眠くなる</li>
+                            <li>授業中や会議中に居眠りしてしまう</li>
+                            <li>十分に寝ているのに日中眠い</li>
+                            <li>感情が高ぶると力が抜ける（カタプレキシー）</li>
+                            <li>朝起きられない、起床困難</li>
+                        </ul>
+                    </div>
+                    <div class="condition-symptoms" style="margin-top: 1rem; background: #e8f4f8;">
+                        <h4 style="color: var(--accent-blue);"><i class="fas fa-info-circle"></i> 対象年齢</h4>
+                        <p style="margin: 0; font-weight: 600;">主に10代〜20代（思春期・青年期）</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 重要な関連性 -->
+            <div class="important-message" style="margin-top: 4rem; background: linear-gradient(135deg, #e8f4f8 0%, #d4e8f4 100%); border-left-color: var(--accent-purple);">
+                <h3>
+                    <i class="fas fa-link"></i>
+                    症状は単独ではなく、重なり合っています
+                </h3>
+                <p>
+                    <strong>頭痛・ねむけ・起立性調節障害</strong>の3つは、互いに関連していることが非常に多いです。
+                </p>
+                <ul>
+                    <li>片頭痛があると、睡眠の質が悪化し、日中の眠気につながることがある</li>
+                    <li>睡眠障害があると、朝起きられず、起立性調節障害と誤診されることがある</li>
+                    <li>起立性調節障害だけの治療では改善しない場合、背景に頭痛や睡眠障害が隠れている可能性がある</li>
+                </ul>
+                <p style="margin-top: 1rem; font-weight: 600; color: var(--accent-purple);">
+                    当院では、これらを総合的に診断し、根本的な原因にアプローチします。
+                </p>
+            </div>
+        </div>
+    </section>
+    
+    <!-- ========== 診療の流れ ========== -->
+    <section class="content-section">
+        <div class="section-container">
+            <div class="section-header">
+                <h2 class="section-title">
+                    診療の<span class="title-highlight">流れ</span>
+                </h2>
+                <p class="section-subtitle">
+                    初診から検査、治療まで、丁寧にサポートします
+                </p>
+            </div>
+            
+            <div class="process-timeline">
+                <div class="process-step">
+                    <div class="process-number">1</div>
+                    <div class="process-content">
+                        <h3>初診・問診</h3>
+                        <p>
+                            詳しい症状の聞き取りを行います。いつから症状が始まったか、どのような状況で起こるか、生活への影響など、時間をかけて丁寧にお伺いします。頭痛日記や睡眠日誌をつけている場合は、ぜひお持ちください。
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="process-step">
+                    <div class="process-number">2</div>
+                    <div class="process-content">
+                        <h3>診察・診断</h3>
+                        <p>
+                            専門医による詳細な診察を行います。頭痛の種類、睡眠の状態、起立性の問題など、複合的に評価します。必要に応じて、血液検査や画像検査（MRIなど）を行う場合もあります。
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="process-step">
+                    <div class="process-number">3</div>
+                    <div class="process-content">
+                        <h3>精密検査（必要に応じて）</h3>
+                        <p>
+                            <strong>終夜睡眠ポリグラフィー（PSG）</strong>や<strong>反復睡眠潜時試験（MSLT）</strong>など、睡眠の状態を詳しく調べる検査を行います。これにより、ナルコレプシーや特発性過眠症などの正確な診断が可能になります。
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="process-step">
+                    <div class="process-number">4</div>
+                    <div class="process-content">
+                        <h3>治療計画の立案</h3>
+                        <p>
+                            診断結果をもとに、お一人おひとりに最適な治療計画を提案します。薬物療法、生活習慣の改善、認知行動療法など、複数のアプローチを組み合わせることもあります。
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="process-step">
+                    <div class="process-number">5</div>
+                    <div class="process-content">
+                        <h3>継続的なフォローアップ</h3>
+                        <p>
+                            治療開始後も、定期的に経過を確認します。症状の変化に応じて治療内容を調整し、より良い状態を目指します。長期的なサポートを大切にしています。
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- ========== 医師紹介 ========== -->
+    <section class="content-section alt-bg">
+        <div class="section-container">
+            <div class="section-header">
+                <h2 class="section-title">
+                    専門医による<span class="title-highlight">診療</span>
+                </h2>
+                <p class="section-subtitle">
+                    日本で唯一の、3つの専門資格を持つ医師が診療します
+                </p>
+            </div>
+            
+            <div class="doctor-intro">
+                <div class="doctor-credentials">
+                    <div class="credential-card">
+                        <i class="fas fa-user-md"></i>
+                        <h4>小児科専門医</h4>
+                        <p>日本小児科学会認定</p>
+                    </div>
+                    <div class="credential-card">
+                        <i class="fas fa-brain"></i>
+                        <h4>頭痛専門医</h4>
+                        <p>日本頭痛学会認定</p>
+                    </div>
+                    <div class="credential-card">
+                        <i class="fas fa-bed"></i>
+                        <h4>睡眠専門医</h4>
+                        <p>日本睡眠学会総合専門医</p>
+                    </div>
+                </div>
+                
+                <div style="margin-top: 3rem; text-align: center;">
+                    <p style="font-size: 1.1rem; line-height: 1.8; color: var(--text-dark); max-width: 900px; margin: 0 auto;">
+                        思春期・青年期の頭痛や睡眠障害は、大人とは異なるアプローチが必要です。当院では、豊富な臨床経験と最新の医学的知見に基づき、<strong>お一人おひとりに最適な診療</strong>を提供しています。<br><br>
+                        学会発表や論文執筆を通じて、福井から全国へ専門的な知識を発信し続けています。
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- ========== CTA ========== -->
+    <section class="cta-section">
+        <div class="section-container">
+            <div class="cta-content">
+                <h2>あなたの悩みに、光を当てます</h2>
+                <p>
+                    「怠けている」「気のせい」ではありません。<br>
+                    適切な診断と治療で、生活の質を取り戻しましょう。
+                </p>
+                <div class="cta-buttons">
+                    <a href="sleep-headache-tests.html" class="cta-button cta-button-secondary">
+                        <i class="fas fa-vial"></i>
+                        検査について
+                    </a>
+                    <a href="sleep-headache-cost.html" class="cta-button cta-button-secondary">
+                        <i class="fas fa-yen-sign"></i>
+                        費用について
+                    </a>
+                    <a href="sleep-headache-faq.html" class="cta-button cta-button-secondary">
+                        <i class="fas fa-question-circle"></i>
+                        よくある質問
+                    </a>
+                    <a href="tel:0776545757" class="cta-button cta-button-primary">
+                        <i class="fas fa-phone-alt"></i>
+                        電話で予約・相談
+                    </a>
+                    <a href="index.html#access" class="cta-button cta-button-secondary">
+                        <i class="fas fa-map-marked-alt"></i>
+                        アクセス
+                    </a>
+                </div>
+                
+                <div style="margin-top: 3rem; padding: 2rem; background: rgba(255, 255, 255, 0.1); border-radius: 15px; backdrop-filter: blur(10px);">
+                    <p style="font-size: 1.1rem; margin-bottom: 1rem; font-weight: 600;">
+                        <i class="fas fa-clock"></i> 診療時間
+                    </p>
+                    <p style="font-size: 1rem; opacity: 0.95; margin-bottom: 0.5rem;">
+                        午前：9:00～12:00 / 午後：13:30～16:00 / 夜間：17:00～18:30
+                    </p>
+                    <p style="font-size: 0.9rem; opacity: 0.9;">
+                        ※夜間診療は月・水・金のみ / 休診日：木・日・祝日
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- ========== フッター（index.htmlと同じ） ========== -->
+    <footer class="footer">
+        <div class="footer-main">
+            <div class="footer-info">
+                <div class="footer-logo">
+                    <div class="footer-logo-icon">
+                        <img src="logo.jpg" alt="福井愛育病院ロゴ" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;">
+                    </div>
+                    <div class="footer-logo-text">
+                        <h3>福井愛育病院</h3>
+                        <p>Fukui Aiiku Hospital</p>
+                    </div>
+                </div>
+                <p class="footer-tagline">
+                    大切なお子様とママの<br>こころとからだを守ります
+                </p>
+                <div class="footer-contact-list">
+                    <div class="footer-contact-item">
+                        <i class="fas fa-phone-alt"></i>
+                        <div class="footer-contact-text">
+                            <a href="tel:0776545757" class="footer-phone">0776-54-5757</a>
+                            <p class="footer-phone-note">受付時間：8:00～18:00（救急は24時間対応）</p>
+                        </div>
+                    </div>
+                    <div class="footer-contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div class="footer-contact-text">
+                            <p>〒910-0833<br>福井県福井市新保2丁目301</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-links">
+                <h4>診療科・サービス</h4>
+                <ul>
+                    <li><a href="obstetrics.html"><i class="fas fa-chevron-right"></i> 産婦人科</a></li>
+                    <li><a href="pediatrics.html"><i class="fas fa-chevron-right"></i> 小児科</a></li>
+                    <li><a href="sleep-headache.html"><i class="fas fa-chevron-right"></i> ねむけと頭痛の外来</a></li>
+                    <li><a href="chibihouse_reservation.html"><i class="fas fa-chevron-right"></i> ちびっこハウス</a></li>
+                    <li><a href="pediatrics.html#nicu"><i class="fas fa-chevron-right"></i> NICU</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-links">
+                <h4>病院について</h4>
+                <ul>
+                    <li><a href="about.html"><i class="fas fa-chevron-right"></i> 当院について</a></li>
+                    <li><a href="index.html"><i class="fas fa-chevron-right"></i> お知らせ</a></li>
+                    <li><a href="about.html"><i class="fas fa-chevron-right"></i> アクセス</a></li>
+                    <li><a href="index.html"><i class="fas fa-chevron-right"></i> お問い合わせ</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-hours">
+                <h4>診療時間</h4>
+                <div class="hours-table">
+                    <div class="hours-row">
+                        <div class="hours-label">午前</div>
+                        <div class="hours-time">9:00～12:00</div>
+                    </div>
+                    <div class="hours-row">
+                        <div class="hours-label">午後</div>
+                        <div class="hours-time">13:30～16:00</div>
+                    </div>
+                    <div class="hours-row">
+                        <div class="hours-label">夜間</div>
+                        <div class="hours-time">17:00～18:30</div>
+                    </div>
+                </div>
+                <p class="hours-note">
+                    ※夜間診療は月・水・金のみ<br>
+                    ※休診日：木・日・祝日<br>
+                    ※救急患者は24時間365日対応
+                </p>
+                
+                <div class="footer-social" style="margin-top: 2rem;">
+                    <h4>SNS</h4>
+                    <div class="social-links">
+                        <a href="https://www.instagram.com/fukui_aiiku_hospital/" target="_blank" rel="noopener noreferrer" class="social-link instagram">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p class="footer-copyright">
+                &copy; 2025 福井愛育病院 Fukui Aiiku Hospital. All Rights Reserved.
+            </p>
+        </div>
+    </footer>
+    
+    <script>
+        // ヘッダースクロール効果
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('.header');
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+    </script>
+</body>
+</html>

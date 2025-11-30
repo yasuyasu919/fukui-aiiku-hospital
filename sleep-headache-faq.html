@@ -1,0 +1,815 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>よくある質問 | ねむけと頭痛の外来 | 福井愛育病院</title>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700;900&family=Noto+Serif+JP:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    
+    <style>
+        .page-hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 10rem 0 6rem;
+            margin-top: 140px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .page-hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 600px;
+            height: 600px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 50%;
+        }
+        
+        .page-hero-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            position: relative;
+            z-index: 1;
+            text-align: center;
+        }
+        
+        .breadcrumb {
+            margin-bottom: 2rem;
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+        
+        .breadcrumb a {
+            color: white;
+            text-decoration: none;
+            transition: opacity 0.3s;
+        }
+        
+        .breadcrumb a:hover {
+            opacity: 0.7;
+        }
+        
+        .page-title {
+            font-size: 3rem;
+            font-weight: 900;
+            margin-bottom: 1rem;
+            line-height: 1.3;
+        }
+        
+        .page-subtitle {
+            font-size: 1.3rem;
+            opacity: 0.95;
+        }
+        
+        .content-section {
+            padding: 6rem 0;
+            background: white;
+        }
+        
+        .content-section.alt-bg {
+            background: var(--bg-light);
+        }
+        
+        .section-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        .faq-category {
+            margin-bottom: 4rem;
+        }
+        
+        .category-header {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 2rem;
+            border-radius: 15px;
+            margin-bottom: 2rem;
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+        
+        .category-icon {
+            width: 70px;
+            height: 70px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            flex-shrink: 0;
+        }
+        
+        .category-header h2 {
+            font-size: 1.8rem;
+            font-weight: 700;
+        }
+        
+        .faq-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+        
+        .faq-item {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 3px 15px rgba(0, 0, 0, 0.08);
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .faq-item:hover {
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+        }
+        
+        .faq-question {
+            padding: 2rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            transition: background 0.3s ease;
+        }
+        
+        .faq-question:hover {
+            background: var(--bg-light);
+        }
+        
+        .faq-q-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            font-weight: 900;
+            flex-shrink: 0;
+        }
+        
+        .faq-q-text {
+            flex-grow: 1;
+            font-size: 1.15rem;
+            font-weight: 600;
+            color: var(--primary-navy);
+        }
+        
+        .faq-toggle {
+            width: 40px;
+            height: 40px;
+            background: var(--bg-light);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--accent-purple);
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+            flex-shrink: 0;
+        }
+        
+        .faq-item.active .faq-toggle {
+            transform: rotate(180deg);
+            background: var(--accent-purple);
+            color: white;
+        }
+        
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+        
+        .faq-item.active .faq-answer {
+            max-height: 1000px;
+        }
+        
+        .faq-answer-content {
+            padding: 0 2rem 2rem 2rem;
+            display: flex;
+            gap: 1.5rem;
+        }
+        
+        .faq-a-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--accent-gold), var(--accent-beige));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            font-weight: 900;
+            flex-shrink: 0;
+        }
+        
+        .faq-a-text {
+            flex-grow: 1;
+            font-size: 1.05rem;
+            line-height: 1.8;
+            color: var(--text-dark);
+        }
+        
+        .faq-a-text p {
+            margin-bottom: 1rem;
+        }
+        
+        .faq-a-text ul {
+            margin: 1rem 0;
+            padding-left: 2rem;
+        }
+        
+        .faq-a-text ul li {
+            margin: 0.5rem 0;
+        }
+        
+        .faq-a-text strong {
+            color: var(--accent-purple);
+            font-weight: 600;
+        }
+        
+        .cta-box {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 3rem;
+            border-radius: 20px;
+            text-align: center;
+            margin-top: 4rem;
+        }
+        
+        .cta-box h3 {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+        
+        .cta-box p {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+        }
+        
+        .cta-buttons {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .cta-button {
+            padding: 1.2rem 2.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+        
+        .cta-button-white {
+            background: white;
+            color: var(--accent-purple);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .cta-button-white:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+        }
+        
+        .cta-button-outline {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+        
+        .cta-button-outline:hover {
+            background: white;
+            color: var(--accent-purple);
+        }
+        
+        @media (max-width: 768px) {
+            .page-hero {
+                padding: 8rem 0 4rem;
+            }
+            
+            .page-title {
+                font-size: 2rem;
+            }
+            
+            .category-header {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .faq-question {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .faq-answer-content {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- ヘッダー -->
+    <header class="header">
+        <div class="header-top">
+            <div class="header-top-content">
+                <div class="header-contact">
+                    <div class="contact-item">
+                        <span style="font-weight: 700; color: #D4AF37; font-size: 0.95rem; letter-spacing: 0.05em; margin-right: 2rem;">福井愛育病院</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-phone-alt"></i>
+                        <span class="phone-number">0776-54-5757</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>〒910-0833 福井市新保2丁目301</span>
+                    </div>
+                    <div class="contact-item">
+                        <a href="satogaeri.html" style="display: flex; align-items: center; gap: 0.4rem; color: white; text-decoration: none; padding: 0.4rem 0.8rem; background: linear-gradient(135deg, #F8BBD0, #F06292); border-radius: 20px; font-weight: 500; transition: all 0.3s ease;">
+                            <i class="fas fa-home"></i>
+                            <span>里帰り分娩</span>
+                        </a>
+                    </div>
+                </div>
+                <div class="header-departments">
+                    <span>産婦人科・小児科・アレルギー科・児童精神科</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="header-main">
+            <div class="header-main-content">
+                <a href="index.html" class="logo">
+                    <div class="logo-image">
+                        <img src="logo.jpg" alt="福井愛育病院ロゴ" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;">
+                    </div>
+                    <div class="logo-text">
+                        <h1>福井愛育病院</h1>
+                        <p>Fukui Aiiku Hospital</p>
+                    </div>
+                </a>
+                
+                <nav class="main-nav">
+                    <ul class="nav-list">
+                        <li class="nav-item"><a href="about.html" class="nav-link">当院について</a></li>
+                        <li class="nav-item"><a href="obstetrics.html" class="nav-link">産婦人科</a></li>
+                        <li class="nav-item"><a href="pediatrics.html" class="nav-link">小児科</a></li>
+                        <li class="nav-item"><a href="sleep-headache.html" class="nav-link">ねむけと頭痛の外来</a></li>
+                        <li class="nav-item"><a href="chibihouse_reservation.html" class="nav-link">ちびっこハウス</a></li>
+                    </ul>
+                    
+                    <div class="header-cta">
+                        <a href="obstetrics.html" class="cta-button cta-primary">
+                            <i class="fas fa-calendar-check"></i>
+                            産婦人科予約
+                        </a>
+                        <a href="chibihouse_reservation.html" class="cta-button cta-secondary">
+                            <i class="fas fa-child"></i>
+                            ちびっこハウス予約
+                        </a>
+                    </div>
+                </nav>
+                
+                <button class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </header>
+    
+    <!-- ページヒーロー -->
+    <section class="page-hero">
+        <div class="page-hero-content">
+            <div class="breadcrumb">
+                <a href="index.html">ホーム</a> / 
+                <a href="sleep-headache.html">ねむけと頭痛の外来</a> / 
+                よくある質問
+            </div>
+            <h1 class="page-title">よくある質問</h1>
+            <p class="page-subtitle">受診・検査・治療についてのFAQ</p>
+        </div>
+    </section>
+    
+    <!-- 受診について -->
+    <section class="content-section">
+        <div class="section-container">
+            <div class="faq-category">
+                <div class="category-header">
+                    <div class="category-icon">
+                        <i class="fas fa-hospital-user"></i>
+                    </div>
+                    <h2>受診について</h2>
+                </div>
+                
+                <div class="faq-list">
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <div class="faq-q-icon">Q</div>
+                            <div class="faq-q-text">どのような症状があれば受診すべきですか？</div>
+                            <div class="faq-toggle"><i class="fas fa-chevron-down"></i></div>
+                        </div>
+                        <div class="faq-answer">
+                            <div class="faq-answer-content">
+                                <div class="faq-a-icon">A</div>
+                                <div class="faq-a-text">
+                                    <p>以下のような症状がある場合は、ぜひご相談ください：</p>
+                                    <ul>
+                                        <li>朝起きられず、学校や仕事に行けない</li>
+                                        <li>日中に強い眠気があり、我慢できない</li>
+                                        <li>頭痛が頻繁に起こり、生活に支障がある</li>
+                                        <li>十分に寝ているのに日中眠い</li>
+                                        <li>起立性調節障害の治療で改善しない</li>
+                                    </ul>
+                                    <p><strong>「怠けている」のではなく、医学的な原因がある可能性があります。</strong>一人で悩まず、まずはご相談ください。</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <div class="faq-q-icon">Q</div>
+                            <div class="faq-q-text">何歳から受診できますか？</div>
+                            <div class="faq-toggle"><i class="fas fa-chevron-down"></i></div>
+                        </div>
+                        <div class="faq-answer">
+                            <div class="faq-answer-content">
+                                <div class="faq-a-icon">A</div>
+                                <div class="faq-a-text">
+                                    <p><strong>主な対象は10代〜20代の思春期・青年期の方</strong>ですが、頭痛に関しては何歳でも診療します。</p>
+                                    <p>当院は小児科併設の病院ですので、お子様から青年期の方まで、安心して受診していただけます。20代以降の方もお気軽にご相談ください。</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <div class="faq-q-icon">Q</div>
+                            <div class="faq-q-text">予約は必要ですか？</div>
+                            <div class="faq-toggle"><i class="fas fa-chevron-down"></i></div>
+                        </div>
+                        <div class="faq-answer">
+                            <div class="faq-answer-content">
+                                <div class="faq-a-icon">A</div>
+                                <div class="faq-a-text">
+                                    <p><strong>初診の方は、事前にお電話でご相談ください。</strong></p>
+                                    <p>専門外来のため、予約制となっています。お電話で症状をお伺いし、適切な診療日時をご案内いたします。</p>
+                                    <p>電話：<strong>0776-54-5757</strong><br>受付時間：8:00～18:00</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <div class="faq-q-icon">Q</div>
+                            <div class="faq-q-text">初診時に持っていくものは？</div>
+                            <div class="faq-toggle"><i class="fas fa-chevron-down"></i></div>
+                        </div>
+                        <div class="faq-answer">
+                            <div class="faq-answer-content">
+                                <div class="faq-a-icon">A</div>
+                                <div class="faq-a-text">
+                                    <p>以下のものをご持参ください：</p>
+                                    <ul>
+                                        <li><strong>保険証</strong>・各種医療証</li>
+                                        <li><strong>お薬手帳</strong>（現在服用中の薬がある場合）</li>
+                                        <li><strong>紹介状</strong>（他院からの紹介がある場合）</li>
+                                        <li><strong>頭痛日記・睡眠日誌</strong>（つけている場合）</li>
+                                    </ul>
+                                    <p>症状の経過やきっかけなど、メモしておくとスムーズです。</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- 検査について -->
+    <section class="content-section alt-bg">
+        <div class="section-container">
+            <div class="faq-category">
+                <div class="category-header">
+                    <div class="category-icon">
+                        <i class="fas fa-vial"></i>
+                    </div>
+                    <h2>検査について</h2>
+                </div>
+                
+                <div class="faq-list">
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <div class="faq-q-icon">Q</div>
+                            <div class="faq-q-text">PSG・MSLT検査は必ず受けないといけませんか？</div>
+                            <div class="faq-toggle"><i class="fas fa-chevron-down"></i></div>
+                        </div>
+                        <div class="faq-answer">
+                            <div class="faq-answer-content">
+                                <div class="faq-a-icon">A</div>
+                                <div class="faq-a-text">
+                                    <p><strong>必ずしも全員が受ける必要はありません。</strong></p>
+                                    <p>まず外来で医師が詳しく診察し、検査が必要かどうかを判断します。ナルコレプシーや特発性過眠症が疑われる場合、確定診断のために検査をお勧めすることがあります。</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <div class="faq-q-icon">Q</div>
+                            <div class="faq-q-text">検査は痛いですか？怖くないですか？</div>
+                            <div class="faq-toggle"><i class="fas fa-chevron-down"></i></div>
+                        </div>
+                        <div class="faq-answer">
+                            <div class="faq-answer-content">
+                                <div class="faq-a-icon">A</div>
+                                <div class="faq-a-text">
+                                    <p><strong>痛みはまったくありません。</strong></p>
+                                    <p>頭や身体にセンサーを貼り付けるだけで、痛みや苦しさはありません。普段通りに寝ていただくだけです。</p>
+                                    <p>当院は小児科併設の病院ですので、お子様でも安心して検査を受けられる環境を整えています。不安なことがあれば、スタッフに何でもご相談ください。</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <div class="faq-q-icon">Q</div>
+                            <div class="faq-q-text">検査結果はいつわかりますか？</div>
+                            <div class="faq-toggle"><i class="fas fa-chevron-down"></i></div>
+                        </div>
+                        <div class="faq-answer">
+                            <div class="faq-answer-content">
+                                <div class="faq-a-icon">A</div>
+                                <div class="faq-a-text">
+                                    <p><strong>退院後、約2〜3週間後の外来で結果をご説明します。</strong></p>
+                                    <p>PSG・MSLT検査のデータは専門医が詳細に解析する必要があるため、結果が出るまで時間がかかります。結果をもとに、最適な治療方針をご提案します。</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- 治療・その他 -->
+    <section class="content-section">
+        <div class="section-container">
+            <div class="faq-category">
+                <div class="category-header">
+                    <div class="category-icon">
+                        <i class="fas fa-pills"></i>
+                    </div>
+                    <h2>治療・その他</h2>
+                </div>
+                
+                <div class="faq-list">
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <div class="faq-q-icon">Q</div>
+                            <div class="faq-q-text">治療にはどのくらい時間がかかりますか？</div>
+                            <div class="faq-toggle"><i class="fas fa-chevron-down"></i></div>
+                        </div>
+                        <div class="faq-answer">
+                            <div class="faq-answer-content">
+                                <div class="faq-a-icon">A</div>
+                                <div class="faq-a-text">
+                                    <p><strong>症状や診断によって異なります。</strong></p>
+                                    <p>片頭痛の場合、薬物療法で数週間〜数ヶ月で改善が見られることが多いです。ナルコレプシーなどの睡眠障害は、長期的な治療が必要になることがあります。</p>
+                                    <p>定期的に経過を確認しながら、お一人おひとりに最適な治療を提供します。</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <div class="faq-q-icon">Q</div>
+                            <div class="faq-q-text">学校や職場との連携はできますか？</div>
+                            <div class="faq-toggle"><i class="fas fa-chevron-down"></i></div>
+                        </div>
+                        <div class="faq-answer">
+                            <div class="faq-answer-content">
+                                <div class="faq-a-icon">A</div>
+                                <div class="faq-a-text">
+                                    <p><strong>診断書や意見書の作成が可能です。</strong></p>
+                                    <p>学校や職場に病状を理解してもらうための診断書や、配慮をお願いするための意見書を作成できます（別途文書料が必要です）。</p>
+                                    <p>必要に応じて、学校との連携もサポートいたします。</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <div class="faq-q-icon">Q</div>
+                            <div class="faq-q-text">他の病院で「異常なし」と言われましたが、受診できますか？</div>
+                            <div class="faq-toggle"><i class="fas fa-chevron-down"></i></div>
+                        </div>
+                        <div class="faq-answer">
+                            <div class="faq-answer-content">
+                                <div class="faq-a-icon">A</div>
+                                <div class="faq-a-text">
+                                    <p><strong>もちろん、ご相談ください。</strong></p>
+                                    <p>頭痛や睡眠障害は、一般的な検査では異常が見つからないことが多い疾患です。当院では、専門的な視点から詳しく診察し、適切な診断と治療を提供します。</p>
+                                    <p>「異常なし」と言われても症状が続く場合は、専門医の診察を受けることをお勧めします。</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <div class="faq-q-icon">Q</div>
+                            <div class="faq-q-text">遠方からでも受診できますか？</div>
+                            <div class="faq-toggle"><i class="fas fa-chevron-down"></i></div>
+                        </div>
+                        <div class="faq-answer">
+                            <div class="faq-answer-content">
+                                <div class="faq-a-icon">A</div>
+                                <div class="faq-a-text">
+                                    <p><strong>はい、全国から患者さんが受診されています。</strong></p>
+                                    <p>頭痛専門医と睡眠専門医の両方の資格を持つ医師が診療する施設は全国でも少なく、遠方からお越しの方も多くいらっしゃいます。</p>
+                                    <p>PSG・MSLT検査は1泊2日の入院が必要ですが、その後の通院頻度についてはご相談に応じます。</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- CTA -->
+    <section class="content-section alt-bg">
+        <div class="section-container">
+            <div class="cta-box">
+                <h3>その他ご不明な点はお気軽に</h3>
+                <p>上記以外の質問や相談がございましたら、お電話でお問い合わせください。</p>
+                <div class="cta-buttons">
+                    <a href="tel:0776545757" class="cta-button cta-button-white">
+                        <i class="fas fa-phone-alt"></i>
+                        電話で相談
+                    </a>
+                    <a href="sleep-headache.html" class="cta-button cta-button-outline">
+                        <i class="fas fa-arrow-left"></i>
+                        外来トップへ
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- フッター -->
+    <footer class="footer">
+        <div class="footer-main">
+            <div class="footer-info">
+                <div class="footer-logo">
+                    <div class="footer-logo-icon">
+                        <img src="logo.jpg" alt="福井愛育病院ロゴ" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;">
+                    </div>
+                    <div class="footer-logo-text">
+                        <h3>福井愛育病院</h3>
+                        <p>Fukui Aiiku Hospital</p>
+                    </div>
+                </div>
+                <p class="footer-tagline">
+                    大切なお子様とママの<br>こころとからだを守ります
+                </p>
+                <div class="footer-contact-list">
+                    <div class="footer-contact-item">
+                        <i class="fas fa-phone-alt"></i>
+                        <div class="footer-contact-text">
+                            <a href="tel:0776545757" class="footer-phone">0776-54-5757</a>
+                            <p class="footer-phone-note">受付時間：8:00～18:00（救急は24時間対応）</p>
+                        </div>
+                    </div>
+                    <div class="footer-contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div class="footer-contact-text">
+                            <p>〒910-0833<br>福井県福井市新保2丁目301</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-links">
+                <h4>診療科・サービス</h4>
+                <ul>
+                    <li><a href="obstetrics.html"><i class="fas fa-chevron-right"></i> 産婦人科</a></li>
+                    <li><a href="pediatrics.html"><i class="fas fa-chevron-right"></i> 小児科</a></li>
+                    <li><a href="sleep-headache.html"><i class="fas fa-chevron-right"></i> ねむけと頭痛の外来</a></li>
+                    <li><a href="chibihouse_reservation.html"><i class="fas fa-chevron-right"></i> ちびっこハウス</a></li>
+                    <li><a href="pediatrics.html#nicu"><i class="fas fa-chevron-right"></i> NICU</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-links">
+                <h4>病院について</h4>
+                <ul>
+                    <li><a href="about.html"><i class="fas fa-chevron-right"></i> 当院について</a></li>
+                    <li><a href="index.html"><i class="fas fa-chevron-right"></i> お知らせ</a></li>
+                    <li><a href="about.html"><i class="fas fa-chevron-right"></i> アクセス</a></li>
+                    <li><a href="index.html"><i class="fas fa-chevron-right"></i> お問い合わせ</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-hours">
+                <h4>診療時間</h4>
+                <div class="hours-table">
+                    <div class="hours-row">
+                        <div class="hours-label">午前</div>
+                        <div class="hours-time">9:00～12:00</div>
+                    </div>
+                    <div class="hours-row">
+                        <div class="hours-label">午後</div>
+                        <div class="hours-time">13:30～16:00</div>
+                    </div>
+                    <div class="hours-row">
+                        <div class="hours-label">夜間</div>
+                        <div class="hours-time">17:00～18:30</div>
+                    </div>
+                </div>
+                <p class="hours-note">
+                    ※夜間診療は月・水・金のみ<br>
+                    ※休診日：木・日・祝日<br>
+                    ※救急患者は24時間365日対応
+                </p>
+                
+                <div class="footer-social" style="margin-top: 2rem;">
+                    <h4>SNS</h4>
+                    <div class="social-links">
+                        <a href="https://www.instagram.com/fukui_aiiku_hospital/" target="_blank" rel="noopener noreferrer" class="social-link instagram">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p class="footer-copyright">
+                &copy; 2025 福井愛育病院 Fukui Aiiku Hospital. All Rights Reserved.
+            </p>
+        </div>
+    </footer>
+    
+    <script>
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('.header');
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+        
+        // FAQ アコーディオン
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', function() {
+                const item = this.parentElement;
+                const isActive = item.classList.contains('active');
+                
+                // すべてを閉じる
+                document.querySelectorAll('.faq-item').forEach(i => {
+                    i.classList.remove('active');
+                });
+                
+                // クリックしたものを開く（すでに開いていなければ）
+                if (!isActive) {
+                    item.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
