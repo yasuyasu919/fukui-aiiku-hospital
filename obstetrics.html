@@ -1,0 +1,727 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>産婦人科 | 福井愛育病院</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            line-height: 1.8;
+            color: #333;
+        }
+
+        /* トップバー（固定ヘッダー） */
+        .top-bar {
+            background: linear-gradient(135deg, #2c5282 0%, #1a365d 100%);
+            color: white;
+            padding: 12px 0;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .top-bar-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .hospital-name {
+            font-size: 20px;
+            font-weight: 700;
+            text-decoration: none;
+            color: white;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .hospital-name:hover {
+            opacity: 0.9;
+        }
+
+        .departments {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            font-size: 14px;
+        }
+
+        .departments a {
+            color: white;
+            text-decoration: none;
+            padding: 5px 10px;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+
+        .departments a:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .contact-info {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+            flex-wrap: wrap;
+            font-size: 14px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .phone-number {
+            font-size: 20px;
+            font-weight: 700;
+            color: #ffd700;
+            text-decoration: none;
+        }
+
+        .satogaeri-btn {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+            padding: 8px 20px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 14px;
+            transition: transform 0.3s, box-shadow 0.3s;
+            white-space: nowrap;
+        }
+
+        .satogaeri-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(245, 87, 108, 0.4);
+        }
+
+        /* メインナビゲーション */
+        .main-nav {
+            background: white;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            position: fixed;
+            top: 60px;
+            left: 0;
+            right: 0;
+            z-index: 999;
+        }
+
+        .main-nav ul {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            list-style: none;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .main-nav li {
+            margin: 0;
+        }
+
+        .main-nav a {
+            display: block;
+            padding: 15px 20px;
+            color: #2c5282;
+            text-decoration: none;
+            font-weight: 500;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .main-nav a:hover,
+        .main-nav a.active {
+            background: linear-gradient(135deg, #2c5282 0%, #1a365d 100%);
+            color: white;
+        }
+
+        /* コンテンツエリア */
+        .content {
+            margin-top: 120px;
+            padding: 40px 20px;
+        }
+
+        /* ヒーローセクション */
+        .hero {
+            background: linear-gradient(135deg, rgba(240, 147, 251, 0.1) 0%, rgba(245, 87, 108, 0.1) 100%);
+            padding: 80px 20px;
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .hero h1 {
+            font-size: 42px;
+            color: #2c5282;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .hero .subtitle {
+            font-size: 18px;
+            color: #555;
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.8;
+        }
+
+        /* コンテナ */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* 特徴セクション */
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+
+        .feature-card {
+            background: white;
+            border-radius: 15px;
+            padding: 40px 30px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        }
+
+        .feature-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 25px;
+            font-size: 36px;
+            color: white;
+        }
+
+        .feature-card h3 {
+            font-size: 22px;
+            color: #2c5282;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .feature-card p {
+            color: #666;
+            line-height: 1.8;
+        }
+
+        /* 診療内容セクション */
+        .services {
+            background: #f8f9fa;
+            padding: 60px 20px;
+            margin: 60px 0;
+        }
+
+        .services h2 {
+            text-align: center;
+            font-size: 32px;
+            color: #2c5282;
+            margin-bottom: 50px;
+            font-weight: 700;
+        }
+
+        .service-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .service-item {
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+            border-left: 4px solid #f5576c;
+            transition: transform 0.3s;
+        }
+
+        .service-item:hover {
+            transform: translateX(5px);
+        }
+
+        .service-item h4 {
+            font-size: 18px;
+            color: #2c5282;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .service-item p {
+            color: #666;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        /* お産についてセクション */
+        .childbirth-info {
+            max-width: 1200px;
+            margin: 0 auto 60px;
+        }
+
+        .childbirth-info h2 {
+            font-size: 32px;
+            color: #2c5282;
+            margin-bottom: 30px;
+            font-weight: 700;
+            text-align: center;
+        }
+
+        .info-box {
+            background: linear-gradient(135deg, rgba(240, 147, 251, 0.05) 0%, rgba(245, 87, 108, 0.05) 100%);
+            border-radius: 15px;
+            padding: 40px;
+            margin-bottom: 30px;
+            border: 2px solid rgba(245, 87, 108, 0.2);
+        }
+
+        .info-box h3 {
+            font-size: 24px;
+            color: #2c5282;
+            margin-bottom: 20px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .info-box p {
+            color: #555;
+            line-height: 1.9;
+            margin-bottom: 15px;
+        }
+
+        .info-box ul {
+            margin-left: 25px;
+            color: #555;
+        }
+
+        .info-box li {
+            margin-bottom: 10px;
+            line-height: 1.8;
+        }
+
+        /* CTAセクション */
+        .cta-section {
+            background: linear-gradient(135deg, #2c5282 0%, #1a365d 100%);
+            color: white;
+            padding: 60px 20px;
+            text-align: center;
+            border-radius: 20px;
+            margin: 60px auto;
+            max-width: 1200px;
+        }
+
+        .cta-section h2 {
+            font-size: 32px;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .cta-section p {
+            font-size: 18px;
+            margin-bottom: 40px;
+            opacity: 0.95;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .cta-btn {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+            padding: 18px 40px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 18px;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .cta-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(245, 87, 108, 0.4);
+        }
+
+        .cta-btn.secondary {
+            background: white;
+            color: #2c5282;
+        }
+
+        .cta-btn.secondary:hover {
+            box-shadow: 0 8px 20px rgba(255, 255, 255, 0.3);
+        }
+
+        /* フッター */
+        footer {
+            background: #1a202c;
+            color: white;
+            padding: 50px 20px 20px;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 30px;
+        }
+
+        .footer-section h3 {
+            font-size: 18px;
+            margin-bottom: 20px;
+            color: #ffd700;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section li {
+            margin-bottom: 10px;
+        }
+
+        .footer-section a {
+            color: #ccc;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-section a:hover {
+            color: #ffd700;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid #444;
+            color: #999;
+        }
+
+        /* レスポンシブ */
+        @media (max-width: 768px) {
+            .top-bar-content {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+            }
+
+            .hospital-name {
+                font-size: 18px;
+            }
+
+            .departments {
+                font-size: 12px;
+                gap: 8px;
+            }
+
+            .contact-info {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+            }
+
+            .phone-number {
+                font-size: 18px;
+            }
+
+            .main-nav ul {
+                flex-direction: column;
+                padding: 0;
+            }
+
+            .main-nav a {
+                border-bottom: 1px solid #eee;
+            }
+
+            .content {
+                margin-top: 200px;
+            }
+
+            .hero h1 {
+                font-size: 28px;
+            }
+
+            .hero .subtitle {
+                font-size: 16px;
+            }
+
+            .features {
+                grid-template-columns: 1fr;
+            }
+
+            .info-box {
+                padding: 25px;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- トップバー -->
+    <div class="top-bar">
+        <div class="top-bar-content">
+            <div style="display: flex; align-items: center; gap: 20px; flex-wrap: wrap;">
+                <a href="index.html" class="hospital-name">
+                    <i class="fas fa-hospital"></i>
+                    福井愛育病院
+                </a>
+                <div class="departments">
+                    <a href="obstetrics.html">産婦人科</a>・
+                    <a href="pediatrics.html">小児科</a>・
+                    <a href="pediatrics.html#allergy">アレルギー科</a>・
+                    <a href="child-psychiatry.html">児童精神科</a>
+                </div>
+            </div>
+            
+            <div class="contact-info">
+                <div class="contact-item">
+                    <i class="fas fa-phone"></i>
+                    <a href="tel:0776-54-5757" class="phone-number">0776-54-5757</a>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span>〒910-0833 福井市新保2丁目301</span>
+                </div>
+                <a href="satogaeri.html" class="satogaeri-btn">里帰り分娩</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- メインナビゲーション -->
+    <nav class="main-nav">
+        <ul>
+            <li><a href="index.html">当院について</a></li>
+            <li><a href="obstetrics.html" class="active">産婦人科トップ</a></li>
+            <li><a href="satogaeri.html">里帰り分娩</a></li>
+            <li><a href="index.html#news">お知らせ</a></li>
+            <li><a href="index.html#access">アクセス</a></li>
+            <li><a href="index.html#contact">お問い合わせ</a></li>
+        </ul>
+    </nav>
+
+    <!-- コンテンツ -->
+    <div class="content">
+        <!-- ヒーローセクション -->
+        <section class="hero">
+            <div class="container">
+                <h1>産婦人科</h1>
+                <p class="subtitle">妊娠から出産、そして女性の生涯にわたる健康ケアを<br>経験豊富な産婦人科専門医がサポートいたします</p>
+            </div>
+        </section>
+
+        <!-- 特徴セクション -->
+        <div class="container">
+            <div class="features">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-baby"></i>
+                    </div>
+                    <h3>年間1,200件以上の実績</h3>
+                    <p>福井県で最も多くの出産を支える病院として、経験豊富なスタッフが大切な赤ちゃんの誕生に携わります。</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-user-md"></i>
+                    </div>
+                    <h3>産婦人科専門医による診療</h3>
+                    <p>妊娠・出産のきめ細やかな管理から、婦人科疾患の診断・治療まで、専門医が対応します。</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>24時間体制の安心</h3>
+                    <p>NICU・小児科併設で、いつでも帝王切開が可能な体制。万が一に備えた医療チームが待機しています。</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- 診療内容セクション -->
+        <section class="services">
+            <h2>診療内容</h2>
+            <div class="service-list">
+                <div class="service-item">
+                    <h4><i class="fas fa-pregnant"></i> 妊婦健診・分娩管理</h4>
+                    <p>妊娠から出産まで、安全で快適なお産をサポート。自然分娩を基本とし、必要に応じて医学的介入を行います。</p>
+                </div>
+                <div class="service-item">
+                    <h4><i class="fas fa-home"></i> 里帰り分娩</h4>
+                    <p>遠方にお住まいの方も安心。ご実家での出産をサポートします。</p>
+                </div>
+                <div class="service-item">
+                    <h4><i class="fas fa-syringe"></i> 無痛分娩</h4>
+                    <p>硬膜外麻酔による無痛分娩を実施。痛みへの不安を軽減し、快適なお産を目指します。（平日・土曜日中のみ）</p>
+                </div>
+                <div class="service-item">
+                    <h4><i class="fas fa-heartbeat"></i> 婦人科疾患</h4>
+                    <p>卵巣・子宮の疾患や腫瘍の診断、薬物療法・手術療法を専門医が対応します。</p>
+                </div>
+                <div class="service-item">
+                    <h4><i class="fas fa-venus"></i> 思春期・更年期ケア</h4>
+                    <p>ホルモン療法・漢方療法で、女性の生涯にわたる健康をサポートします。</p>
+                </div>
+                <div class="service-item">
+                    <h4><i class="fas fa-stethoscope"></i> 不妊治療・性感染症</h4>
+                    <p>EBM（科学的根拠に基づく医療）に沿って、個々の状況に対応します。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- お産についてセクション -->
+        <section class="childbirth-info">
+            <h2>福井愛育病院のお産</h2>
+            
+            <div class="info-box">
+                <h3><i class="fas fa-heart"></i> 基本的な考え方</h3>
+                <p>当院では妊婦さん自身の「産む力」を最大限に発揮していただくため、<strong>できるだけ不要な医学的介入は避けています</strong>。</p>
+                <p>基本的にお産が問題なく進んでいる場合、多少時間がかかっても薬物を使用することはありません。</p>
+                <p>しかし、お産は突然状況が変わることもあります。当院では万が一に備えて、<strong>いつでも24時間帝王切開が行える体制</strong>でお産の進行を見守っています。</p>
+            </div>
+
+            <div class="info-box">
+                <h3><i class="fas fa-baby-carriage"></i> 赤ちゃんに異常があった場合</h3>
+                <p>早産や多胎、妊娠高血圧など異常妊娠の場合はもちろん、順調な妊娠経過でも赤ちゃんに異常が起こることがあります。</p>
+                <p>当院では小児科医師が早期発見・早期治療を心がけ、必要に応じて新生児治療室（NICU）で集中管理を行います。</p>
+                <p><strong>対応可能な疾患：</strong>未熟児、黄疸、呼吸不全、先天異常、感染症、先天性心疾患など</p>
+            </div>
+
+            <div class="info-box">
+                <h3><i class="fas fa-procedures"></i> 無痛分娩について</h3>
+                <p>硬膜外麻酔により、お産に伴う痛みをできるだけ和らげます。痛みへの不安を減らし、快適にお産を進めることができます。</p>
+                <ul>
+                    <li><strong>実施時間：</strong>平日（木曜除く）・土曜日の日中のみ</li>
+                    <li><strong>方法：</strong>硬膜外カテーテルを背中から挿入し、麻酔薬を注入</li>
+                    <li><strong>費用：</strong>検査代含め約15万円（自費）</li>
+                    <li><strong>条件：</strong>35週頃に「無痛分娩教室」の受講が必要</li>
+                </ul>
+                <p>※安全が最優先のため、分娩が立て込んでいる場合や緊急手術時には実施できない場合があります。</p>
+            </div>
+
+            <div class="info-box">
+                <h3><i class="fas fa-bed"></i> 入院について</h3>
+                <p><strong>お部屋：</strong>個室、大部屋、特別室をご用意</p>
+                <p><strong>無料設備：</strong>Wi-Fi、インターネットテレビ、冷蔵庫、自販機</p>
+                <p><strong>入院費用（経過に問題がない場合）：</strong></p>
+                <ul>
+                    <li>初産婦：一般個室で57〜64万円程度</li>
+                    <li>経産婦：一般個室で54〜60万円程度</li>
+                </ul>
+                <p>※入院日数、出産時間帯、合併症の有無などにより変動します。</p>
+            </div>
+
+            <div class="info-box">
+                <h3><i class="fas fa-users"></i> 夫立ち会い分娩</h3>
+                <p>福井県内在住のご主人お一人のみ立ち会い可能です。</p>
+                <p>※発熱や体調不良の方はご遠慮ください。</p>
+            </div>
+        </section>
+
+        <!-- CTAセクション -->
+        <section class="cta-section">
+            <h2>お気軽にご相談ください</h2>
+            <p>妊娠・出産、婦人科疾患について、専門医がご相談に応じます</p>
+            <div class="cta-buttons">
+                <a href="tel:0776-54-5757" class="cta-btn">
+                    <i class="fas fa-phone"></i>
+                    電話で予約・相談
+                </a>
+                <a href="satogaeri.html" class="cta-btn secondary">
+                    <i class="fas fa-home"></i>
+                    里帰り分娩について
+                </a>
+            </div>
+        </section>
+    </div>
+
+    <!-- フッター -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>福井愛育病院</h3>
+                <p><i class="fas fa-map-marker-alt"></i> 〒910-0833<br>福井県福井市新保2丁目301</p>
+                <p><i class="fas fa-phone"></i> <a href="tel:0776-54-5757">0776-54-5757</a></p>
+                <p><i class="fas fa-envelope"></i> info@fab.or.jp</p>
+            </div>
+
+            <div class="footer-section">
+                <h3>診療科目</h3>
+                <ul>
+                    <li><a href="obstetrics.html">産婦人科</a></li>
+                    <li><a href="pediatrics.html">小児科</a></li>
+                    <li><a href="pediatrics.html#allergy">アレルギー科</a></li>
+                    <li><a href="child-psychiatry.html">児童精神科</a></li>
+                    <li><a href="sleep-headache.html">ねむけと頭痛の外来</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h3>診療時間</h3>
+                <p><strong>午前</strong> 9:00～12:00</p>
+                <p><strong>午後</strong> 13:30～16:00</p>
+                <p><strong>夜間</strong> 17:00～18:30（月・水・金のみ）</p>
+                <p style="color: #ffd700; margin-top: 10px;"><strong>休診日：</strong>木曜・日曜・祝日</p>
+                <p style="color: #ffd700;"><strong>救急診療：</strong>24時間365日対応</p>
+            </div>
+
+            <div class="footer-section">
+                <h3>関連リンク</h3>
+                <ul>
+                    <li><a href="satogaeri.html">里帰り分娩</a></li>
+                    <li><a href="chibihouse_reservation.html">ちびっこハウス</a></li>
+                    <li><a href="pediatrics.html#nicu">NICU</a></li>
+                    <li><a href="https://www.instagram.com/fukui_aiiku_hospital/" target="_blank"><i class="fab fa-instagram"></i> Instagram</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2025 福井愛育病院 Fukui Aiiku Hospital. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
