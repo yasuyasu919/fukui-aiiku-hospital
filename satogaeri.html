@@ -630,13 +630,16 @@
 </head>
 <body>
     <!-- ========== ヘッダー ========== -->
+        <!-- ========== ヘッダー ========== -->
     <header class="header">
+        <!-- トップバー -->
         <div class="header-top">
             <div class="header-top-content">
                 <div class="header-contact">
                     <div class="contact-item">
-                        <span class="hospital-name-top">福井愛育病院</span>
+                        <a href="index.html" style="font-weight: 700; color: #D4AF37; font-size: 0.95rem; letter-spacing: 0.05em; text-decoration: none;">福井愛育病院</a>
                     </div>
+                    <div class="contact-item" style="color: #D4AF37; font-size: 1.2rem; margin: 0 0.5rem;">|</div>
                     <div class="contact-item">
                         <i class="fas fa-phone-alt"></i>
                         <span class="phone-number">0776-54-5757</span>
@@ -645,12 +648,6 @@
                         <i class="fas fa-map-marker-alt"></i>
                         <span>〒910-0833 福井県福井市新保2丁目301</span>
                     </div>
-                    <div class="contact-item">
-                        <a href="satogaeri.html" class="satogaeri-link">
-                            <i class="fas fa-home"></i>
-                            <span>里帰り分娩</span>
-                        </a>
-                    </div>
                 </div>
                 <div class="header-departments">
                     <a href="obstetrics.html" style="color: white; text-decoration: none;">産婦人科</a>・<a href="pediatrics.html" style="color: white; text-decoration: none;">小児科</a>・<a href="pediatrics.html#allergy" style="color: white; text-decoration: none;">アレルギー科</a>・<a href="child-psychiatry.html" style="color: white; text-decoration: none;">児童精神科</a>
@@ -658,23 +655,36 @@
             </div>
         </div>
         
+        <!-- メインヘッダー -->
         <div class="header-main">
             <div class="header-main-content">
+                <!-- ロゴ -->
                 <a href="index.html" class="logo">
-                    <div class="logo-image">🏥</div>
+                    <div class="logo-image">
+                        <img src="logo.jpg" alt="福井愛育病院ロゴ" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;">
+                    </div>
                     <div class="logo-text">
                         <h1>福井愛育病院</h1>
                         <p>Fukui Aiiku Hospital</p>
                     </div>
                 </a>
                 
-                                <nav class="main-nav">
-                    <a href="index.html" class="nav-link">ホーム</a>
-                    <a href="obstetrics.html" class="nav-link">産婦人科</a>
-                    <a href="pediatrics.html" class="nav-link">小児科</a>
-                    <a href="child-psychiatry.html" class="nav-link">児童精神科</a>
-                    <a href="about.html" class="nav-link">病院案内</a>
-                </nav>
+                <!-- ナビゲーション -->
+                <nav class="main-nav">
+                    <ul class="nav-list">
+                        <li class="nav-item"><a href="index.html" class="nav-link">ホーム</a></li>
+                        <li class="nav-item"><a href="obstetrics.html" class="nav-link">産婦人科</a></li>
+                        <li class="nav-item"><a href="pediatrics.html" class="nav-link">小児科</a></li>
+                        <li class="nav-item"><a href="child-psychiatry.html" class="nav-link">児童精神科</a></li>
+                        <li class="nav-item"><a href="sleep-headache.html" class="nav-link">ねむけと頭痛の外来</a></li>
+                    </ul>                </nav>
+                
+                <!-- ハンバーガーメニュー -->
+                <button class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
             </div>
         </div>
     </header>
