@@ -5,23 +5,567 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>検査について | ねむけと頭痛の外来 | 福井愛育病院</title>
     
+    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700;900&family=Noto+Serif+JP:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/style.css">
     
     <style>
-        .page-hero {
+        
+        /* ==================================== 
+           福井愛育病院 ホームページ CSS
+           完全統合版 v3.1 - トップバー修正版
+        ==================================== */
+        
+        /* ========== 共通設定 ========== */
+        :root {
+            --primary-navy: #2C3E50;
+            --secondary-navy: #34495E;
+            --accent-gold: #D4AF37;
+            --accent-beige: #F5E6D3;
+            --accent-blue: #5DADE2;
+            --accent-pink: #F8BBD0;
+            --accent-purple: #9B59B6;
+            --text-dark: #2C3E50;
+            --text-gray: #6B7280;
+            --bg-light: #FAFAFA;
+            --white: #FFFFFF;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            color: var(--text-dark);
+            line-height: 1.8;
+            overflow-x: hidden;
+        }
+        
+        /* ========== ヘッダー ========== */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.98);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+        
+        .header.scrolled {
+            background: rgba(255, 255, 255, 1);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+        }
+        
+        /* トップバー */
+        .header-top {
+            background: var(--primary-navy);
+            color: white;
+            padding: 0.5rem 0;
+        }
+        
+        .header-top-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        
+        .header-contact {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+            flex: 1;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.9rem;
+        }
+        
+        .contact-item i {
+            color: var(--accent-gold);
+        }
+        
+        .phone-number {
+            font-size: 1.3rem;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+        }
+        
+        /* トップバー - 病院名と里帰り分娩 */
+        .hospital-name-top {
+            font-weight: 700;
+            color: var(--accent-gold);
+            font-size: 0.95rem;
+            letter-spacing: 0.05em;
+        }
+        
+        .hospital-name-item {
+            margin-right: auto;
+        }
+        
+        .satogaeri-item {
+            margin-left: 1rem;
+        }
+        
+        .satogaeri-link {
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+            color: var(--white);
+            text-decoration: none;
+            padding: 0.4rem 0.8rem;
+            background: linear-gradient(135deg, var(--accent-pink), #F06292);
+            border-radius: 20px;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+        
+        .satogaeri-link:hover {
+            background: linear-gradient(135deg, #F06292, var(--accent-pink));
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(240, 98, 146, 0.3);
+        }
+        
+        .satogaeri-link i {
+            font-size: 0.9rem;
+        }
+        
+        /* メインヘッダー */
+        .header-main {
+            padding: 0.5rem 0;
+        }
+        
+        .header-main-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            text-decoration: none;
+            color: var(--primary-navy);
+        }
+        
+        .logo-image {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--accent-gold), var(--accent-beige));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            color: white;
+        }
+        
+        .logo-text h1 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 0.1rem;
+        }
+        
+        .logo-text p {
+            font-size: 0.8rem;
+            color: var(--text-gray);
+        }
+        
+        /* ナビゲーション */
+        .main-nav {
+            display: flex;
+            gap: 0.5rem;
+            align-items: center;
+        }
+        
+        .nav-list {
+            display: flex;
+            list-style: none;
+            gap: 0.25rem;
+            flex-wrap: nowrap;
+        }
+        
+        .nav-item {
+            position: relative;
+        }
+        
+        .nav-link {
+            display: block;
+            padding: 0.75rem 0.9rem;
+            color: var(--primary-navy);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.88rem;
+            transition: all 0.3s ease;
+            border-radius: 8px;
+            white-space: nowrap;
+        }
+        
+        .nav-link:hover {
+            background: var(--accent-beige);
+            color: var(--accent-gold);
+        }
+        
+        /* CTA ボタン */
+        .header-cta {
+            display: flex;
+            gap: 0.75rem;
+        }
+        
+        .cta-button {
+            padding: 0.7rem 1.2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.85rem;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            white-space: nowrap;
+        }
+        
+        .cta-primary {
+            background: linear-gradient(135deg, var(--accent-gold), var(--accent-beige));
+            color: var(--primary-navy);
+            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+        }
+        
+        .cta-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(212, 175, 55, 0.4);
+        }
+        
+        .cta-secondary {
+            background: white;
+            color: var(--accent-blue);
+            border: 2px solid var(--accent-blue);
+        }
+        
+        .cta-secondary:hover {
+            background: var(--accent-blue);
+            color: white;
+        }
+        
+        /* ハンバーガーメニュー */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0.5rem;
+        }
+        
+        .hamburger span {
+            display: block;
+            width: 28px;
+            height: 3px;
+            background: var(--primary-navy);
+            transition: all 0.3s ease;
+            border-radius: 3px;
+        }
+        
+        /* ========== ヒーローセクション（スライドショー） ========== */
+        .hero {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            min-height: 600px;
+            overflow: hidden;
+            margin-top: 100px;
+        }
+        
+        /* スライド */
+        .hero-slides {
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+        
+        .hero-slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 1.5s ease, visibility 1.5s ease;
+        }
+        
+        .hero-slide.active {
+            opacity: 1;
+            visibility: visible;
+            z-index: 2;
+        }
+        
+        .hero-background {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+        
+        .hero-background::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                to right,
+                rgba(44, 62, 80, 0.7) 0%,
+                rgba(44, 62, 80, 0.3) 100%
+            );
+            z-index: 1;
+        }
+        
+        .hero-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+        }
+        
+        /* ヒーローコンテンツ - 各スライド内に配置 */
+        .hero-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            color: white;
+            z-index: 10;
+            width: 90%;
+            max-width: 900px;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 1s ease 0.3s, visibility 1s ease 0.3s;
+        }
+        
+        .hero-slide.active .hero-content {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .hero-title {
+            font-size: 3.5rem;
+            font-weight: 900;
+            margin-bottom: 1.5rem;
+            line-height: 1.4;
+            text-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+        }
+        
+        .hero-subtitle {
+            font-size: 1.3rem;
+            margin-bottom: 2.5rem;
+            font-weight: 400;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        }
+        
+        .hero-buttons {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .hero-button {
+            padding: 1.2rem 2.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+        }
+        
+        .hero-button-primary {
+            background: linear-gradient(135deg, var(--accent-gold), var(--accent-beige));
+            color: var(--primary-navy);
+        }
+        
+        .hero-button-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(212, 175, 55, 0.4);
+        }
+        
+        .hero-button-secondary {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            border: 2px solid white;
+            backdrop-filter: blur(10px);
+        }
+        
+        .hero-button-secondary:hover {
+            background: white;
+            color: var(--primary-navy);
+        }
+        
+        /* 信頼マーカー - スライドの外に固定 */
+        .hero-features {
+            position: absolute;
+            bottom: 3rem;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 3rem;
+            z-index: 15;
+        }
+        
+        .hero-feature-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            background: rgba(44, 62, 80, 0.95);
+            padding: 1rem 1.8rem;
+            border-radius: 50px;
+            backdrop-filter: blur(15px);
+            border: 2px solid #D4AF37;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
+            transition: all 0.3s ease;
+        }
+        
+        .hero-feature-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 40px rgba(212, 175, 55, 0.5);
+        }
+        
+        .hero-feature-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #D4AF37, #C9B896);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            color: white;
+            flex-shrink: 0;
+            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.4);
+        }
+        
+        .hero-feature-text {
+            text-align: left;
+        }
+        
+        .hero-feature-text strong {
+            white-space: nowrap;
+            display: block;
+            font-size: 1.4rem;
+            font-weight: 900;
+            color: #D4AF37;
+            text-shadow: 0 3px 10px rgba(0, 0, 0, 0.7);
+            letter-spacing: 0.05em;
+            margin-bottom: 0.3rem;
+        }
+        
+        .hero-feature-text span {
+            font-size: 0.9rem;
+            color: white;
+            font-weight: 600;
+            text-shadow: 0 2px 6px rgba(0, 0, 0, 0.7);
+        }
+        
+        /* スライドコントロール - スライドの外に固定 */
+        .hero-controls {
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 0.75rem;
+            z-index: 15;
+        }
+        
+        .hero-control-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.5);
+            border: 2px solid white;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .hero-control-dot.active {
+            background: var(--accent-gold);
+            transform: scale(1.3);
+        }
+        
+        .hero-control-dot:hover {
+            background: rgba(255, 255, 255, 0.8);
+        }
+        
+        /* 前後ボタン - スライドの外に固定 */
+        .hero-nav-button {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255, 255, 255, 0.2);
+            border: 2px solid white;
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            z-index: 15;
+            backdrop-filter: blur(10px);
+        }
+        
+        .hero-nav-button:hover {
+            background: white;
+            color: var(--primary-navy);
+        }
+        
+        .hero-prev {
+            left: 2rem;
+        }
+        
+        .hero-next {
+            right: 2rem;
+        }
+        
+        /* ========== 特別セクション：ねむけと頭痛の外来 ========== */
+        .special-clinic-section {
+            padding: 6rem 0;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
-            padding: 10rem 0 6rem;
-            margin-top: 140px;
             position: relative;
             overflow: hidden;
         }
         
-        .page-hero::before {
+        .special-clinic-section::before {
             content: '';
             position: absolute;
             top: -50%;
@@ -32,49 +576,112 @@
             border-radius: 50%;
         }
         
-        .page-hero-content {
+        .special-clinic-content {
             max-width: 1400px;
             margin: 0 auto;
             padding: 0 2rem;
             position: relative;
             z-index: 1;
-            text-align: center;
         }
         
-        .breadcrumb {
+        .special-badge {
+            display: inline-block;
+            background: var(--accent-gold);
+            color: var(--primary-navy);
+            padding: 0.75rem 2rem;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1rem;
             margin-bottom: 2rem;
-            font-size: 0.9rem;
-            opacity: 0.9;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
         }
         
-        .breadcrumb a {
-            color: white;
-            text-decoration: none;
-            transition: opacity 0.3s;
-        }
-        
-        .breadcrumb a:hover {
-            opacity: 0.7;
-        }
-        
-        .page-title {
+        .special-clinic-title {
             font-size: 3rem;
             font-weight: 900;
-            margin-bottom: 1rem;
+            margin-bottom: 1.5rem;
             line-height: 1.3;
         }
         
-        .page-subtitle {
+        .special-clinic-subtitle {
             font-size: 1.3rem;
+            margin-bottom: 3rem;
             opacity: 0.95;
         }
         
-        .content-section {
-            padding: 6rem 0;
-            background: white;
+        .special-features-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-bottom: 3rem;
         }
         
-        .content-section.alt-bg {
+        .special-feature-item {
+            background: rgba(255, 255, 255, 0.15);
+            padding: 2rem;
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+        
+        .special-feature-item:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.2);
+        }
+        
+        .special-feature-icon {
+            width: 80px;
+            height: 80px;
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            margin: 0 auto 1.5rem;
+        }
+        
+        .special-feature-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+        }
+        
+        .special-feature-text {
+            font-size: 0.95rem;
+            opacity: 0.9;
+            line-height: 1.6;
+        }
+        
+        .special-clinic-cta {
+            text-align: center;
+        }
+        
+        .special-cta-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            background: white;
+            color: var(--accent-purple);
+            padding: 1.2rem 3rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.1rem;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+        }
+        
+        .special-cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.3);
+        }
+        
+        /* ========== 4つの特徴セクション ========== */
+        .features-section {
+            padding: 6rem 0;
             background: var(--bg-light);
         }
         
@@ -84,306 +691,802 @@
             padding: 0 2rem;
         }
         
-        .test-card {
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+        
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary-navy);
+            margin-bottom: 1rem;
+        }
+        
+        .title-highlight {
+            background: linear-gradient(135deg, var(--accent-gold), var(--accent-beige));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .section-subtitle {
+            font-size: 1.1rem;
+            color: var(--text-gray);
+        }
+        
+        /* 4カラムグリッド */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+        }
+        
+        /* カード */
+        .feature-card {
             background: white;
             border-radius: 20px;
-            padding: 3rem;
+            padding: 3rem 2rem;
             box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
-            margin-bottom: 3rem;
-        }
-        
-        .test-header {
+            transition: all 0.4s ease;
+            text-align: center;
             display: flex;
+            flex-direction: column;
             align-items: center;
-            gap: 2rem;
-            margin-bottom: 2rem;
-            padding-bottom: 2rem;
-            border-bottom: 3px solid var(--accent-purple);
         }
         
-        .test-icon {
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+        }
+        
+        /* アイコン */
+        .feature-icon {
             width: 100px;
             height: 100px;
-            background: linear-gradient(135deg, #667eea, #764ba2);
+            background: linear-gradient(135deg, var(--accent-gold), var(--accent-beige));
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             font-size: 3rem;
             color: white;
-            flex-shrink: 0;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 8px 25px rgba(212, 175, 55, 0.4);
+        }
+        
+        .feature-icon.purple {
+            background: linear-gradient(135deg, #667eea, #764ba2);
             box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
         }
         
-        .test-title-group h2 {
-            font-size: 2rem;
+        /* 数字 */
+        .feature-number {
+            font-size: 3rem;
             font-weight: 700;
-            color: var(--primary-navy);
-            margin-bottom: 0.5rem;
+            background: linear-gradient(135deg, var(--accent-gold), var(--accent-beige));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1.5rem;
+            line-height: 1;
         }
         
-        .test-title-group p {
-            font-size: 1.1rem;
-            color: var(--text-gray);
+        .feature-number.purple-gradient {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
         
-        .test-description {
-            font-size: 1.1rem;
-            line-height: 1.8;
-            color: var(--text-dark);
-            margin-bottom: 2rem;
-        }
-        
-        .info-box {
-            background: linear-gradient(135deg, #f0f4ff 0%, #e8edff 100%);
-            border-left: 5px solid var(--accent-purple);
-            padding: 2rem;
-            border-radius: 15px;
-            margin: 2rem 0;
-        }
-        
-        .info-box h3 {
-            color: var(--primary-navy);
-            font-size: 1.3rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-        }
-        
-        .info-box h3 i {
-            color: var(--accent-purple);
-            font-size: 1.5rem;
-        }
-        
-        .info-box p, .info-box ul {
-            font-size: 1.05rem;
-            line-height: 1.8;
-            color: var(--text-dark);
-        }
-        
-        .info-box ul {
-            margin-top: 1rem;
-            padding-left: 2rem;
-        }
-        
-        .info-box ul li {
-            margin: 0.75rem 0;
-        }
-        
-        .feature-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 2rem;
-            margin: 2rem 0;
-        }
-        
-        .feature-item {
-            background: var(--bg-light);
-            padding: 2rem;
-            border-radius: 15px;
-            transition: all 0.3s ease;
-        }
-        
-        .feature-item:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
-        }
-        
-        .feature-item h4 {
-            font-size: 1.2rem;
-            font-weight: 700;
-            color: var(--primary-navy);
-            margin-bottom: 1rem;
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-        }
-        
-        .feature-item h4 i {
-            color: var(--accent-purple);
-            font-size: 1.5rem;
-        }
-        
-        .feature-item p {
-            font-size: 1rem;
-            color: var(--text-gray);
-            line-height: 1.7;
-        }
-        
-        .admission-info {
-            background: linear-gradient(135deg, #fff5e6 0%, #ffe6cc 100%);
-            border-left: 5px solid var(--accent-gold);
-            padding: 2rem 3rem;
-            border-radius: 15px;
-            margin: 3rem 0;
-        }
-        
-        .admission-info h3 {
-            color: var(--primary-navy);
-            font-size: 1.5rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-        }
-        
-        .admission-info h3 i {
-            color: var(--accent-gold);
+        .feature-unit {
             font-size: 1.8rem;
         }
         
-        .admission-details {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-        
-        .admission-item {
-            background: white;
-            padding: 1.5rem;
-            border-radius: 12px;
-        }
-        
-        .admission-item h4 {
-            font-size: 1.1rem;
+        /* タイトル */
+        .feature-title {
+            font-size: 1.2rem;
             font-weight: 700;
             color: var(--primary-navy);
-            margin-bottom: 0.75rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
         }
         
-        .admission-item p {
-            font-size: 1rem;
-            color: var(--text-dark);
-            line-height: 1.7;
-        }
-        
-        .cta-box {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 3rem;
-            border-radius: 20px;
-            text-align: center;
-            margin-top: 4rem;
-        }
-        
-        .cta-box h3 {
-            font-size: 2rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
-        }
-        
-        .cta-box p {
-            font-size: 1.1rem;
+        /* 説明 */
+        .feature-description {
+            font-size: 0.95rem;
+            color: var(--text-gray);
+            line-height: 1.8;
             margin-bottom: 2rem;
-            opacity: 0.95;
+            flex-grow: 1;
         }
         
-        .cta-buttons {
-            display: flex;
+        /* リンク */
+        .feature-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--accent-gold);
+            text-decoration: none;
+            font-weight: 600;
+            padding: 0.75rem 2rem;
+            border: 2px solid var(--accent-gold);
+            border-radius: 50px;
+            transition: all 0.3s ease;
+        }
+        
+        .feature-link:hover {
+            background: linear-gradient(135deg, var(--accent-gold), var(--accent-beige));
+            color: white;
+            border-color: transparent;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+        }
+        
+        .feature-link.purple {
+            color: var(--accent-purple);
+            border-color: var(--accent-purple);
+        }
+        
+        .feature-link.purple:hover {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+        }
+        
+        .feature-link i {
+            transition: transform 0.3s ease;
+        }
+        
+        .feature-link:hover i {
+            transform: translateX(5px);
+        }
+        
+        /* ========== お知らせセクション ========== */
+        .news-section {
+            padding: 6rem 0;
+            background: white;
+        }
+        
+        .news-grid {
+            display: grid;
             gap: 1.5rem;
-            justify-content: center;
-            flex-wrap: wrap;
+            margin-bottom: 3rem;
         }
         
-        .cta-button {
-            padding: 1.2rem 2.5rem;
+        .news-item {
+            background: var(--bg-light);
+            border-radius: 15px;
+            padding: 1.5rem 2rem;
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            text-decoration: none;
+            color: var(--text-dark);
+        }
+        
+        .news-item:hover {
+            background: white;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+            transform: translateY(-3px);
+        }
+        
+        .news-date {
+            flex-shrink: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background: linear-gradient(135deg, var(--accent-gold), var(--accent-beige));
+            border-radius: 12px;
+            padding: 0.75rem 1rem;
+            min-width: 100px;
+            text-align: center;
+        }
+        
+        .news-year {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--primary-navy);
+            margin-bottom: 0.25rem;
+        }
+        
+        .news-day {
+            font-size: 1.5rem;
+            font-weight: 900;
+            color: var(--primary-navy);
+            line-height: 1;
+        }
+        
+        .news-content {
+            flex-grow: 1;
+        }
+        
+        .news-category {
+            display: inline-block;
+            background: var(--accent-blue);
+            color: white;
+            padding: 0.3rem 1rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+        
+        .news-category.emergency {
+            background: #e74c3c;
+        }
+        
+        .news-category.event {
+            background: #27ae60;
+        }
+        
+        .news-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--primary-navy);
+            margin: 0;
+        }
+        
+        .news-arrow {
+            flex-shrink: 0;
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, var(--accent-gold), var(--accent-beige));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary-navy);
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+        }
+        
+        .news-item:hover .news-arrow {
+            transform: translateX(5px);
+        }
+        
+        .news-cta {
+            text-align: center;
+        }
+        
+        .news-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            background: var(--primary-navy);
+            color: white;
+            padding: 1.2rem 3rem;
             border-radius: 50px;
             text-decoration: none;
             font-weight: 700;
             font-size: 1.1rem;
+            box-shadow: 0 8px 25px rgba(44, 62, 80, 0.3);
             transition: all 0.3s ease;
+        }
+        
+        .news-button:hover {
+            background: var(--secondary-navy);
+            transform: translateY(-3px);
+            box-shadow: 0 12px 35px rgba(44, 62, 80, 0.4);
+        }
+        
+        /* ========== Instagramセクション ========== */
+        .instagram-section {
+            padding: 6rem 0;
+            background: var(--bg-light);
+        }
+        
+        .instagram-container {
+            max-width: 900px;
+            margin: 0 auto 3rem;
+            border-radius: 20px;
+            overflow: hidden;
+        }
+        
+        .instagram-cta {
+            text-align: center;
+        }
+        
+        .instagram-button {
             display: inline-flex;
             align-items: center;
             gap: 0.75rem;
-        }
-        
-        .cta-button-white {
-            background: white;
-            color: var(--accent-purple);
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-        }
-        
-        .cta-button-white:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
-        }
-        
-        .cta-button-outline {
-            background: transparent;
+            background: linear-gradient(135deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
             color: white;
-            border: 2px solid white;
+            padding: 1.2rem 3rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.1rem;
+            box-shadow: 0 8px 25px rgba(188, 24, 136, 0.3);
+            transition: all 0.3s ease;
         }
         
-        .cta-button-outline:hover {
-            background: white;
-            color: var(--accent-purple);
+        .instagram-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 35px rgba(188, 24, 136, 0.4);
+        }
+        
+        .instagram-button i {
+            font-size: 1.5rem;
+        }
+        
+        /* ========== フッター ========== */
+        .footer {
+            background: var(--primary-navy);
+            color: white;
+            padding-top: 4rem;
+        }
+        
+        .footer-main {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem 3rem;
+            display: grid;
+            grid-template-columns: 2fr 1.5fr 1.5fr 1fr;
+            gap: 3rem;
+        }
+        
+        /* フッターロゴと情報 */
+        .footer-info {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+        
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+        
+        .footer-logo-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--accent-gold), var(--accent-beige));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            color: white;
+        }
+        
+        .footer-logo-text h3 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 0.2rem;
+        }
+        
+        .footer-logo-text p {
+            font-size: 0.85rem;
+            opacity: 0.8;
+        }
+        
+        .footer-tagline {
+            font-size: 0.95rem;
+            line-height: 1.8;
+            opacity: 0.9;
+        }
+        
+        .footer-contact-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+        
+        .footer-contact-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+        }
+        
+        .footer-contact-item i {
+            color: var(--accent-gold);
+            font-size: 1.2rem;
+            margin-top: 0.2rem;
+            flex-shrink: 0;
+        }
+        
+        .footer-contact-text {
+            flex-grow: 1;
+        }
+        
+        .footer-phone {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--accent-gold);
+            display: block;
+            margin-bottom: 0.25rem;
+        }
+        
+        .footer-phone-note {
+            font-size: 0.85rem;
+            opacity: 0.8;
+        }
+        
+        /* フッターリンク */
+        .footer-links h4 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .footer-links ul {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+        
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+            opacity: 0.8;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.95rem;
+        }
+        
+        .footer-links a:hover {
+            opacity: 1;
+            color: var(--accent-gold);
+            transform: translateX(5px);
+        }
+        
+        .footer-links a i {
+            font-size: 0.8rem;
+        }
+        
+        /* 診療時間 */
+        .footer-hours h4 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .hours-table {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        
+        .hours-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1px;
+            background: rgba(255, 255, 255, 0.1);
+        }
+        
+        .hours-label,
+        .hours-time {
+            padding: 0.75rem;
+            background: var(--primary-navy);
+            font-size: 0.9rem;
+        }
+        
+        .hours-label {
+            font-weight: 600;
+        }
+        
+        .hours-time {
+            text-align: right;
+            opacity: 0.9;
+        }
+        
+        .hours-note {
+            font-size: 0.85rem;
+            opacity: 0.7;
+            margin-top: 1rem;
+            line-height: 1.6;
+        }
+        
+        /* フッターSNS */
+        .footer-social h4 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+        
+        .social-link {
+            width: 50px;
+            height: 50px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            font-size: 1.5rem;
+            transition: all 0.3s ease;
+        }
+        
+        .social-link:hover {
+            background: var(--accent-gold);
+            transform: translateY(-5px);
+        }
+        
+        .social-link.instagram:hover {
+            background: linear-gradient(135deg, #f09433, #bc1888);
+        }
+        
+        /* コピーライト */
+        .footer-bottom {
+            background: rgba(0, 0, 0, 0.2);
+            padding: 1.5rem 2rem;
+            text-align: center;
+        }
+        
+        .footer-copyright {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+        
+        /* ========== レスポンシブ対応 ========== */
+        @media (max-width: 1200px) {
+            .hero-title {
+                font-size: 3rem;
+            }
+            
+            .hero-features {
+                gap: 2rem;
+            }
+            
+            .features-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .special-features-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .footer-main {
+                grid-template-columns: 1fr 1fr;
+            }
         }
         
         @media (max-width: 992px) {
-            .page-title {
+            .main-nav {
+                display: none;
+            }
+            
+            .hamburger {
+                display: flex;
+            }
+            
+            .hero {
+                height: 80vh;
+                min-height: 500px;
+            }
+            
+            .hero-title {
                 font-size: 2.5rem;
             }
             
-            .feature-grid {
-                grid-template-columns: 1fr;
+            .hero-subtitle {
+                font-size: 1.1rem;
             }
             
-            .admission-details {
-                grid-template-columns: 1fr;
-            }
-            
-            .test-header {
+            .hero-features {
                 flex-direction: column;
-                text-align: center;
+                gap: 1rem;
+                bottom: 2rem;
+            }
+            
+            .features-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            
+            .special-features-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .special-clinic-title {
+                font-size: 2rem;
+            }
+            
+            .footer-main {
+                grid-template-columns: 1fr;
+                gap: 3rem;
             }
         }
         
         @media (max-width: 768px) {
-            .page-hero {
-                padding: 8rem 0 4rem;
+            .header-top {
+                padding: 0.5rem 0;
             }
             
-            .page-title {
+            .header-contact {
+                flex-wrap: wrap;
+                gap: 0.5rem;
+            }
+            
+            .hospital-name-item {
+                width: 100%;
+                margin-right: 0;
+                margin-bottom: 0.3rem;
+            }
+            
+            .hospital-name-top {
+                font-size: 0.9rem;
+            }
+            
+            .contact-item {
+                font-size: 0.75rem;
+            }
+            
+            .phone-number {
+                font-size: 1.1rem;
+            }
+            
+            .satogaeri-link {
+                padding: 0.3rem 0.6rem;
+                font-size: 0.8rem;
+            }
+            
+            .logo-text h1 {
+                font-size: 1.2rem;
+            }
+            
+            .hero-title {
+                font-size: 2rem;
+                line-height: 1.3;
+            }
+            
+            .hero-subtitle {
+                font-size: 1rem;
+            }
+            
+            .hero-buttons {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .hero-button {
+                width: 100%;
+                justify-content: center;
+            }
+            
+            .hero-nav-button {
+                width: 40px;
+                height: 40px;
+                font-size: 1rem;
+            }
+            
+            .hero-prev {
+                left: 1rem;
+            }
+            
+            .hero-next {
+                right: 1rem;
+            }
+            
+            .section-title {
                 font-size: 2rem;
             }
             
-            .test-card {
-                padding: 2rem;
+            .feature-card {
+                padding: 2rem 1.5rem;
+            }
+            
+            .feature-icon {
+                width: 80px;
+                height: 80px;
+                font-size: 2.5rem;
+            }
+            
+            .feature-number {
+                font-size: 2.5rem;
+            }
+            
+            .feature-title {
+                font-size: 1.1rem;
+            }
+            
+            .special-clinic-section {
+                padding: 4rem 0;
+            }
+            
+            .special-clinic-title {
+                font-size: 1.8rem;
+            }
+            
+            .special-clinic-subtitle {
+                font-size: 1rem;
+            }
+            
+            .instagram-container {
+                margin-bottom: 2rem;
+            }
+            
+            .instagram-container iframe {
+                height: 500px;
+            }
+            
+            .instagram-button {
+                padding: 1rem 2rem;
+                font-size: 1rem;
+            }
+            
+            .news-item {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 1rem;
+            }
+            
+            .news-date {
+                min-width: 80px;
+            }
+            
+            .footer-phone {
+                font-size: 1.2rem;
             }
         }
     </style>
 </head>
 <body>
-    <!-- ヘッダー -->
+    <!-- ========== ヘッダー ========== -->
+        <!-- ========== ヘッダー ========== -->
     <header class="header">
+                        <!-- トップバー -->
+        <!-- トップバー -->
         <div class="header-top">
             <div class="header-top-content">
                 <div class="header-contact">
                     <div class="contact-item">
-                        <span style="font-weight: 700; color: #D4AF37; font-size: 0.95rem; letter-spacing: 0.05em; margin-right: 2rem;">福井愛育病院</span>
+                        <a href="index.html" style="font-weight: 700; color: #D4AF37; font-size: 0.95rem; letter-spacing: 0.05em; text-decoration: none;">福井愛育病院</a>
                     </div>
+                    <div class="contact-item" style="color: #D4AF37; font-size: 1.2rem; margin: 0 0.5rem;">|</div>
                     <div class="contact-item">
                         <i class="fas fa-phone-alt"></i>
                         <span class="phone-number">0776-54-5757</span>
                     </div>
+                    <div class="contact-item" style="color: #D4AF37; font-size: 1.2rem; margin: 0 0.5rem;">|</div>
                     <div class="contact-item">
                         <i class="fas fa-map-marker-alt"></i>
-                        <span>〒910-0833 福井市新保2丁目301</span>
+                        <span>〒910-0833 福井県福井市新保2丁目301</span>
                     </div>
-
+                    <div class="contact-item satogaeri-button-topbar">
+                        <a href="satogaeri.html" style="display: flex; align-items: center; gap: 0.4rem; color: white; text-decoration: none; padding: 0.4rem 0.8rem; background: linear-gradient(135deg, #F8BBD0, #F06292); border-radius: 20px; font-weight: 500; transition: all 0.3s ease;">
+                            <i class="fas fa-home"></i>
+                            <span>里帰り分娩</span>
+                        </a>
+                    </div>
                 </div>
                 <div class="header-departments">
                     <a href="obstetrics.html" style="color: white; text-decoration: none;">産婦人科</a>・<a href="pediatrics.html" style="color: white; text-decoration: none;">小児科</a>・<a href="pediatrics.html#allergy" style="color: white; text-decoration: none;">アレルギー科</a>・<a href="child-psychiatry.html" style="color: white; text-decoration: none;">児童精神科</a>
                 </div>
             </div>
         </div>
+        </div>
+                <div class="header-departments">
+                    <a href="obstetrics.html" style="color: white; text-decoration: none;">産婦人科</a>・<a href="pediatrics.html" style="color: white; text-decoration: none;">小児科</a>・<a href="pediatrics.html#allergy" style="color: white; text-decoration: none;">アレルギー科</a>・<a href="child-psychiatry.html" style="color: white; text-decoration: none;">児童精神科</a>
+                </div>
+            </div>
+        </div>
         
+        <!-- メインヘッダー -->
         <div class="header-main">
             <div class="header-main-content">
+                <!-- ロゴ -->
                 <a href="index.html" class="logo">
                     <div class="logo-image">
                         <img src="logo.jpg" alt="福井愛育病院ロゴ" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;">
@@ -394,15 +1497,17 @@
                     </div>
                 </a>
                 
+                <!-- ナビゲーション -->
                 <nav class="main-nav">
                     <ul class="nav-list">
-                        <li class="nav-item"><a href="index.html" class="nav-link">ホーム</a></li>
-                        <li class="nav-item"><a href="sleep-headache.html" class="nav-link">外来トップ</a></li>
-                        <li class="nav-item"><a href="sleep-headache-tests.html" class="nav-link">検査について</a></li>
-                        <li class="nav-item"><a href="sleep-headache-cost.html" class="nav-link">費用について</a></li>
-                        <li class="nav-item"><a href="sleep-headache-faq.html" class="nav-link">よくある質問</a></li>
+                        <li class="nav-item"><a href="index.html" class="nav-link">当院について</a></li>
+                        <li class="nav-item"><a href="obstetrics.html" class="nav-link">産婦人科</a></li>
+                        <li class="nav-item"><a href="pediatrics.html" class="nav-link">小児科</a></li>
+                        <li class="nav-item"><a href="sleep-headache.html" class="nav-link">ねむけと頭痛の外来</a></li>
+                        <li class="nav-item"><a href="chibihouse_reservation.html" class="nav-link">ちびっこハウス</a></li>
                     </ul>
                     
+                    <!-- CTAボタン -->
                     <div class="header-cta">
                         <a href="obstetrics.html" class="cta-button cta-primary">
                             <i class="fas fa-calendar-check"></i>
@@ -412,9 +1517,9 @@
                             <i class="fas fa-child"></i>
                             ちびっこハウス予約
                         </a>
-                    </div>
-                </nav>
+                    </div>                </nav>
                 
+                <!-- ハンバーガーメニュー -->
                 <button class="hamburger">
                     <span></span>
                     <span></span>
@@ -424,200 +1529,441 @@
         </div>
     </header>
     
-    <!-- ページヒーロー -->
-    <section class="page-hero">
-        <div class="page-hero-content">
-            <div class="breadcrumb">
-                <a href="index.html">ホーム</a> / 
-                <a href="sleep-headache.html">ねむけと頭痛の外来</a> / 
-                検査について
-            </div>
-            <h1 class="page-title">検査について</h1>
-            <p class="page-subtitle">精密な検査で、正確な診断を</p>
-        </div>
-    </section>
-    
-    <!-- PSG検査 -->
-    <section class="content-section">
-        <div class="section-container">
-            <div class="test-card">
-                <div class="test-header">
-                    <div class="test-icon">
-                        <i class="fas fa-bed"></i>
-                    </div>
-                    <div class="test-title-group">
-                        <h2>PSG（終夜睡眠ポリグラフィー）検査</h2>
-                        <p>睡眠中の詳細な生体情報を記録する精密検査</p>
+    <!-- ========== ヒーローセクション（スライドショー） ========== -->
+    <section class="hero">
+        <div class="hero-slides">
+            <!-- スライド1 -->
+            <div class="hero-slide active">
+                <div class="hero-background">
+                    <img src="images/hero-slide-1.jpg" alt="福井愛育病院メインビジュアル" class="hero-image">
+                </div>
+                <div class="hero-content">
+                    <h2 class="hero-title">大切なお子様とママの<br>こころとからだを守ります</h2>
+                    <p class="hero-subtitle">安心と信頼の医療で、新しい命の誕生をサポートします</p>
+                    <div class="hero-buttons">
+                        <a href="index.html" class="hero-button hero-button-primary">
+                            <i class="fas fa-info-circle"></i>
+                            初めての方へ
+                        </a>
+                        <a href="obstetrics.html" class="hero-button hero-button-secondary">
+                            <i class="fas fa-calendar-alt"></i>
+                            診療予約
+                        </a>
+                        <a href="#access" class="hero-button hero-button-secondary">
+                            <i class="fas fa-map-marked-alt"></i>
+                            アクセス
+                        </a>
                     </div>
                 </div>
-                
-                <div class="test-description">
-                    <p>
-                        PSG検査は、睡眠障害の原因や重症度を調べるための最も精密な検査です。頭や身体にセンサーを装着した状態で一晩お休みいただき、脳波、筋電図、呼吸、心拍数など、様々な生体情報を記録します。
+            </div>
+            
+            <!-- スライド2 -->
+            <div class="hero-slide">
+                <div class="hero-background">
+                    <img src="images/hero-slide-2.jpg" alt="産婦人科" class="hero-image">
+                </div>
+                <div class="hero-content">
+                    <h2 class="hero-title">年間1,200件以上の<br>分娩実績</h2>
+                    <p class="hero-subtitle">経験豊富なスタッフが、大切な赤ちゃんの誕生に携わらせて頂きます</p>
+                    <div class="hero-buttons">
+                        <a href="obstetrics.html" class="hero-button hero-button-primary">
+                            <i class="fas fa-baby"></i>
+                            産婦人科について
+                        </a>
+                        <a href="obstetrics.html" class="hero-button hero-button-secondary">
+                            <i class="fas fa-calendar-check"></i>
+                            診療予約
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- スライド3 -->
+            <div class="hero-slide">
+                <div class="hero-background">
+                    <img src="images/hero-slide-3.jpg" alt="小児科・NICU" class="hero-image">
+                </div>
+                <div class="hero-content">
+                    <h2 class="hero-title">NICU完備の<br>安心の医療体制</h2>
+                    <p class="hero-subtitle">産婦人科と小児科の連携で、母子ともに安心してお任せください</p>
+                    <div class="hero-buttons">
+                        <a href="pediatrics.html" class="hero-button hero-button-primary">
+                            <i class="fas fa-hospital"></i>
+                            小児科・NICU
+                        </a>
+                        <a href="pediatrics.html#nicu" class="hero-button hero-button-secondary">
+                            <i class="fas fa-heartbeat"></i>
+                            NICUについて
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- スライド4 -->
+            <div class="hero-slide">
+                <div class="hero-background">
+                    <img src="images/hero-slide-4.jpg" alt="ちびっこハウス" class="hero-image">
+                </div>
+                <div class="hero-content">
+                    <h2 class="hero-title">24時間365日<br>救急対応</h2>
+                    <p class="hero-subtitle">夜間や休日の急な病気にも、いつでも対応可能です</p>
+                    <div class="hero-buttons">
+                        <a href="pediatrics.html" class="hero-button hero-button-primary">
+                            <i class="fas fa-ambulance"></i>
+                            救急外来について
+                        </a>
+                        <a href="chibihouse_reservation.html" class="hero-button hero-button-secondary">
+                            <i class="fas fa-child"></i>
+                            ちびっこハウス
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- スライド5 -->
+            <div class="hero-slide">
+                <div class="hero-background">
+                    <img src="images/hero-slide-5.jpg" alt="ねむけと頭痛の外来" class="hero-image">
+                </div>
+                <div class="hero-content">
+                    <h2 class="hero-title">全国初<br>ねむけと頭痛の外来</h2>
+                    <p class="hero-subtitle">小児科専門医 × 頭痛専門医 × 睡眠専門医による専門診療</p>
+                    <div class="hero-buttons">
+                        <a href="sleep-headache.html" class="hero-button hero-button-primary">
+                            <i class="fas fa-brain"></i>
+                            詳しく見る
+                        </a>
+                        <a href="obstetrics.html" class="hero-button hero-button-secondary">
+                            <i class="fas fa-calendar-alt"></i>
+                            診療予約
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 信頼マーカー（全スライド共通・固定） -->
+        <div class="hero-features">
+            <div class="hero-feature-item">
+                <div class="hero-feature-icon">
+                    <i class="fas fa-baby"></i>
+                </div>
+                <div class="hero-feature-text">
+                    <strong>1,200件+</strong>
+                    <span>年間分娩実績</span>
+                </div>
+            </div>
+            <div class="hero-feature-item">
+                <div class="hero-feature-icon">
+                    <i class="fas fa-clock"></i>
+                </div>
+                <div class="hero-feature-text">
+                    <strong>24時間365日</strong>
+                    <span>救急対応</span>
+                </div>
+            </div>
+            <div class="hero-feature-item">
+                <div class="hero-feature-icon">
+                    <i class="fas fa-hospital"></i>
+                </div>
+                <div class="hero-feature-text">
+                    <strong>NICU完備</strong>
+                    <span>安心の医療体制</span>
+                </div>
+            </div>
+        </div>
+        
+        <!-- コントロールドット（全スライド共通・固定） -->
+        <div class="hero-controls">
+            <span class="hero-control-dot active" data-slide="0"></span>
+            <span class="hero-control-dot" data-slide="1"></span>
+            <span class="hero-control-dot" data-slide="2"></span>
+            <span class="hero-control-dot" data-slide="3"></span>
+            <span class="hero-control-dot" data-slide="4"></span>
+        </div>
+        
+        <!-- 前後ボタン（全スライド共通・固定） -->
+        <button class="hero-nav-button hero-prev">
+            <i class="fas fa-chevron-left"></i>
+        </button>
+        <button class="hero-nav-button hero-next">
+            <i class="fas fa-chevron-right"></i>
+        </button>
+    </section>
+    
+    <!-- ========== 特別セクション:ねむけと頭痛の外来 ========== -->
+    <section class="special-clinic-section">
+        <div class="special-clinic-content">
+            <div style="text-align: center;">
+                <span class="special-badge">🏆 全国初</span>
+                <h2 class="special-clinic-title">ねむけと頭痛の外来</h2>
+                <p class="special-clinic-subtitle">小児科専門医 × 頭痛専門医 × 睡眠専門医による専門診療</p>
+            </div>
+            
+            <div class="special-features-grid">
+                <div class="special-feature-item">
+                    <div class="special-feature-icon">
+                        🧠
+                    </div>
+                    <h3 class="special-feature-title">頭痛専門診療</h3>
+                    <p class="special-feature-text">
+                        片頭痛、緊張性頭痛など、お子様から大人まで幅広く対応。専門的な診断と治療を提供します。
                     </p>
                 </div>
                 
-                <div class="feature-grid">
-                    <div class="feature-item">
-                        <h4><i class="fas fa-brain"></i> 脳波の測定</h4>
-                        <p>睡眠の深さや段階、覚醒の状態を詳しく分析します。</p>
+                <div class="special-feature-item">
+                    <div class="special-feature-icon">
+                        😴
                     </div>
-                    <div class="feature-item">
-                        <h4><i class="fas fa-lungs"></i> 呼吸の記録</h4>
-                        <p>睡眠中の呼吸状態を確認し、無呼吸の有無を調べます。</p>
-                    </div>
-                    <div class="feature-item">
-                        <h4><i class="fas fa-heartbeat"></i> 心拍・酸素濃度</h4>
-                        <p>心拍数や血中酸素濃度の変動を連続的に測定します。</p>
-                    </div>
-                    <div class="feature-item">
-                        <h4><i class="fas fa-walking"></i> 身体の動き</h4>
-                        <p>手足の動きや寝返りなど、睡眠中の行動を記録します。</p>
-                    </div>
+                    <h3 class="special-feature-title">睡眠障害診療</h3>
+                    <p class="special-feature-text">
+                        日中の強い眠気、睡眠の不調、なかなか眠れないなど、睡眠に関するお悩みをサポートします。
+                    </p>
                 </div>
                 
-                <div class="info-box">
-                    <h3><i class="fas fa-check-circle"></i> PSG検査でわかること</h3>
-                    <ul>
-                        <li>睡眠の質や構造（深い睡眠がとれているか）</li>
-                        <li>睡眠時無呼吸症候群の有無</li>
-                        <li>周期性四肢運動障害</li>
-                        <li>レム睡眠行動障害</li>
-                        <li>ナルコレプシーの診断に必要な睡眠構造</li>
-                    </ul>
+                <div class="special-feature-item">
+                    <div class="special-feature-icon">
+                        🔬
+                    </div>
+                    <h3 class="special-feature-title">精密睡眠解析</h3>
+                    <p class="special-feature-text">
+                        終夜睡眠ポリグラフィー（PSG）、反復睡眠潜時試験（MSLT）による詳細な検査が可能です。
+                    </p>
                 </div>
+            </div>
+            
+            <div class="special-clinic-cta">
+                <a href="sleep-headache.html" class="special-cta-button">
+                    <i class="fas fa-info-circle"></i>
+                    詳しく見る
+                </a>
             </div>
         </div>
     </section>
     
-    <!-- MSLT検査 -->
-    <section class="content-section alt-bg">
+    <!-- ========== 4つの特徴セクション ========== -->
+    <section class="features-section">
         <div class="section-container">
-            <div class="test-card">
-                <div class="test-header">
-                    <div class="test-icon">
+            <!-- セクションヘッダー -->
+            <div class="section-header">
+                <h2 class="section-title">
+                    福井愛育病院の<span class="title-highlight">4つの特徴</span>
+                </h2>
+                <p class="section-subtitle">
+                    安心して出産・育児に臨んでいただける環境を整えています
+                </p>
+            </div>
+            
+            <!-- 特徴カードグリッド -->
+            <div class="features-grid">
+                <!-- 特徴1：年間1,200件以上の分娩実績 -->
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-baby"></i>
+                    </div>
+                    <div class="feature-number">1,200<span class="feature-unit">件+</span></div>
+                    <h3 class="feature-title">年間1,200件以上の分娩実績</h3>
+                    <p class="feature-description">
+                        経験豊富なスタッフが、大切な赤ちゃんの誕生に携わらせて頂きます。
+                    </p>
+                    <a href="obstetrics.html" class="feature-link">
+                        もっと詳しく
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+                
+                <!-- 特徴2：チーム医療でサポート -->
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-hospital"></i>
+                    </div>
+                    <div class="feature-number">NICU</div>
+                    <h3 class="feature-title">チーム医療でサポート</h3>
+                    <p class="feature-description">
+                        NICUや小児科併設で、安心して出産にのぞんで頂けます。
+                    </p>
+                    <a href="pediatrics.html#nicu" class="feature-link">
+                        もっと詳しく
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+                
+                <!-- 特徴3：24時間365日対応 -->
+                <div class="feature-card">
+                    <div class="feature-icon">
                         <i class="fas fa-clock"></i>
                     </div>
-                    <div class="test-title-group">
-                        <h2>MSLT（反復睡眠潜時試験）</h2>
-                        <p>日中の眠気を客観的に測定する検査</p>
-                    </div>
-                </div>
-                
-                <div class="test-description">
-                    <p>
-                        MSLT検査は、日中の眠気の程度を客観的に評価する検査です。PSG検査の翌日に、2時間おきに計5回、暗い静かな部屋で20分間横になっていただき、どのくらい早く眠りに入るかを測定します。
+                    <div class="feature-number">24/365</div>
+                    <h3 class="feature-title">24時間365日対応</h3>
+                    <p class="feature-description">
+                        夜間や休日に体調を崩した場合にも、いつでも対応可能です。
                     </p>
+                    <a href="pediatrics.html" class="feature-link">
+                        もっと詳しく
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
                 </div>
                 
-                <div class="feature-grid">
-                    <div class="feature-item">
-                        <h4><i class="fas fa-stopwatch"></i> 睡眠潜時の測定</h4>
-                        <p>横になってから眠りに入るまでの時間を正確に測定します。</p>
+                <!-- 特徴4：全国初のねむけと頭痛の外来 -->
+                <div class="feature-card">
+                    <div class="feature-icon purple">
+                        <i class="fas fa-brain"></i>
                     </div>
-                    <div class="feature-item">
-                        <h4><i class="fas fa-chart-line"></i> 客観的評価</h4>
-                        <p>主観的な「眠い」という感覚を、数値で客観的に評価できます。</p>
-                    </div>
-                    <div class="feature-item">
-                        <h4><i class="fas fa-bed"></i> レム睡眠の確認</h4>
-                        <p>入眠時にレム睡眠が出現するかを確認します（ナルコレプシーの診断に重要）。</p>
-                    </div>
-                    <div class="feature-item">
-                        <h4><i class="fas fa-clipboard-check"></i> 診断の確定</h4>
-                        <p>ナルコレプシーや特発性過眠症の確定診断に必須の検査です。</p>
-                    </div>
-                </div>
-                
-                <div class="info-box">
-                    <h3><i class="fas fa-info-circle"></i> MSLT検査が必要な方</h3>
-                    <ul>
-                        <li>日中に強い眠気があり、日常生活に支障をきたしている</li>
-                        <li>ナルコレプシーが疑われる</li>
-                        <li>特発性過眠症が疑われる</li>
-                        <li>起立性調節障害の治療で改善しない眠気がある</li>
-                        <li>睡眠時間は十分なのに日中眠い</li>
-                    </ul>
+                    <div class="feature-number purple-gradient">全国初</div>
+                    <h3 class="feature-title">ねむけと頭痛の外来</h3>
+                    <p class="feature-description">
+                        頭痛専門医・睡眠専門医による専門的な診療を提供します。
+                    </p>
+                    <a href="sleep-headache.html" class="feature-link purple">
+                        もっと詳しく
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
                 </div>
             </div>
         </div>
     </section>
     
-    <!-- 入院について -->
-    <section class="content-section">
+    <!-- ========== お知らせセクション ========== -->
+    <section class="news-section">
         <div class="section-container">
-            <div class="admission-info">
-                <h3><i class="fas fa-hospital"></i> 検査入院について</h3>
-                <p style="font-size: 1.05rem; margin-bottom: 2rem; line-height: 1.8;">
-                    PSG・MSLT検査は、<strong>1泊2日の入院</strong>で実施します。当院は小児科・産婦人科の病院ですので、お子様から青年期の方まで、安心して検査を受けていただける環境を整えています。
+            <!-- セクションヘッダー -->
+            <div class="section-header">
+                <h2 class="section-title">
+                    <i class="fas fa-bullhorn"></i>
+                    最新<span class="title-highlight">お知らせ</span>
+                </h2>
+                <p class="section-subtitle">
+                    病院からの重要なお知らせをお届けします
                 </p>
+            </div>
+            
+            <!-- お知らせリスト -->
+            <div class="news-grid">
+                <!-- お知らせ1 -->
+                <a href="https://www.fab.or.jp/news/2025-10-10-influ.html" class="news-item">
+                    <div class="news-date">
+                        <span class="news-year">2025</span>
+                        <span class="news-day">10/10</span>
+                    </div>
+                    <div class="news-content">
+                        <span class="news-category event">イベント</span>
+                        <h3 class="news-title">インフルエンザワクチン接種のお知らせ</h3>
+                    </div>
+                    <div class="news-arrow">
+                        <i class="fas fa-chevron-right"></i>
+                    </div>
+                </a>
                 
-                <div class="admission-details">
-                    <div class="admission-item">
-                        <h4><i class="fas fa-calendar-day"></i> 入院期間</h4>
-                        <p>1泊2日（検査予約日から翌日まで）</p>
+                <!-- お知らせ2 -->
+                <a href="https://www.fab.or.jp/news/2025-10-01-hospitalfee.html" class="news-item">
+                    <div class="news-date">
+                        <span class="news-year">2025</span>
+                        <span class="news-day">10/01</span>
                     </div>
-                    <div class="admission-item">
-                        <h4><i class="fas fa-bed"></i> 病室</h4>
-                        <p>個室または相部屋をご用意。TV、冷蔵庫、シャワー、トイレ完備。</p>
+                    <div class="news-content">
+                        <span class="news-category">お知らせ</span>
+                        <h3 class="news-title">分娩費用の改定について</h3>
                     </div>
-                    <div class="admission-item">
-                        <h4><i class="fas fa-utensils"></i> お食事</h4>
-                        <p>入院中のお食事を提供します。</p>
+                    <div class="news-arrow">
+                        <i class="fas fa-chevron-right"></i>
                     </div>
-                    <div class="admission-item">
-                        <h4><i class="fas fa-shield-alt"></i> 安心の環境</h4>
-                        <p>小児科併設の病院ですので、お子様も安心して検査を受けられます。</p>
-                    </div>
-                </div>
+                </a>
                 
-                <div class="info-box" style="margin-top: 2rem; background: white;">
-                    <h3><i class="fas fa-suitcase"></i> 検査時の持ち物</h3>
-                    <ul>
-                        <li>診察券、保険証、各種医療証</li>
-                        <li>現在内服中のお薬</li>
-                        <li>タオル、バスタオル</li>
-                        <li>ゆったりした服装（襟首と手足首がしぼられていないもの）</li>
-                        <li>お箸、コップ、歯ブラシセット</li>
-                        <li>シャンプー、ボディーソープ</li>
-                        <li>スリッパ</li>
-                        <li>普段お使いの枕や小物（ぬいぐるみなど）</li>
-                    </ul>
-                    <p style="margin-top: 1rem; font-weight: 600; color: var(--accent-gold);">
-                        <i class="fas fa-exclamation-triangle"></i> 注意：付け爪やネイル、カフェイン入り飲食物はお控えください
-                    </p>
-                </div>
+                <!-- お知らせ3 -->
+                <a href="https://www.fab.or.jp/news/2025-08-20-card.html" class="news-item">
+                    <div class="news-date">
+                        <span class="news-year">2025</span>
+                        <span class="news-day">08/20</span>
+                    </div>
+                    <div class="news-content">
+                        <span class="news-category emergency">重要</span>
+                        <h3 class="news-title">保険証確認のお願い</h3>
+                    </div>
+                    <div class="news-arrow">
+                        <i class="fas fa-chevron-right"></i>
+                    </div>
+                </a>
+                
+                <!-- お知らせ4 -->
+                <a href="https://www.fab.or.jp/news/2025-02-01-creditcard.html" class="news-item">
+                    <div class="news-date">
+                        <span class="news-year">2025</span>
+                        <span class="news-day">02/01</span>
+                    </div>
+                    <div class="news-content">
+                        <span class="news-category">お知らせ</span>
+                        <h3 class="news-title">クレジットカード支払いサイン廃止について</h3>
+                    </div>
+                    <div class="news-arrow">
+                        <i class="fas fa-chevron-right"></i>
+                    </div>
+                </a>
+                
+                <!-- お知らせ5 -->
+                <a href="https://www.fab.or.jp/news/2024-12-10-kenshin.html" class="news-item">
+                    <div class="news-date">
+                        <span class="news-year">2024</span>
+                        <span class="news-day">12/10</span>
+                    </div>
+                    <div class="news-content">
+                        <span class="news-category event">イベント</span>
+                        <h3 class="news-title">年末子宮頸がん検診のお知らせ</h3>
+                    </div>
+                    <div class="news-arrow">
+                        <i class="fas fa-chevron-right"></i>
+                    </div>
+                </a>
+            </div>
+            
+            <!-- すべてのお知らせリンク -->
+            <div class="news-cta">
+                <a href="https://www.fab.or.jp/news/" class="news-button">
+                    <i class="fas fa-list"></i>
+                    すべてのお知らせを見る
+                </a>
             </div>
         </div>
     </section>
     
-    <!-- CTA -->
-    <section class="content-section alt-bg">
+    <!-- ========== Instagramセクション ========== -->
+    <section class="instagram-section">
         <div class="section-container">
-            <div class="cta-box">
-                <h3>検査についてのご相談・ご予約</h3>
-                <p>検査が必要かどうかは、まず外来で医師が判断します。<br>お気軽にご相談ください。</p>
-                <div class="cta-buttons">
-                    <a href="tel:0776545757" class="cta-button cta-button-white">
-                        <i class="fas fa-phone-alt"></i>
-                        電話で相談
-                    </a>
-                    <a href="sleep-headache.html" class="cta-button cta-button-outline">
-                        <i class="fas fa-arrow-left"></i>
-                        外来トップへ
-                    </a>
-                    <a href="sleep-headache-cost.html" class="cta-button cta-button-outline">
-                        <i class="fas fa-yen-sign"></i>
-                        費用について
-                    </a>
-                </div>
+            <!-- セクションヘッダー -->
+            <div class="section-header">
+                <h2 class="section-title">
+                    <i class="fab fa-instagram"></i>
+                    Instagram <span class="title-highlight">更新中</span>
+                </h2>
+                <p class="section-subtitle">病院の日常や最新情報をお届けしています</p>
+            </div>
+            
+            <!-- Instagramフィード埋め込み -->
+            <div class="instagram-container">
+                <iframe 
+                    src="https://www.instagram.com/fukui_aiiku_hospital/embed" 
+                    width="100%" 
+                    height="600" 
+                    frameborder="0" 
+                    scrolling="no" 
+                    allowtransparency="true"
+                    style="border: none; overflow: hidden; border-radius: 20px; box-shadow: 0 5px 20px rgba(0,0,0,0.1);">
+                </iframe>
+            </div>
+            
+            <!-- Instagram公式リンク -->
+            <div class="instagram-cta">
+                <a href="https://www.instagram.com/fukui_aiiku_hospital/" target="_blank" rel="noopener noreferrer" class="instagram-button">
+                    <i class="fab fa-instagram"></i>
+                    Instagramで見る
+                </a>
             </div>
         </div>
     </section>
     
-    <!-- フッター -->
+    <!-- ========== フッター ========== -->
     <footer class="footer">
         <div class="footer-main">
+            <!-- 病院情報 -->
             <div class="footer-info">
                 <div class="footer-logo">
                     <div class="footer-logo-icon">
@@ -645,9 +1991,16 @@
                             <p>〒910-0833<br>福井県福井市新保2丁目301</p>
                         </div>
                     </div>
+                    <div class="footer-contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <div class="footer-contact-text">
+                            <p><a href="/cdn-cgi/l/email-protection#fa93949c95ba9c9b98d49588d4908a" style="color: white; text-decoration: none;"><span class="__cf_email__" data-cfemail="21484f474e614740430f4e530f4b51">[email&#160;protected]</span></a></p>
+                        </div>
+                    </div>
                 </div>
             </div>
             
+            <!-- 診療科・サービス -->
             <div class="footer-links">
                 <h4>診療科・サービス</h4>
                 <ul>
@@ -656,19 +2009,26 @@
                     <li><a href="sleep-headache.html"><i class="fas fa-chevron-right"></i> ねむけと頭痛の外来</a></li>
                     <li><a href="chibihouse_reservation.html"><i class="fas fa-chevron-right"></i> ちびっこハウス</a></li>
                     <li><a href="pediatrics.html#nicu"><i class="fas fa-chevron-right"></i> NICU</a></li>
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> 各種教室</a></li>
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> 子育てサポート</a></li>
                 </ul>
             </div>
             
+            <!-- 病院について -->
             <div class="footer-links">
                 <h4>病院について</h4>
                 <ul>
-                    <li><a href="about.html"><i class="fas fa-chevron-right"></i> 当院について</a></li>
+                    <li><a href="index.html"><i class="fas fa-chevron-right"></i> 当院について</a></li>
+                    <li><a href="index.html"><i class="fas fa-chevron-right"></i> 院長ごあいさつ</a></li>
                     <li><a href="index.html"><i class="fas fa-chevron-right"></i> お知らせ</a></li>
-                    <li><a href="about.html"><i class="fas fa-chevron-right"></i> アクセス</a></li>
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> 採用情報</a></li>
+                    <li><a href="index.html"><i class="fas fa-chevron-right"></i> アクセス</a></li>
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> プライバシーポリシー</a></li>
                     <li><a href="index.html"><i class="fas fa-chevron-right"></i> お問い合わせ</a></li>
                 </ul>
             </div>
             
+            <!-- 診療時間・SNS -->
             <div class="footer-hours">
                 <h4>診療時間</h4>
                 <div class="hours-table">
@@ -702,6 +2062,7 @@
             </div>
         </div>
         
+        <!-- コピーライト -->
         <div class="footer-bottom">
             <p class="footer-copyright">
                 &copy; 2025 福井愛育病院 Fukui Aiiku Hospital. All Rights Reserved.
@@ -709,7 +2070,9 @@
         </div>
     </footer>
     
-    <script>
+    <!-- ========== JavaScript ========== -->
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+        // ========== ヘッダースクロール効果 ========== 
         window.addEventListener('scroll', function() {
             const header = document.querySelector('.header');
             if (window.scrollY > 50) {
@@ -718,6 +2081,88 @@
                 header.classList.remove('scrolled');
             }
         });
+        
+        // ========== スライドショー ========== 
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.hero-slide');
+        const dots = document.querySelectorAll('.hero-control-dot');
+        const totalSlides = slides.length;
+        let slideInterval;
+        
+        // スライド表示
+        function showSlide(index) {
+            // インデックス調整
+            if (index >= totalSlides) {
+                currentSlide = 0;
+            } else if (index < 0) {
+                currentSlide = totalSlides - 1;
+            } else {
+                currentSlide = index;
+            }
+            
+            // 全スライドを非表示
+            slides.forEach(slide => {
+                slide.classList.remove('active');
+            });
+            
+            // 全ドットを非アクティブ
+            dots.forEach(dot => {
+                dot.classList.remove('active');
+            });
+            
+            // 現在のスライドとドットをアクティブ
+            slides[currentSlide].classList.add('active');
+            dots[currentSlide].classList.add('active');
+        }
+        
+        // 次のスライド
+        function nextSlide() {
+            showSlide(currentSlide + 1);
+        }
+        
+        // 前のスライド
+        function prevSlide() {
+            showSlide(currentSlide - 1);
+        }
+        
+        // 自動再生開始
+        function startAutoplay() {
+            slideInterval = setInterval(nextSlide, 6000);
+        }
+        
+        // 自動再生停止
+        function stopAutoplay() {
+            clearInterval(slideInterval);
+        }
+        
+        // ドットクリック
+        dots.forEach((dot, index) => {
+            dot.addEventListener('click', () => {
+                showSlide(index);
+                stopAutoplay();
+                startAutoplay();
+            });
+        });
+        
+        // 前後ボタン
+        document.querySelector('.hero-prev').addEventListener('click', () => {
+            prevSlide();
+            stopAutoplay();
+            startAutoplay();
+        });
+        
+        document.querySelector('.hero-next').addEventListener('click', () => {
+            nextSlide();
+            stopAutoplay();
+            startAutoplay();
+        });
+        
+        // ホバーで一時停止
+        
+        // キーボード操作
+        
+        // 自動再生開始
+        startAutoplay();
     </script>
 </body>
 </html>
