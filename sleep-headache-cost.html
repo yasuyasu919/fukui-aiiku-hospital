@@ -3,124 +3,441 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>睡眠・頭痛外来の費用 | 福井愛育病院</title>
+    <title>費用について | ねむけと頭痛の外来 | 福井愛育病院</title>
     
-    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
-    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700;900&family=Noto+Serif+JP:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
     
     <style>
-        :root {
-            --primary-navy: #2C3E50;
-            --accent-gold: #D4AF37;
+        .page-hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 10rem 0 6rem;
+            margin-top: 140px;
+            position: relative;
+            overflow: hidden;
         }
         
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+        .page-hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 600px;
+            height: 600px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 50%;
         }
         
-        body {
-            font-family: 'Noto Sans JP', sans-serif;
-            line-height: 1.8;
-        }
-        
-        /* トップバー */
-        .header-top {
-            background: var(--primary-navy);
-            padding: 0.8rem 0;
-            border-bottom: 3px solid var(--accent-gold);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-        }
-        
-        .header-top-content {
+        .page-hero-content {
             max-width: 1400px;
             margin: 0 auto;
             padding: 0 2rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 1rem;
+            position: relative;
+            z-index: 1;
+            text-align: center;
         }
         
-        .header-contact {
-            display: flex;
-            gap: 1.5rem;
-            align-items: center;
-        }
-        
-        .contact-item {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            color: white;
+        .breadcrumb {
+            margin-bottom: 2rem;
             font-size: 0.9rem;
+            opacity: 0.9;
         }
         
-        .phone-number {
-            font-weight: 700;
-            color: var(--accent-gold);
-            font-size: 1.1rem;
-        }
-        
-        .header-departments {
-            display: flex;
-            gap: 0.5rem;
-            font-size: 0.9rem;
-        }
-        
-        .header-departments a {
+        .breadcrumb a {
             color: white;
             text-decoration: none;
+            transition: opacity 0.3s;
         }
         
-        .header-departments a:hover {
+        .breadcrumb a:hover {
+            opacity: 0.7;
+        }
+        
+        .page-title {
+            font-size: 3rem;
+            font-weight: 900;
+            margin-bottom: 1rem;
+            line-height: 1.3;
+        }
+        
+        .page-subtitle {
+            font-size: 1.3rem;
+            opacity: 0.95;
+        }
+        
+        .content-section {
+            padding: 6rem 0;
+            background: white;
+        }
+        
+        .content-section.alt-bg {
+            background: var(--bg-light);
+        }
+        
+        .section-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        .cost-card {
+            background: white;
+            border-radius: 20px;
+            padding: 3rem;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+            margin-bottom: 3rem;
+        }
+        
+        .cost-header {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 3px solid var(--accent-purple);
+        }
+        
+        .cost-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            color: white;
+            flex-shrink: 0;
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+        }
+        
+        .cost-title h2 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary-navy);
+            margin-bottom: 0.5rem;
+        }
+        
+        .cost-title p {
+            font-size: 1rem;
+            color: var(--text-gray);
+        }
+        
+        .cost-table {
+            background: var(--bg-light);
+            border-radius: 15px;
+            overflow: hidden;
+            margin: 2rem 0;
+        }
+        
+        .cost-row {
+            display: grid;
+            grid-template-columns: 2fr 3fr 1.5fr;
+            gap: 1px;
+            background: white;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        
+        .cost-row:last-child {
+            border-bottom: none;
+        }
+        
+        .cost-row.header {
+            background: var(--primary-navy);
+            color: white;
+            font-weight: 700;
+        }
+        
+        .cost-cell {
+            padding: 1.5rem;
+            background: white;
+        }
+        
+        .cost-row.header .cost-cell {
+            background: var(--primary-navy);
+        }
+        
+        .cost-row.highlight {
+            background: linear-gradient(135deg, #f0f4ff 0%, #e8edff 100%);
+        }
+        
+        .cost-row.highlight .cost-cell {
+            background: linear-gradient(135deg, #f0f4ff 0%, #e8edff 100%);
+            font-weight: 600;
+        }
+        
+        .price-highlight {
+            font-size: 1.8rem;
+            font-weight: 900;
+            color: var(--accent-purple);
+        }
+        
+        .price-note {
+            font-size: 0.9rem;
+            color: var(--text-gray);
+            margin-top: 0.5rem;
+        }
+        
+        .alert-box {
+            background: linear-gradient(135deg, #fff5e6 0%, #ffe6cc 100%);
+            border-left: 5px solid var(--accent-gold);
+            padding: 2rem;
+            border-radius: 15px;
+            margin: 2rem 0;
+        }
+        
+        .alert-box h3 {
+            color: var(--primary-navy);
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+        
+        .alert-box h3 i {
             color: var(--accent-gold);
+            font-size: 1.5rem;
         }
         
-        #satogaeri-button { display: none !important; }
+        .alert-box p, .alert-box ul {
+            font-size: 1.05rem;
+            line-height: 1.8;
+            color: var(--text-dark);
+        }
+        
+        .alert-box ul {
+            margin-top: 1rem;
+            padding-left: 2rem;
+        }
+        
+        .alert-box ul li {
+            margin: 0.75rem 0;
+        }
+        
+        .info-box {
+            background: linear-gradient(135deg, #e8f4f8 0%, #d4e8f4 100%);
+            border-left: 5px solid var(--accent-blue);
+            padding: 2rem;
+            border-radius: 15px;
+            margin: 2rem 0;
+        }
+        
+        .info-box h3 {
+            color: var(--primary-navy);
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+        
+        .info-box h3 i {
+            color: var(--accent-blue);
+            font-size: 1.5rem;
+        }
+        
+        .payment-methods {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .payment-item {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 3px 15px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+        }
+        
+        .payment-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        }
+        
+        .payment-item i {
+            font-size: 3rem;
+            color: var(--accent-purple);
+            margin-bottom: 1rem;
+        }
+        
+        .payment-item h4 {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--primary-navy);
+            margin-bottom: 0.5rem;
+        }
+        
+        .payment-item p {
+            font-size: 0.95rem;
+            color: var(--text-gray);
+            line-height: 1.6;
+        }
+        
+        .cta-box {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 3rem;
+            border-radius: 20px;
+            text-align: center;
+            margin-top: 4rem;
+        }
+        
+        .cta-box h3 {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+        
+        .cta-box p {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+        }
+        
+        .cta-buttons {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .cta-button {
+            padding: 1.2rem 2.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+        
+        .cta-button-white {
+            background: white;
+            color: var(--accent-purple);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .cta-button-white:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+        }
+        
+        .cta-button-outline {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+        
+        .cta-button-outline:hover {
+            background: white;
+            color: var(--accent-purple);
+        }
+        
+        @media (max-width: 992px) {
+            .cost-row {
+                grid-template-columns: 1fr;
+            }
+            
+            .cost-row.header {
+                display: none;
+            }
+            
+            .cost-cell::before {
+                content: attr(data-label);
+                font-weight: 700;
+                display: block;
+                margin-bottom: 0.5rem;
+                color: var(--primary-navy);
+            }
+            
+            .payment-methods {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .page-hero {
+                padding: 8rem 0 4rem;
+            }
+            
+            .page-title {
+                font-size: 2rem;
+            }
+            
+            .cost-card {
+                padding: 2rem;
+            }
+            
+            .cost-header {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
     </style>
+
+<style>
+/* 元のヘッダーを非表示 */
+.top-bar,
+.header-top:not(.unified-header-top),
+.main-nav {
+    display: none !important;
+}
+
+/* 統一ヘッダーのレスポンシブ対応 */
+@media (max-width: 768px) {
+    .unified-header-top > div {
+        flex-direction: column;
+        gap: 0.8rem !important;
+    }
+}
+</style>
+
 </head>
 <body>
-    <!-- トップバー -->
-    <div class="header-top">
-        <div class="header-top-content">
-            <div class="header-contact">
-                <div class="contact-item">
+    <!-- 統一トップバー -->
+    <div class="unified-header-top" style="background: #2C3E50; padding: 0.8rem 0; border-bottom: 3px solid #D4AF37; position: sticky; top: 0; z-index: 1001;">
+        <div style="max-width: 1400px; margin: 0 auto; padding: 0 2rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
+            <div style="display: flex; gap: 1.5rem; align-items: center;">
+                <div style="display: flex; align-items: center; gap: 0.5rem; color: white; font-size: 0.9rem;">
                     <span style="font-weight: 700; color: #D4AF37; font-size: 0.95rem;">福井愛育病院</span>
                 </div>
-                <div class="contact-item" style="color: #D4AF37; font-size: 1.2rem; margin: 0 0.5rem;">|</div>
-                <div class="contact-item">
+                <div style="color: #D4AF37; font-size: 1.2rem; margin: 0 0.5rem;">|</div>
+                <div style="display: flex; align-items: center; gap: 0.5rem; color: white; font-size: 0.9rem;">
                     <i class="fas fa-phone-alt"></i>
-                    <span class="phone-number">0776-54-5757</span>
+                    <span style="font-weight: 700; color: #D4AF37; font-size: 1.1rem;">0776-54-5757</span>
                 </div>
-                <div class="contact-item">
+                <div style="display: flex; align-items: center; gap: 0.5rem; color: white; font-size: 0.9rem;">
                     <i class="fas fa-map-marker-alt"></i>
                     <span>〒910-0833 福井県福井市新保2丁目301</span>
                 </div>
-                <div class="contact-item" id="satogaeri-button">
+                <div style="display: flex; align-items: center; gap: 0.5rem; display: none !important;">
                     <a href="satogaeri.html" style="display: flex; align-items: center; gap: 0.4rem; color: white; text-decoration: none; padding: 0.4rem 0.8rem; background: linear-gradient(135deg, #F8BBD0, #F06292); border-radius: 20px;">
                         <i class="fas fa-home"></i>
                         <span>里帰り分娩</span>
                     </a>
                 </div>
             </div>
-            <div class="contact-item" style="color: #D4AF37; font-size: 1.2rem; margin: 0 0.5rem;">|</div>
-            <div class="header-departments">
-                <a href="obstetrics.html">産婦人科</a>・<a href="pediatrics.html">小児科</a>・<a href="pediatrics.html#allergy">アレルギー科</a>・<a href="child-psychiatry.html">児童精神科</a>
+            <div style="color: #D4AF37; font-size: 1.2rem; margin: 0 0.5rem;">|</div>
+            <div style="display: flex; gap: 0.5rem; font-size: 0.9rem;">
+                <a href="obstetrics.html" style="color: white; text-decoration: none;">産婦人科</a>・<a href="pediatrics.html" style="color: white; text-decoration: none;">小児科</a>・<a href="pediatrics.html#allergy" style="color: white; text-decoration: none;">アレルギー科</a>・<a href="child-psychiatry.html" style="color: white; text-decoration: none;">児童精神科</a>
             </div>
         </div>
     </div>
 
-<!-- ヘッダー -->
+
+    <!-- ヘッダー -->
     <header class="header">
         <div class="header-top">
             <div class="header-top-content">
@@ -435,9 +752,9 @@
             <div class="footer-links">
                 <h4>病院について</h4>
                 <ul>
-                    <li><a href="about.html"><i class="fas fa-chevron-right"></i> 当院について</a></li>
+                    <li><a href="index.html"><i class="fas fa-chevron-right"></i> 当院について</a></li>
                     <li><a href="index.html"><i class="fas fa-chevron-right"></i> お知らせ</a></li>
-                    <li><a href="about.html"><i class="fas fa-chevron-right"></i> アクセス</a></li>
+                    <li><a href="index.html"><i class="fas fa-chevron-right"></i> アクセス</a></li>
                     <li><a href="index.html"><i class="fas fa-chevron-right"></i> お問い合わせ</a></li>
                 </ul>
             </div>
